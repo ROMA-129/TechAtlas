@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberScope | منصة الإنفوجرافيك والبحث الشامل للأمن السيبراني 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0b0f19',
+                            card: '#111827',
+                            border: '#1f293d',
+                            cyan: '#06b6d4',
+                            blue: '#3b82f6',
+                            purple: '#8b5cf6',
+                            emerald: '#10b981',
+                            rose: '#f43f5e',
+                            amber: '#f59e0b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+        }
+        
+        /* Chart Containers Styling Rules */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 380px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        .glass-card {
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(31, 41, 61, 0.8);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+
+        .badge-glow {
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.3);
+        }
+    </style>
+</head>
+<body class="custom-scrollbar min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+
+    <!-- Navbar Header -->
+    <header class="sticky top-0 z-50 glass-card border-b border-gray-800 px-4 lg:px-8 py-3">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-xl text-black shadow-lg shadow-cyan-500/20">
+                    🛡️
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-wide text-white flex items-center gap-2">
+                        CyberScope <span class="text-xs font-normal text-cyan-400 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-800">تقرير 2026</span>
+                    </h1>
+                    <p class="text-xs text-gray-400">إعداد الباحثة: مريم سعيد حنفى (Mariam Said Hanafy)</p>
+                </div>
+            </div>
+
+            <!-- Quick Nav Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-300">
+                <a href="#overview" class="hover:text-cyan-400 transition-colors">الملخص التنفيذي</a>
+                <a href="#pathfinder" class="hover:text-cyan-400 transition-colors">مُوجّه الشغف</a>
+                <a href="#comparisons" class="hover:text-cyan-400 transition-colors">التحليلات والمقارنات</a>
+                <a href="#paths" class="hover:text-cyan-400 transition-colors">المسارات الستة</a>
+                <a href="#roadmap" class="hover:text-cyan-400 transition-colors">خريطة المبتدئين</a>
+                <a href="#certs" class="hover:text-cyan-400 transition-colors">الشهادات والأسواق</a>
+            </nav>
+
+            <a href="#pathfinder" class="bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-bold px-4 py-2 rounded-lg text-sm hover:opacity-90 transition-all shadow-md shadow-cyan-500/10">
+                🎯 حدد مسارك الآن
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Layout Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 flex-grow w-full">
+
+        <!-- HERO & STATS SECTION -->
+        <section id="overview" class="space-y-6">
+            <div class="glass-card rounded-2xl p-6 sm:p-10 border border-gray-800 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="max-w-3xl space-y-4 relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                        ⚡ المرجع الميداني المعتمد لعلوم الحاسوب والأمن السيبراني
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+                        التفكيك الشامل لمسارات وتخصصات <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">الأمن السيبراني</span>
+                    </h2>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        يقدم هذا البحث إطاراً علمياً وعملياً رصيناً لمعالجة حالة الإرباك المفاهيمي واختزال المجال في "اختبار الاختراق". استناداً لأطر العمل العالمية NIST NICE وCISA وENISA، نُفكك 6 مسارات مهنية رئيسية ببيانات واقعية للرواتب، الساعات، وتأثير الذكاء الاصطناعي لعام 2026.
+                    </p>
+                </div>
+
+                <!-- KPI Metric Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-gray-800/80">
+                    <div class="p-4 rounded-xl bg-gray-900/50 border border-gray-800">
+                        <div class="text-xs text-gray-400 font-semibold mb-1">المسارات المهنية الرئيسية</div>
+                        <div class="text-2xl sm:text-3xl font-black text-cyan-400">6 مسارات</div>
+                        <div class="text-[11px] text-gray-500 mt-1">تغطي الدفاع والهجوم والحوكمة</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-gray-900/50 border border-gray-800">
+                        <div class="text-xs text-gray-400 font-semibold mb-1">متوسط ساعات الجاهزية</div>
+                        <div class="text-2xl sm:text-3xl font-black text-blue-400">400 - 900h</div>
+                        <div class="text-[11px] text-gray-500 mt-1">حسب التخصص وخلفية الطالب</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-gray-900/50 border border-gray-800">
+                        <div class="text-xs text-gray-400 font-semibold mb-1">نطاق الرواتب العالمي</div>
+                        <div class="text-2xl sm:text-3xl font-black text-emerald-400">$60k - $230k</div>
+                        <div class="text-[11px] text-gray-500 mt-1">سنوياً في السوق الأمريكي</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-gray-900/50 border border-gray-800">
+                        <div class="text-xs text-gray-400 font-semibold mb-1">تأثير الذكاء الاصطناعي</div>
+                        <div class="text-2xl sm:text-3xl font-black text-amber-400">أتمتة + فرص</div>
+                        <div class="text-[11px] text-gray-500 mt-1">إعادة تشكيل أدوار Junior</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: INTERACTIVE PATHFINDER (مُوجّه الشغف) -->
+        <section id="pathfinder" class="space-y-6">
+            <div class="glass-card rounded-2xl p-6 border border-gray-800 space-y-6">
+                <div class="border-b border-gray-800 pb-4">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                        🎯 مُوجّه الشغف واتخاذ القرار التفاعلي (Interactive Decision Finder)
+                    </h3>
+                    <p class="text-gray-400 text-sm mt-1">
+                        أجب عن الأسئلة البسيطة التالية بناءً على مهاراتك وشغفك الشخصي لاكتشاف المسار المهني الأكثر ملاءمة لك.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Question 1 -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-cyan-400 uppercase tracking-wider">1. ما هو موقفك من البرمجة وكتابة الكود؟</label>
+                        <select id="pref-coding" onchange="runPathfinder()" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-200 focus:outline-none focus:border-cyan-500">
+                            <option value="high">أحب البرمجة وتطوير التطبيقات بصفة مستمرة</option>
+                            <option value="medium">أستطيع كتابة سكربتات بسيطة (Python/Bash)</option>
+                            <option value="none">لا أفضّل البرمجة وأميّل للعمل التنظيمي/المفاهيمي</option>
+                            <option value="low-level">أعشق لغة Assembly وفحص كود الآلة والتفكيك</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-cyan-400 uppercase tracking-wider">2. ما هو أسلوب التفكير الذي يستهويك أكثر؟</label>
+                        <select id="pref-mindset" onchange="runPathfinder()" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-200 focus:outline-none focus:border-cyan-500">
+                            <option value="defense">التحقيق، حل الألغاز، تتبع السجلات والتحري</option>
+                            <option value="offense">تفكيك الأنظمة، الهجوم، واكتشاف ثغرات الويب</option>
+                            <option value="building">بناء وتأمين البنى السحابية وخطوط البرمجة</option>
+                            <option value="governance">إدارة المخاطر، وضع القوانين والسياسات، والتدقيق</option>
+                        </select>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-cyan-400 uppercase tracking-wider">3. البيئة التقنية المفضلة لديك:</label>
+                        <select id="pref-env" onchange="runPathfinder()" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-sm text-gray-200 focus:outline-none focus:border-cyan-500">
+                            <option value="soc">أنظمة المراقبة والسجلات (SIEM / EDR / Networks)</option>
+                            <option value="web">تطبيقات الويب وواجهات البرمجة (APIs / Code)</option>
+                            <option value="cloud">البيئات السحابية (AWS / Azure / Containers)</option>
+                            <option value="policy">المستندات، الأطر التنظيمية (NIST / ISO / NCA)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Pathfinder Result Output Card -->
+                <div id="pathfinder-result" class="p-5 rounded-xl bg-gradient-to-r from-cyan-950/60 to-blue-950/60 border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <div class="text-xs font-bold text-cyan-300 uppercase tracking-wider">التوصية الدقيقة لمسارك المستهدف:</div>
+                        <div id="recommended-title" class="text-xl font-extrabold text-white">مسار أمن العمليات الاستجابة للحوادث (SOC / DFIR)</div>
+                        <p id="recommended-desc" class="text-xs text-gray-300">يناسب شغفك في التحقيق وتحليل السجلات واستكشاف الأخطاء مع طلب توظيفي مرتفع للمبتدئين.</p>
+                    </div>
+                    <a id="recommended-link" href="#path-soc" class="px-5 py-2.5 rounded-lg bg-cyan-500 text-black font-bold text-sm hover:bg-cyan-400 transition-colors whitespace-nowrap">
+                        استكشف تفاصيل المسار ➔
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: DATA DASHBOARD & VISUALIZATIONS -->
+        <section id="comparisons" class="space-y-8">
+            <div class="border-b border-gray-800 pb-4">
+                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                    📊 لوحة المقارنات التحليلية الشاملة (Comparative Analytics Dashboard)
+                </h3>
+                <p class="text-gray-400 text-sm mt-1">
+                    مقارنة بصرية دقيقة لمخرجات البحث بين المسارات الستة من حيث الجاهزية، الرواتب، متطلبات التأسيس، وتأثير الذكاء الاصطناعي.
+                </p>
+            </div>
+
+            <!-- Row 1: Hours vs Salaries -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Chart 1: Learning Hours -->
+                <div class="glass-card rounded-2xl p-6 space-y-4 border border-gray-800">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="text-lg font-bold text-white">إجمالي ساعات التعلم للوصول للجاهزية</h4>
+                            <p class="text-xs text-gray-400">تقدير الساعات للوصول لمستوى (Job-Ready) للمبتدئين وطاب CS</p>
+                        </div>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-blue-950 text-blue-400 border border-blue-800">الجهد الزمني</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartHours"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+                        💡 **تحليل الباحثة**: يتطلب مسار تحليل البرمجيات الخبيثة أعلى جهد زمني (حتى 1200 ساعة) لعمق متطلبات Assembly وC++، بينما يمثل مسار GRC أقلها في الجانب البرمجي (400-500 ساعة).
+                    </p>
+                </div>
+
+                <!-- Chart 2: Salaries USA vs KSA -->
+                <div class="glass-card rounded-2xl p-6 space-y-4 border border-gray-800">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="text-lg font-bold text-white">متوسط الرواتب السنوية للمستوى المتوسط (Mid-Level)</h4>
+                            <p class="text-xs text-gray-400">مقارنة السوق الأمريكي ($ USD) والسعودي (SAR x10k)</p>
+                        </div>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">بيانات 2026</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartSalaries"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+                        💡 **تحليل الباحثة**: يتصدر مسار AppSec وCloud Security قائمة الرواتب عالمياً وفي الخليج بمتوسط يتجاوز $150k سنوياً و25,000 ريال شهرياً لندرة الكفاءات البرمجية-السحابية.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Row 2: Radar Core Skills & Entry vs AI -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Chart 3: Common Core Radar -->
+                <div class="glass-card rounded-2xl p-6 space-y-4 border border-gray-800">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="text-lg font-bold text-white">مطبقة عمق المهارات الأساسية (Common Core Matrix)</h4>
+                            <p class="text-xs text-gray-400">مستويات المهارات من (Level 0: غير مطلوب) إلى (Level 5: خبير)</p>
+                        </div>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-purple-950 text-purple-400 border border-purple-800">العمق المعرفي</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartSkillsRadar"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+                        💡 **تحليل الباحثة**: تظهر الرادار الحاجة الماسة لإتقان الشبكات وأنظمة التشغيل في كافة المسارات التقنية، مما ينفي إمكانية التخصص بدون المرور بالنواة المشتركة.
+                    </p>
+                </div>
+
+                <!-- Chart 4: AI Exposure vs Entry Difficulty -->
+                <div class="glass-card rounded-2xl p-6 space-y-4 border border-gray-800">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="text-lg font-bold text-white">صعوبة الدخول للمبتدئ مقابل أتمتة الذكاء الاصطناعي</h4>
+                            <p class="text-xs text-gray-400">مقياس من 1 إلى 10 للتقييم الميداني للتنافسية والأتمتة</p>
+                        </div>
+                        <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-950 text-amber-400 border border-amber-800">سوق العمل والذكاء الاصطناعي</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chartAiVsEntry"></canvas>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed border-t border-gray-800/60 pt-3">
+                        💡 **تحليل الباحثة**: يواجه اختبار الاختراق منافسة وصعوبة دخول مرتفعة جداً (9/10)، بينما يعاني SOC L1 من أتمتة مرتفعة بالفحص الأولي (8/10)، مما يستوجب الانتقال السريع للمستويات المتقدمة.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE 6 DETAILED CAREER PATHS -->
+        <section id="paths" class="space-y-6">
+            <div class="border-b border-gray-800 pb-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                        📑 الدراسة التفصيلية المستقلة للمسارات المهنية الستة
+                    </h3>
+                    <p class="text-gray-400 text-sm mt-1">
+                        تفكيك كامل لكل مسار: المهام، السيناريو الواقعي، خريطة التعلم، المصادر، وأرقام الرواتب.
+                    </p>
+                </div>
+                <!-- Path Selection Tabs -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="switchPathTab('soc')" id="tab-btn-soc" class="path-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-cyan-500 text-black">SOC & DFIR</button>
+                    <button onclick="switchPathTab('pentest')" id="tab-btn-pentest" class="path-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-800 text-gray-300 hover:bg-gray-700">PenTesting</button>
+                    <button onclick="switchPathTab('appsec')" id="tab-btn-appsec" class="path-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-800 text-gray-300 hover:bg-gray-700">AppSec & DevSecOps</button>
+                    <button onclick="switchPathTab('cloud')" id="tab-btn-cloud" class="path-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-800 text-gray-300 hover:bg-gray-700">Cloud Security</button>
+                    <button onclick="switchPathTab('grc')" id="tab-btn-grc" class="path-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-800 text-gray-300 hover:bg-gray-700">GRC</button>
+                    <button onclick="switchPathTab('malware')" id="tab-btn-malware" class="path-tab-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-gray-800 text-gray-300 hover:bg-gray-700">Malware / RE</button>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT CONTAINER -->
+            <div id="path-content-area">
+                
+                <!-- PATH 1: SOC & DFIR -->
+                <div id="path-soc" class="path-card space-y-6">
+                    <div class="glass-card rounded-2xl p-6 border border-cyan-500/30 space-y-6">
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-2xl">
+                                    🛡️
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-black text-white">1. الأمن الدفاعي ومراقبة العمليات والاستجابة للحوادث (SOC & DFIR)</h4>
+                                    <p class="text-xs text-cyan-400 font-semibold">Defensive Security, Security Operations & Incident Response</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-950 text-emerald-400 border border-emerald-800">منفذ دخول ممتاز للمبتدئين</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-950 text-cyan-400 border border-cyan-800">الطلب: مرتفع جداً</span>
+                            </div>
+                        </div>
+
+                        <!-- Grid Info -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-cyan-400">💡 طبيعة العمل والهدف</h5>
+                                <p class="text-gray-300 text-xs leading-relaxed">
+                                    المسؤول عن حماية الأصول الرقمية، والمراقبة المستمرة للأحداث السيبرانية، واكتشاف التهديدات والتحقيق فيها والاستجابة السريعة للحد من الأضرار وتقليل وقت بقاء المهاجم (Dwell Time).
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-cyan-400">⚙️ المسميات الوظيفية الرئيسية</h5>
+                                <ul class="text-xs text-gray-300 space-y-1 list-disc list-inside">
+                                    <li>SOC Analyst (Tier 1 / Tier 2)</li>
+                                    <li>Incident Response Analyst (DFIR)</li>
+                                    <li>Threat Hunter & Detection Engineer</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-cyan-400">🛠️ الأدوات الجوهرية</h5>
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Splunk</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">MS Sentinel</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Wireshark</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Sysmon</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Volatility 3</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">YARA / Sigma</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scenario Box -->
+                        <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800 space-y-2">
+                            <div class="text-xs font-bold text-amber-400 flex items-center gap-1">
+                                🎬 سيناريو واقعي ليوم عمل (A Day in the Life)
+                            </div>
+                            <p class="text-xs text-gray-300 leading-relaxed">
+                                يلاحظ المحلل تنبيهاً في SIEM لاستدعاء غير عادي لـ <code class="text-cyan-300 bg-black/50 px-1">powershell.exe</code> من متصفح الويب. يقوم بفحص سجلات EDR، فيكتشف محاولة تحميل ملف تنفيذي من IP مشبوه. يقوم فوراً بعزل الجهاز حاسوبياً عن الشبكة عبر منصة EDR لمنع الانتشار، ويصعد التقرير لفريق الاستجابة للحوادث للتحقيق.
+                            </p>
+                        </div>
+
+                        <!-- Salaries Table -->
+                        <div class="space-y-2">
+                            <h5 class="font-bold text-white text-xs uppercase tracking-wider text-cyan-400">💰 بيانات الرواتب الموثقة لعام 2026</h5>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-xs text-right text-gray-300">
+                                    <thead class="bg-gray-900 text-gray-400">
+                                        <tr>
+                                            <th class="p-2.5">البلد / المنطقة</th>
+                                            <th class="p-2.5">مبتدئ (Junior)</th>
+                                            <th class="p-2.5">متوسط (Mid-Level)</th>
+                                            <th class="p-2.5">متقدم (Senior)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-800">
+                                        <tr>
+                                            <td class="p-2.5 font-semibold text-white">مصر (EGP)</td>
+                                            <td class="p-2.5">55,000 - 120,000 /سنة</td>
+                                            <td class="p-2.5">150,000 - 300,000 /سنة</td>
+                                            <td class="p-2.5">350,000 - 500,000+ /سنة</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-semibold text-white">السعودية (SAR)</td>
+                                            <td class="p-2.5">3,800 - 6,000 /شهر</td>
+                                            <td class="p-2.5">18,000 /شهر</td>
+                                            <td class="p-2.5">22,000 - 30,000 /شهر</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-semibold text-white">الإمارات (AED)</td>
+                                            <td class="p-2.5">12,000 - 16,000 /شهر</td>
+                                            <td class="p-2.5">16,000 - 24,000 /شهر</td>
+                                            <td class="p-2.5">26,000 - 38,000 /شهر</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2.5 font-semibold text-white">أمريكا (USD)</td>
+                                            <td class="p-2.5">$60,000 - $80,000 /سنة</td>
+                                            <td class="p-2.5">$90,000 - $120,000 /سنة</td>
+                                            <td class="p-2.5">$130,000 - $160,000+ /سنة</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Recommended Certifications -->
+                        <div class="flex flex-wrap items-center gap-3 pt-2 text-xs">
+                            <span class="font-bold text-gray-400">الشهادات الموصى بها:</span>
+                            <span class="px-2.5 py-1 rounded bg-blue-950 text-blue-300 border border-blue-800">CompTIA Security+</span>
+                            <span class="px-2.5 py-1 rounded bg-cyan-950 text-cyan-300 border border-cyan-800">BTL1 (Certified Blue Team Level 1)</span>
+                            <span class="px-2.5 py-1 rounded bg-purple-950 text-purple-300 border border-purple-800">GCIH (GIAC Incident Handler)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PATH 2: PENTESTING -->
+                <div id="path-pentest" class="path-card hidden space-y-6">
+                    <div class="glass-card rounded-2xl p-6 border border-rose-500/30 space-y-6">
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-2xl">
+                                    ⚔️
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-black text-white">2. الأمن الهجومي واختبار الاختراق (Offensive Security & PenTesting)</h4>
+                                    <p class="text-xs text-rose-400 font-semibold">Offensive Security, Ethical Hacking & Red Teaming</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-rose-950 text-rose-400 border border-rose-800">منافسة شديدة للمبتدئين</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-950 text-amber-400 border border-amber-800">صعوبة الدخول: 9/10</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-rose-400">💡 طبيعة العمل والهدف</h5>
+                                <p class="text-gray-300 text-xs leading-relaxed">
+                                    تقييم أمن الأنظمة والتطبيقات عبر المحاكاة العملية الهجومية المصرح بها كشف الثغرات واستغلالها قبل المهاجمين الفعليين.
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-rose-400">⚙️ المسميات الوظيفية الرئيسية</h5>
+                                <ul class="text-xs text-gray-300 space-y-1 list-disc list-inside">
+                                    <li>Penetration Tester (Web / Network)</li>
+                                    <li>Red Team Operator</li>
+                                    <li>Vulnerability Assessment Analyst</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-rose-400">🛠️ الأدوات الجوهرية</h5>
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Burp Suite Pro</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Nmap</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">BloodHound</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Metasploit</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Impacket</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800 space-y-2">
+                            <div class="text-xs font-bold text-amber-400 flex items-center gap-1">
+                                🎬 سيناريو واقعي ليوم عمل
+                            </div>
+                            <p class="text-xs text-gray-300 leading-relaxed">
+                                يُكلف اختبار الاختراق بتقييم تطبيق ويب تجاري قبل إطلاقه. يكتشف عدم وجود تحقق من صلاحيات المستخدم عند تعديل معرف الحساب (IDOR Vulnerability). يقوم بصياغة طلب محاكاة لنقل البيانات للتأكد من أثر الثغرة وتوثيقها دون التسبب في تلف البيانات.
+                            </p>
+                        </div>
+
+                        <!-- Recommended Certifications -->
+                        <div class="flex flex-wrap items-center gap-3 pt-2 text-xs">
+                            <span class="font-bold text-gray-400">الشهادات الموصى بها:</span>
+                            <span class="px-2.5 py-1 rounded bg-rose-950 text-rose-300 border border-rose-800">eJPT (Junior PenTester)</span>
+                            <span class="px-2.5 py-1 rounded bg-amber-950 text-amber-300 border border-amber-800">PNPT (Practical Network PenTester)</span>
+                            <span class="px-2.5 py-1 rounded bg-red-950 text-red-300 border border-red-800">OSCP (OffSec Certified Professional)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PATH 3: APPSEC & DEVSECOPS -->
+                <div id="path-appsec" class="path-card hidden space-y-6">
+                    <div class="glass-card rounded-2xl p-6 border border-purple-500/30 space-y-6">
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-2xl">
+                                    💻
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-black text-white">3. أمن التطبيقات والـ DevSecOps (Application Security)</h4>
+                                    <p class="text-xs text-purple-400 font-semibold">Application Security Engineering & DevSecOps Automation</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-purple-950 text-purple-400 border border-purple-800">أعلى أجر ووظائف عن بعد</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-950 text-emerald-400 border border-emerald-800">مثالي للمطورين</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-purple-400">💡 طبيعة العمل والهدف</h5>
+                                <p class="text-gray-300 text-xs leading-relaxed">
+                                    ضمان بناء برمجيات ذاتية الحماية طوال دورة حياة التطوير (SDLC)، ودمج الضوابط الأمنية التلقائية داخل خطوط التجميع والنشر المستمر (CI/CD Pipelines).
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-purple-400">⚙️ المسميات الوظيفية الرئيسية</h5>
+                                <ul class="text-xs text-gray-300 space-y-1 list-disc list-inside">
+                                    <li>Application Security Engineer</li>
+                                    <li>DevSecOps Engineer</li>
+                                    <li>Product Security Engineer</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-purple-400">🛠️ الأدوات الجوهرية</h5>
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Semgrep</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Snyk</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">SonarQube</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Trivy</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">GitHub Actions</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-gray-900/80 border border-gray-800 space-y-2">
+                            <div class="text-xs font-bold text-amber-400 flex items-center gap-1">
+                                🎬 سيناريو واقعي ليوم عمل
+                            </div>
+                            <p class="text-xs text-gray-300 leading-relaxed">
+                                يتلقى المهندس تنبيهاً من أداة SCA في خط CI/CD يكشف وجود مكتبة مفتوحة المصدر ذات ثغرة حرجة (RCE)، فيقوم بوقف النشر الآلي وتزويد فريق التطوير بالنسخة المحدثة الخالية من الثغرة ومراجعة الكود المصدر.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PATH 4: CLOUD SECURITY -->
+                <div id="path-cloud" class="path-card hidden space-y-6">
+                    <div class="glass-card rounded-2xl p-6 border border-blue-500/30 space-y-6">
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-2xl">
+                                    ☁️
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-black text-white">4. أمن السحابة وهندسة الأمن (Cloud Security Engineering)</h4>
+                                    <p class="text-xs text-blue-400 font-semibold">Cloud Infrastructure Security, IAM & CSPM</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-950 text-blue-400 border border-blue-800">نمو هائل في الخليج</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-950 text-cyan-400 border border-cyan-800">تحول سحابي 2026</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-blue-400">💡 طبيعة العمل والهدف</h5>
+                                <p class="text-gray-300 text-xs leading-relaxed">
+                                    تصميم وبناء وتأمين الأنظمة والبنى التحتية السحابية وحماية البيانات المستضافة على منصات مثل AWS وAzure وGCP وإدارة وضعية الأمن (CSPM).
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-blue-400">⚙️ المسميات الوظيفية الرئيسية</h5>
+                                <ul class="text-xs text-gray-300 space-y-1 list-disc list-inside">
+                                    <li>Cloud Security Engineer</li>
+                                    <li>Security Architect</li>
+                                    <li>Cloud Infrastructure Specialist</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-blue-400">🛠️ الأدوات الجوهرية</h5>
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">AWS KMS / IAM</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Terraform</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Prowler</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Wiz</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Checkov</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PATH 5: GRC -->
+                <div id="path-grc" class="path-card hidden space-y-6">
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/30 space-y-6">
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-2xl">
+                                    📜
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-black text-white">5. الحوكمة وإدارة المخاطر والامتثال (GRC & Compliance)</h4>
+                                    <p class="text-xs text-emerald-400 font-semibold">Governance, Risk Management & Regulatory Compliance</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-950 text-emerald-400 border border-emerald-800">بدون برمجة (No Code)</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-950 text-blue-400 border border-blue-800">توازن حياة وعمل ممتازة</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-emerald-400">💡 طبيعة العمل والهدف</h5>
+                                <p class="text-gray-300 text-xs leading-relaxed">
+                                    صياغة استراتيجية الأمن السيبراني وإدارة المخاطر المؤسسية، وضمان توافق ممارسات والسياسات التقنية مع القوانين واللوائح (NCA ECC, ISO 27001, NIST CSF).
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-emerald-400">⚙️ المسميات الوظيفية الرئيسية</h5>
+                                <ul class="text-xs text-gray-300 space-y-1 list-disc list-inside">
+                                    <li>GRC Analyst</li>
+                                    <li>Information Security Risk Officer</li>
+                                    <li>IT Auditor / Compliance Officer</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-emerald-400">🛠️ الأدوات والشهادات</h5>
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">ServiceNow GRC</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">CISA Cert</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">ISO 27001 Lead Auditor</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PATH 6: MALWARE ANALYSIS -->
+                <div id="path-malware" class="path-card hidden space-y-6">
+                    <div class="glass-card rounded-2xl p-6 border border-amber-500/30 space-y-6">
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-800 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-2xl">
+                                    🔬
+                                </div>
+                                <div>
+                                    <h4 class="text-2xl font-black text-white">6. تحليل البرمجيات الخبيثة والهندسة العكسية (Malware Analysis & RE)</h4>
+                                    <p class="text-xs text-amber-400 font-semibold">Reverse Engineering, CTI & Advanced Research</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-950 text-amber-400 border border-amber-800">تخصص نخبوي عالي الصعوبة</span>
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-purple-950 text-purple-400 border border-purple-800">900-1200 ساعة تعلم</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-amber-400">💡 طبيعة العمل والهدف</h5>
+                                <p class="text-gray-300 text-xs leading-relaxed">
+                                    تفكيك الكود المصدري للبرمجيات الخبيثة هندسياً لمعرفة كيفية عملها، وتتبع مجموعات التهديدات المتقدمة (APTs) وتطوير وسائل الوقاية منها.
+                                </p>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-amber-400">⚙️ المسميات الوظيفية الرئيسية</h5>
+                                <ul class="text-xs text-gray-300 space-y-1 list-disc list-inside">
+                                    <li>Malware Analyst</li>
+                                    <li>Reverse Engineer</li>
+                                    <li>Cyber Threat Intelligence (CTI) Analyst</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-2">
+                                <h5 class="font-bold text-white text-xs uppercase tracking-wider text-amber-400">🛠️ الأدوات الجوهرية</h5>
+                                <div class="flex flex-wrap gap-1.5 pt-1">
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">Ghidra</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">IDA Pro</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">x64dbg</span>
+                                    <span class="px-2 py-0.5 rounded bg-gray-800 text-gray-200 text-[11px]">PEStudio</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: BEGINNER MASTER ROADMAP -->
+        <section id="roadmap" class="space-y-6">
+            <div class="glass-card rounded-2xl p-6 border border-gray-800 space-y-6">
+                <div class="border-b border-gray-800 pb-4">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                        🗺️ المخطط التأسيسي الشامل للمبتدئين (Beginner Master Roadmap)
+                    </h3>
+                    <p class="text-gray-400 text-sm mt-1">
+                        خريطة النواة المشتركة (Common Core) الإلزامية قبل الشروع في اختيار المسار النهائي.
+                    </p>
+                </div>
+
+                <!-- Timeline Steps -->
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                    <!-- Phase 0 -->
+                    <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2 relative">
+                        <div class="w-7 h-7 rounded-full bg-cyan-500 text-black font-black flex items-center justify-center text-xs">0</div>
+                        <h4 class="font-bold text-white text-sm">أساس الحاسوب</h4>
+                        <p class="text-xs text-gray-400">بنية Phone Neumann، الذاكرة (Stack vs Heap)، والـ Binary/Hex.</p>
+                        <span class="inline-block text-[10px] text-cyan-400 bg-cyan-950 px-2 py-0.5 rounded">6 - 8 أسابيع</span>
+                    </div>
+
+                    <!-- Phase 1 -->
+                    <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
+                        <div class="w-7 h-7 rounded-full bg-blue-500 text-black font-black flex items-center justify-center text-xs">1</div>
+                        <h4 class="font-bold text-white text-sm">إتقان الشبكات</h4>
+                        <p class="text-xs text-gray-400">OSI & TCP/IP Models، بروتوكولات DNS, HTTP, TLS وتحليل Wireshark.</p>
+                        <span class="inline-block text-[10px] text-blue-400 bg-blue-950 px-2 py-0.5 rounded">8 - 10 أسابيع</span>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
+                        <div class="w-7 h-7 rounded-full bg-purple-500 text-black font-black flex items-center justify-center text-xs">2</div>
+                        <h4 class="font-bold text-white text-sm">إدارة الأنظمة</h4>
+                        <p class="text-xs text-gray-400">Linux CLI/Permissions، معمارية Windows NT وActive Directory.</p>
+                        <span class="inline-block text-[10px] text-purple-400 bg-purple-950 px-2 py-0.5 rounded">8 - 10 أسابيع</span>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2">
+                        <div class="w-7 h-7 rounded-full bg-emerald-500 text-black font-black flex items-center justify-center text-xs">3</div>
+                        <h4 class="font-bold text-white text-sm">الأتمتة والسكربت</h4>
+                        <p class="text-xs text-gray-400">أساسيات Python، أتمتة معالجة الملفات والـ APIs، وBash/PowerShell.</p>
+                        <span class="inline-block text-[10px] text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded">6 - 8 أسابيع</span>
+                    </div>
+
+                    <!-- Phase 4 -->
+                    <div class="p-4 rounded-xl bg-gray-900 border border-gray-800 space-y-2 border-cyan-500/40">
+                        <div class="w-7 h-7 rounded-full bg-amber-500 text-black font-black flex items-center justify-center text-xs">4</div>
+                        <h4 class="font-bold text-white text-sm">المفاهيم الأمنية</h4>
+                        <p class="text-xs text-gray-400">مثلث CIA، التشفير المتماثل وغير المتماثل، وتدريبات TryHackMe Pre-Sec.</p>
+                        <span class="inline-block text-[10px] text-amber-400 bg-amber-950 px-2 py-0.5 rounded">6 أسابيع</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CERTIFICATIONS & COST MATRIX -->
+        <section id="certs" class="space-y-6">
+            <div class="glass-card rounded-2xl p-6 border border-gray-800 space-y-6">
+                <div class="border-b border-gray-800 pb-4">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                        📜 دليل الشهادات المهنية والتكلفة (Certifications Guide 2026)
+                    </h3>
+                    <p class="text-gray-400 text-sm mt-1">
+                        تقييم موضوعي للشهادات الأكثر طلباً ومصداقية في سوق العمل الدولي والإقليمي.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-cyan-400 bg-cyan-950 px-2 py-0.5 rounded">CompTIA</span>
+                            <span class="text-xs text-gray-400">التكلفة: ~$425</span>
+                        </div>
+                        <h4 class="font-bold text-white text-sm">CompTIA Security+</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">شهادة نظرية ممتازة لتجاوز الفرز الآلي (ATS) وبناء المفاهيم التأسيسية.</p>
+                        <div class="text-[11px] text-cyan-300 font-semibold">Tier B | الصلاحية: 3 سنوات</div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-rose-400 bg-rose-950 px-2 py-0.5 rounded">OffSec</span>
+                            <span class="text-xs text-gray-400">التكلفة: ~$1,649</span>
+                        </div>
+                        <h4 class="font-bold text-white text-sm">OSCP (PEN-200)</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">الأكثر طلباً عالمياً لاختبار الاختراق، امتحان عملي 24 ساعة كلياً.</p>
+                        <div class="text-[11px] text-rose-300 font-semibold">Tier A | الصلاحية: مدى الحياة</div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-blue-400 bg-blue-950 px-2 py-0.5 rounded">Security Blue Team</span>
+                            <span class="text-xs text-gray-400">التكلفة: ~£399</span>
+                        </div>
+                        <h4 class="font-bold text-white text-sm">BTL1 (Blue Team L1)</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">أفضل شهادة تطبيقية عملية لمسار SOC Analyst L1 وحوادث الاختراق.</p>
+                        <div class="text-[11px] text-blue-300 font-semibold">Tier A | الصلاحية: مدى الحياة</div>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded">ISACA</span>
+                            <span class="text-xs text-gray-400">التكلفة: ~$575-$760</span>
+                        </div>
+                        <h4 class="font-bold text-white text-sm">CISA (Auditing)</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">المعيار الذهبي الدولي لتدقيق تقنية المعلومات والحوكمة والامتثال.</p>
+                        <div class="text-[11px] text-emerald-300 font-semibold">Tier A | الصلاحية: 3 سنوات</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Documentation -->
+    <footer class="glass-card border-t border-gray-800 px-4 py-6 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto space-y-2">
+            <p class="font-semibold text-gray-400">CyberScope | دليل وتصنيف علوم ومسارات الأمن السيبراني © 2026</p>
+            <p>إعداد الباحثة الرئيسية: <span class="text-cyan-400 font-bold">مريم سعيد حنفى (Mariam Said Hanafy)</span> | التحديث الميداني: مارس 2026</p>
+            <p class="text-[10px] text-gray-600">تم التوثيق والمطابقة وفق أطر NIST SP 800-181 Rev. 1 وCISA وENISA</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT & CHART CONFIGURATION -->
+    <script>
+        // Label wrapping utility helper logic (16-char logic)
+        function wrapLabel(str, maxLen = 16) {
+            if (typeof str !== 'string' || str.length <= maxLen) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > maxLen) {
+                    if (currentLine) lines.push(currentLine.trim());
+                    currentLine = word + ' ';
+                } else {
+                    currentLine += word + ' ';
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        }
+
+        // Shared Tooltip Configuration Callback for Chart.js
+        const chartTooltipOptions = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // Data Arrays
+        const rawPathLabels = [
+            'أمن العمليات والتحقيق SOC',
+            'اختبار الاختراق PenTesting',
+            'أمن التطبيقات AppSec',
+            'أمن السحابة Cloud Security',
+            'الحوكمة والامتثال GRC',
+            'تحليل البرمجيات Malware'
+        ];
+        const wrappedPathLabels = rawPathLabels.map(l => wrapLabel(l, 16));
+
+        // Initialize Charts when DOM Ready
+        window.addEventListener('DOMContentLoaded', () => {
+
+            // CHART 1: Learning Hours (Bar)
+            const ctxHours = document.getElementById('chartHours').getContext('2d');
+            new Chart(ctxHours, {
+                type: 'bar',
+                data: {
+                    labels: wrappedPathLabels,
+                    datasets: [
+                        {
+                            label: 'الحد الأدنى للساعات',
+                            data: [650, 750, 650, 600, 400, 900],
+                            backgroundColor: 'rgba(6, 182, 212, 0.6)',
+                            borderColor: '#06b6d4',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'الحد الأقصى للساعات',
+                            data: [800, 900, 800, 750, 500, 1200],
+                            backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                            borderColor: '#3b82f6',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#9ca3af', font: { family: 'Cairo' } } },
+                        tooltip: chartTooltipOptions
+                    },
+                    scales: {
+                        x: { ticks: { color: '#9ca3af', font: { family: 'Cairo', size: 10 } }, grid: { color: '#1f293d' } },
+                        y: { ticks: { color: '#9ca3af' }, grid: { color: '#1f293d' } }
+                    }
+                }
+            });
+
+            // CHART 2: Salaries Comparison (Grouped Bar)
+            const ctxSalaries = document.getElementById('chartSalaries').getContext('2d');
+            new Chart(ctxSalaries, {
+                type: 'bar',
+                data: {
+                    labels: wrappedPathLabels,
+                    datasets: [
+                        {
+                            label: 'أمريكا (k$ USD / سنة)',
+                            data: [105, 127, 162, 152, 95, 120],
+                            backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                            borderColor: '#10b981',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'السعودية (k SAR / شهرياً x10)',
+                            data: [180, 200, 250, 220, 180, 250],
+                            backgroundColor: 'rgba(245, 158, 11, 0.7)',
+                            borderColor: '#f59e0b',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#9ca3af', font: { family: 'Cairo' } } },
+                        tooltip: chartTooltipOptions
+                    },
+                    scales: {
+                        x: { ticks: { color: '#9ca3af', font: { family: 'Cairo', size: 10 } }, grid: { color: '#1f293d' } },
+                        y: { ticks: { color: '#9ca3af' }, grid: { color: '#1f293d' } }
+                    }
+                }
+            });
+
+            // CHART 3: Core Skills Matrix Radar
+            const ctxRadar = document.getElementById('chartSkillsRadar').getContext('2d');
+            const radarSkills = ['الشبكات', 'إدارة Linux', 'Windows / AD', 'البرمجة', 'الويب و SQL', 'التشفير'].map(s => wrapLabel(s, 16));
+            new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: radarSkills,
+                    datasets: [
+                        {
+                            label: 'SOC / DFIR',
+                            data: [4, 3, 4, 2, 2, 2],
+                            borderColor: '#06b6d4',
+                            backgroundColor: 'rgba(6, 182, 212, 0.2)'
+                        },
+                        {
+                            label: 'AppSec',
+                            data: [2, 3, 2, 4, 5, 3],
+                            borderColor: '#8b5cf6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.2)'
+                        },
+                        {
+                            label: 'PenTesting',
+                            data: [3, 4, 4, 3, 4, 2],
+                            borderColor: '#f43f5e',
+                            backgroundColor: 'rgba(244, 63, 94, 0.2)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#9ca3af', font: { family: 'Cairo' } } },
+                        tooltip: chartTooltipOptions
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: '#1f293d' },
+                            grid: { color: '#1f293d' },
+                            pointLabels: { color: '#9ca3af', font: { family: 'Cairo', size: 11 } },
+                            ticks: { backdropColor: 'transparent', color: '#6b7280' },
+                            min: 0,
+                            max: 5
+                        }
+                    }
+                }
+            });
+
+            // CHART 4: Entry Difficulty vs AI Exposure
+            const ctxAi = document.getElementById('chartAiVsEntry').getContext('2d');
+            new Chart(ctxAi, {
+                type: 'bar',
+                data: {
+                    labels: wrappedPathLabels,
+                    datasets: [
+                        {
+                            label: 'صعوبة التوظيف المبتدئ (1-10)',
+                            data: [6, 9, 4, 5, 5, 9],
+                            backgroundColor: 'rgba(244, 63, 94, 0.7)',
+                            borderColor: '#f43f5e',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'تأثير وأتمتة AI (1-10)',
+                            data: [8, 5, 7, 6, 4, 3],
+                            backgroundColor: 'rgba(139, 92, 246, 0.7)',
+                            borderColor: '#8b5cf6',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#9ca3af', font: { family: 'Cairo' } } },
+                        tooltip: chartTooltipOptions
+                    },
+                    scales: {
+                        x: { ticks: { color: '#9ca3af', font: { family: 'Cairo', size: 10 } }, grid: { color: '#1f293d' } },
+                        y: { ticks: { color: '#9ca3af' }, grid: { color: '#1f293d' }, max: 10 }
+                    }
+                }
+            });
+
+            // Run Initial Pathfinder calculation
+            runPathfinder();
+        });
+
+        // PATHFINDER LOGIC
+        function runPathfinder() {
+            const coding = document.getElementById('pref-coding').value;
+            const mindset = document.getElementById('pref-mindset').value;
+            const env = document.getElementById('pref-env').value;
+
+            let title = "مسار أمن العمليات والاستجابة للحوادث (SOC / DFIR)";
+            let desc = "يناسب شغفك في التحقيق وتحليل السجلات واستكشاف الأخطاء مع طلب توظيفي مرتفع للمبتدئين.";
+            let link = "#path-soc";
+
+            if (coding === 'high' || mindset === 'building') {
+                title = "مسار أمن التطبيقات والـ DevSecOps";
+                desc = "بناءً على حبك للبرمجة وبناء الأكواد، هذا المسار يمنحك أعلى الرواتب وفرص عمل عن بعد ممتازة.";
+                link = "#path-appsec";
+            } else if (mindset === 'offense' || env === 'web') {
+                title = "مسار الأمن الهجومي واختبار الاختراق (PenTesting)";
+                desc = "يناسب شغفك بتفكيك الأنظمة واكتشاف ثغرات الويب، لكن يتطلب بناء بورتفوليو متميز لتجاوز منافسة الدخول.";
+                link = "#path-pentest";
+            } else if (env === 'cloud') {
+                title = "مسار أمن السحابة (Cloud Security Engineering)";
+                desc = "يتوافق مع رغبتك في إدارة وتأمين بيئات AWS وAzure التنافسية جداً في سوق الخليج ومصر.";
+                link = "#path-cloud";
+            } else if (coding === 'none' || mindset === 'governance') {
+                title = "مسار الحوكمة وإدارة المخاطر والامتثال (GRC)";
+                desc = "الخيار الأمثل للدخول بمهارات استراتيجية وتوثيقية بدون برمجة، مع طلب هائل لتطبيق ضوابط الهيئة الوطنية NCA.";
+                link = "#path-grc";
+            } else if (coding === 'low-level') {
+                title = "مسار تحليل البرمجيات الخبيثة والهندسة العكسية";
+                desc = "مسار نخبوي يتطلب شغفاً عميقاً بـ Assembly وC++ لتفكيك البرمجيات العكسية.";
+                link = "#path-malware";
+            }
+
+            document.getElementById('recommended-title').innerText = title;
+            document.getElementById('recommended-desc').innerText = desc;
+            document.getElementById('recommended-link').setAttribute('href', link);
+        }
+
+        // TAB SWITCHING LOGIC FOR PATHS
+        function switchPathTab(pathKey) {
+            const allCards = document.querySelectorAll('.path-card');
+            allCards.forEach(card => card.classList.add('hidden'));
+
+            const targetCard = document.getElementById('path-' + pathKey);
+            if (targetCard) {
+                targetCard.classList.remove('hidden');
+            }
+
+            const allBtns = document.querySelectorAll('.path-tab-btn');
+            allBtns.forEach(btn => {
+                btn.classList.remove('bg-cyan-500', 'text-black');
+                btn.classList.add('bg-gray-800', 'text-gray-300');
+            });
+
+            const activeBtn = document.getElementById('tab-btn-' + pathKey);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-gray-800', 'text-gray-300');
+                activeBtn.classList.add('bg-cyan-500', 'text-black');
+            }
+        }
+    </script>
+</body>
+</html>
