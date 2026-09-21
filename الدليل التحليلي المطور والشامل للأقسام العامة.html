@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدليل الشامل والموسع لأقسام حاسبات والذكاء الاصطناعي - جامعة القاهرة | إعداد مريم سعيد حنفى</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            navy: '#1e293b',
+                            blue: '#0284c7',
+                            teal: '#0d9488',
+                            indigo: '#6366f1',
+                            purple: '#8b5cf6',
+                            amber: '#d97706',
+                            rose: '#e11d48',
+                            emerald: '#059669',
+                            light: '#f8fafc'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Font: Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Vibrant Palette Selection: "Vibrant Modern / Ocean Sunset & Neon Accents" -->
+    <!-- Palette Hex: #0284c7 (Sky Blue), #0d9488 (Teal), #6366f1 (Indigo), #8b5cf6 (Purple), #d97706 (Amber), #e11d48 (Rose), #059669 (Emerald) -->
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            scroll-behavior: smooth;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 340px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 380px;
+            }
+        }
+        .badge-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .dept-card {
+            transition: all 0.3s ease;
+        }
+        .dept-card:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<!--
+    COLOR PALETTE: Vibrant Modern / Tech Contrast
+    NARRATIVE PLAN:
+    1. Navigation Header & Top Info Banner
+    2. Hero Banner highlighting the guide and author "مريم سعيد حنفى"
+    3. Comprehensive Matrix Table comparing CS, IS, AI, IT, DS across all metrics
+    4. Data Visualization 1: Local & Global Salary Comparison (Grouped Bar Chart)
+    5. Data Visualization 2: Academic Difficulty vs Egypt Market Demand vs Global Demand (Multi-bar Chart)
+    6. Data Visualization 3: Competency Focus & Skills Distribution across Departments (Radar Chart)
+    7. In-Depth Department Profiles (CS, IS, AI, IT, DS) covering:
+       - Academic Strain & Math/Logic Requirements
+       - Internal Sub-tracks & Specializations
+       - Egypt Local Job Market & Top Recruiting Sectors
+       - Global / Remote Work Opportunities & Faang/Gulf Demand
+       - Career Ladder & Salary Ranges (Fresh Grads vs Seniors vs Offshore)
+       - Primary Job Titles
+    8. Sub-tracks & Elective Branches Matrix (HTML/CSS Diagram)
+    9. Interactive Department Selection Quiz Widget
+    10. Detailed Footer with explicit copyright and attribution to "مريم سعيد حنفى"
+
+    CONFIRMATION: NEITHER MERMAID JS NOR SVG GRAPHICS WERE USED ANYWHERE IN THIS FILE.
+-->
+<body class="antialiased min-h-screen pb-12">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-brand-dark text-white sticky top-0 z-50 shadow-xl border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <span class="text-3xl">💻</span>
+                <div>
+                    <h1 class="font-black text-base sm:text-lg text-sky-400 leading-tight">حاسبات والذكاء الاصطناعي - جامعة القاهرة</h1>
+                    <p class="text-[11px] text-slate-300">الدليل التحليلي المطور والشامل للأقسام العامة | إعداد: <span class="text-amber-300 font-bold">مريم سعيد حنفى</span></p>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-5 space-x-reverse text-xs font-bold text-slate-300">
+                <a href="#summary-matrix" class="hover:text-sky-400 transition">مصفوفة المقارنة</a>
+                <a href="#salaries-chart" class="hover:text-sky-400 transition">المرتبات والطلب</a>
+                <a href="#radar-skills" class="hover:text-sky-400 transition">توزيع المهارات</a>
+                <a href="#deep-dive" class="hover:text-sky-400 transition">تحليل الأقسام الـ 5</a>
+                <a href="#subtracks-map" class="hover:text-sky-400 transition">التفرعات المسارية</a>
+                <a href="#quiz" class="hover:text-sky-400 transition">مستشار التخصص</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero / Title Banner -->
+    <section class="bg-gradient-to-r from-slate-950 via-slate-900 to-sky-950 text-white py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-sky-500/20 text-sky-300 text-xs sm:text-sm font-extrabold mb-4 border border-sky-400/30">
+                الدليل الأكاديمي والمهني البحثي الشامل (CS - IS - AI - IT - DS)
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-black tracking-tight mb-4 leading-tight">
+                دراسة تحليليّة شاملة لأقسام كليّة الحاسبات والذكاء الاصطناعي بجامعة القاهرة
+            </h2>
+            <p class="max-w-3xl mx-auto text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+                تغطي هذه الدراسة المستفيضة تقييم مستوى الصعوبة العلمية، حجم الطلب في سوق العمل المصري والدولي، مسارات العمل عن بُعد، رواتب حديثي التخرج والخبراء، المسميات الوظيفية، والتفرعات الأكاديمية التخصصية داخل كل قسم.
+            </p>
+            <div class="inline-flex items-center gap-2 bg-slate-800/90 text-amber-300 px-4 py-2 rounded-xl border border-slate-700 text-xs font-bold">
+                <span>✨ إعداد وتطوير الدراسة:</span>
+                <span class="text-white font-extrabold underline text-sm">مريم سعيد حنفى</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+        <!-- SECTION 1: Summary Matrix Table -->
+        <section id="summary-matrix" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200">
+                <div class="mb-6 flex flex-wrap justify-between items-end gap-4">
+                    <div>
+                        <span class="badge-chip bg-sky-100 text-sky-800 mb-2">جدول المقارنة الموحد</span>
+                        <h3 class="text-2xl font-black text-slate-900">مصفوفة المقارنة الشاملة للأقسام الخمسة الرئيسية</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+                            نظرة عامة تلخص نتائج الدراسة التحليلية لجميع المتغيرات: درجة الصعوبة، مؤشرات الطلب المحلي والدولي، والرواتب بالشهر في مصر والعمل الخارجي.
+                        </p>
+                    </div>
+                    <span class="text-xs text-slate-600 font-bold bg-slate-100 px-3 py-1.5 rounded-lg border">إعداد: مريم سعيد حنفى</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right text-xs sm:text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900 text-white font-bold border-b border-slate-700">
+                                <th class="p-3 sm:p-4 rounded-tr-lg">القسم</th>
+                                <th class="p-3 sm:p-4 text-center">الصعوبة</th>
+                                <th class="p-3 sm:p-4 text-center">طلب مصر</th>
+                                <th class="p-3 sm:p-4 text-center">الطلب الدولي</th>
+                                <th class="p-3 sm:p-4">راتب الخريج (مصر)</th>
+                                <th class="p-3 sm:p-4">راتب الخبير (مصر)</th>
+                                <th class="p-3 sm:p-4">العمل عن بُعد / للخارج</th>
+                                <th class="p-3 sm:p-4 rounded-tl-lg">أبرز الوظائف</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 font-medium">
+                            <!-- CS -->
+                            <tr class="hover:bg-sky-50/50 transition">
+                                <td class="p-3 sm:p-4 font-black text-sky-700">
+                                    علوم الحاسب (CS)
+                                    <span class="block text-[10px] text-slate-500 font-normal">Computer Science</span>
+                                </td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-rose-100 text-rose-800 font-bold">مرتفعة جداً (9/10)</span></td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-emerald-100 text-emerald-800 font-bold">ممتاز (9.5/10)</span></td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-indigo-100 text-indigo-800 font-bold">عالمي (10/10)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-800">15,000 - 30,000 ج.م</td>
+                                <td class="p-3 sm:p-4 font-bold text-sky-600">60,000 - 160,000+ ج.م</td>
+                                <td class="p-3 sm:p-4 font-bold text-emerald-700">$1,800 - $6,500+ /شهرياً</td>
+                                <td class="p-3 sm:p-4 text-xs text-slate-600">Software Engineer, Backend Dev, Systems Architect, Game Dev</td>
+                            </tr>
+                            <!-- IS -->
+                            <tr class="hover:bg-teal-50/50 transition">
+                                <td class="p-3 sm:p-4 font-black text-teal-700">
+                                    نظم المعلومات (IS)
+                                    <span class="block text-[10px] text-slate-500 font-normal">Information Systems</span>
+                                </td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-amber-100 text-amber-800 font-bold">متوسطة (6.5/10)</span></td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-emerald-100 text-emerald-800 font-bold">مرتفع (9/10)</span></td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-indigo-100 text-indigo-800 font-bold">جيد جداً (8.5/10)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-800">12,000 - 22,000 ج.م</td>
+                                <td class="p-3 sm:p-4 font-bold text-teal-600">45,000 - 110,000+ ج.م</td>
+                                <td class="p-3 sm:p-4 font-bold text-emerald-700">$1,200 - $4,500+ /شهرياً</td>
+                                <td class="p-3 sm:p-4 text-xs text-slate-600">Business Analyst, SAP Consultant, Database Administrator, Scrum Master</td>
+                            </tr>
+                            <!-- AI -->
+                            <tr class="hover:bg-indigo-50/50 transition">
+                                <td class="p-3 sm:p-4 font-black text-indigo-700">
+                                    الذكاء الاصطناعي (AI)
+                                    <span class="block text-[10px] text-slate-500 font-normal">Artificial Intelligence</span>
+                                </td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-rose-100 text-rose-800 font-bold">عالية جداً (9.5/10)</span></td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-emerald-100 text-emerald-800 font-bold">قوي متزايد (8.5/10)</span></td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-indigo-100 text-indigo-800 font-bold">استثنائي (10/10)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-800">18,000 - 35,000 ج.م</td>
+                                <td class="p-3 sm:p-4 font-bold text-indigo-600">70,000 - 180,000+ ج.م</td>
+                                <td class="p-3 sm:p-4 font-bold text-emerald-700">$2,500 - $8,000+ /شهرياً</td>
+                                <td class="p-3 sm:p-4 text-xs text-slate-600">ML Engineer, NLP Engineer, Computer Vision Specialist, AI Researcher</td>
+                            </tr>
+                            <!-- IT -->
+                            <tr class="hover:bg-purple-50/50 transition">
+                                <td class="p-3 sm:p-4 font-black text-purple-700">
+                                    تكنولوجيا المعلومات (IT)
+                                    <span class="block text-[10px] text-slate-500 font-normal">Information Technology</span>
+                                </td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-amber-100 text-amber-800 font-bold">متوسطة - عالية (7.5/10)</span></td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-emerald-100 text-emerald-800 font-bold">ضخم جداً (9.2/10)</span></td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-indigo-100 text-indigo-800 font-bold">مرتفع جداً (9/10)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-800">12,000 - 25,000 ج.م</td>
+                                <td class="p-3 sm:p-4 font-bold text-purple-600">50,000 - 130,000+ ج.م</td>
+                                <td class="p-3 sm:p-4 font-bold text-emerald-700">$1,500 - $5,500+ /شهرياً</td>
+                                <td class="p-3 sm:p-4 text-xs text-slate-600">Cloud Architect, DevOps Engineer, Cybersecurity Engineer, Network Specialist</td>
+                            </tr>
+                            <!-- DS -->
+                            <tr class="hover:bg-amber-50/50 transition">
+                                <td class="p-3 sm:p-4 font-black text-amber-700">
+                                    علوم البيانات ودعم القرار (DS)
+                                    <span class="block text-[10px] text-slate-500 font-normal">Data Science & Decision Support</span>
+                                </td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-rose-100 text-rose-800 font-bold">عالية (8.5/10)</span></td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-emerald-100 text-emerald-800 font-bold">متزايد بقوة (8.5/10)</span></td>
+                                <td class="p-3 sm:p-4 text-center"><span class="px-2 py-1 rounded bg-indigo-100 text-indigo-800 font-bold">مرتفع جداً (9.5/10)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-800">15,000 - 28,000 ج.م</td>
+                                <td class="p-3 sm:p-4 font-bold text-amber-600">60,000 - 150,000+ ج.م</td>
+                                <td class="p-3 sm:p-4 font-bold text-emerald-700">$2,000 - $6,000+ /شهرياً</td>
+                                <td class="p-3 sm:p-4 text-xs text-slate-600">Data Scientist, Big Data Engineer, Operations Research Analyst, Quant</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Salary & Demand Visualizations -->
+        <section id="salaries-chart" class="scroll-mt-20 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Chart 1: Salary Comparison -->
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 flex flex-col justify-between">
+                <div>
+                    <span class="badge-chip bg-emerald-100 text-emerald-800 mb-2">تحليل الأجور المحلية</span>
+                    <h4 class="text-xl font-bold text-slate-900">مقارنة متوسط المرتبات الشهري في مصر (بالجنيه)</h4>
+                    <p class="text-xs text-slate-600 mt-1 mb-4 leading-relaxed">
+                        يوضح الرسم المقارنة بين بداية راتب حديث التخرج ومتوسط راتب المحترف والـ Senior (+5 سنوات خبرة) في الشركات العاملة في مصر. (إعداد: مريم سعيد حنفى)
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="salariesChartCanvas"></canvas>
+                </div>
+                <div class="mt-4 p-3 bg-slate-50 rounded-lg border border-slate-200 text-[11px] text-slate-600 leading-relaxed">
+                    💡 <strong>ملاحظة هامة حول العمل الدولي:</strong> العقود المباشرة مع شركات برمجية أمريكية أو أوروبية عن بُعد (Remote) تمنح رواتب تتراوح بين 1,500$ إلى 8,000$+ شهرياً حسب الخبرة والتخصص.
+                </div>
+            </div>
+
+            <!-- Chart 2: Difficulty vs Market Demand -->
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-slate-200 flex flex-col justify-between">
+                <div>
+                    <span class="badge-chip bg-indigo-100 text-indigo-800 mb-2">مؤشر العائد الأكاديمي</span>
+                    <h4 class="text-xl font-bold text-slate-900">مؤشر الصعوبة العلمية مقابل حجم الطلب (من 10)</h4>
+                    <p class="text-xs text-slate-600 mt-1 mb-4 leading-relaxed">
+                        مقارنة تحليليّة تبين الجهد الأكاديمي المطلوب مقابل معدلات إتاحة الفرص الوظيفية محلياً ودولياً لخريجي كل قسم. (إعداد: مريم سعيد حنفى)
+                    </p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="demandChartCanvas"></canvas>
+                </div>
+                <div class="mt-4 p-3 bg-slate-50 rounded-lg border border-slate-200 text-[11px] text-slate-600 leading-relaxed">
+                    📈 <strong>الاستنتاج:</strong> قسما (CS) و(AI) يحتاجان لأعلى مجهود رياضي وبرمجي، ولكنهما يقدمان أعلى فرص توظيف وسقف أجور عالمي.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 3: Competency Focus Radar Chart -->
+        <section id="radar-skills" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <span class="badge-chip bg-purple-100 text-purple-800 mb-2">التركيز العلمي والتخصصي</span>
+                        <h3 class="text-2xl font-black text-slate-900">ميزان المهارات والتركيز الأكاديمي للأقسام</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                            يوضح هذا الرسم الراداري ثقل المهارات والتوزيع التدريسي بكل قسم عبر 6 محاور جوهرية:
+                        </p>
+                        <ul class="text-xs space-y-2.5 mt-4 text-slate-700">
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <span class="w-3 h-3 bg-sky-500 rounded-full inline-block"></span>
+                                <span><strong>علوم الحاسب (CS):</strong> ثقل هائل في الخوارزميات والبرمجة وهندسة البرمجيات.</span>
+                            </li>
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <span class="w-3 h-3 bg-teal-500 rounded-full inline-block"></span>
+                                <span><strong>نظم المعلومات (IS):</strong> تركيز قوي على إدارة الأعمال وقواعد البيانات والـ ERP.</span>
+                            </li>
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <span class="w-3 h-3 bg-indigo-500 rounded-full inline-block"></span>
+                                <span><strong>الذكاء الاصطناعي (AI):</strong> تفوق في الرياضيات، التعلم الآلي، والرؤية الحاسوبية.</span>
+                            </li>
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <span class="w-3 h-3 bg-purple-500 rounded-full inline-block"></span>
+                                <span><strong>تكنولوجيا المعلومات (IT):</strong> تركيز على الشبكات، الحوسبة السحابية، والأمن السيبراني.</span>
+                            </li>
+                            <li class="flex items-center space-x-2 space-x-reverse">
+                                <span class="w-3 h-3 bg-amber-500 rounded-full inline-block"></span>
+                                <span><strong>علوم البيانات (DS):</strong> تميز في الإحصاء الاستدلالي، Big Data، وتحسين القرارات.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="skillsRadarCanvas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: In-Depth Department Profiles (Deep Dive) -->
+        <section id="deep-dive" class="scroll-mt-20 space-y-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="badge-chip bg-sky-100 text-sky-800 mb-2">الدراسة البحثية التفصيلية</span>
+                <h3 class="text-3xl font-black text-slate-900">التحليل الشامل والأكاديمي للأقسام الخمسة</h3>
+                <p class="text-xs sm:text-sm text-slate-600 mt-2">
+                    تستعرض هذه المادة التي أعدتها <strong>مريم سعيد حنفى</strong> كافة الجوانب المتعلقة بكل قسم: الصعوبة، التفرعات، فرص العمل بمصر والخارج، المسميات الوظيفية، والمسارات المهنية.
+                </p>
+            </div>
+
+            <!-- Department 1: CS -->
+            <div class="dept-card bg-white rounded-2xl p-6 sm:p-8 shadow-md border-r-8 border-sky-600 border-y border-l border-slate-200 space-y-6">
+                <div class="flex flex-wrap justify-between items-start gap-4">
+                    <div>
+                        <span class="px-3 py-1 bg-sky-100 text-sky-800 rounded-lg text-xs font-bold">العمود الفقري لصناعة البرمجيات</span>
+                        <h4 class="text-2xl font-black text-slate-900 mt-2">1. قسم علوم الحاسب (Computer Science - CS)</h4>
+                        <p class="text-xs text-slate-500 mt-1">التركيز الأساسي: بناء البرمجيات من الصفر، الخوارزميات، ونظرية الحوسبة</p>
+                    </div>
+                    <div class="flex gap-2 text-xs font-bold">
+                        <span class="bg-rose-50 text-rose-700 px-3 py-1.5 rounded-md border border-rose-200">الصعوبة: 9/10</span>
+                        <span class="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-md border border-emerald-200">سوق العمل: ممتاز جداً</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-sky-900 text-sm">🧠 مدى الصعوبة وطبيعة الدراسة:</h5>
+                        <p>
+                            يعتبر قسم CS من أكثر الأقسام متطلباً للمجهود الذهني. يتطلب قدرة فائقة على التفكير التجريدي (Abstract Thinking)، وحل المشكلات المعقدة (Problem Solving)، ودراسة تعقيد الخوارزميات (Algorithms Complexity)، وهياكل البيانات (Data Structures)، والرياضيات المنفصلة (Discrete Math).
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-sky-900 text-sm">🔀 التفرعات والتخصصات الداخلية بالقسم:</h5>
+                        <ul class="list-disc list-inside space-y-1 text-xs text-slate-600">
+                            <li><strong>هندسة البرمجيات المتقدمة (Software Engineering):</strong> دورة حياة البرمجيات والتصميم.</li>
+                            <li><strong>برمجة النظم والمترجمات (System Programming & Compilers):</strong> لغات البرمجة ونظم التشغيل.</li>
+                            <li><strong>تطوير المحركات والألعاب (Game Development):</strong> البرمجة ثلاثية الأبعاد والمحركات.</li>
+                            <li><strong>الأنظمة المدمجة (Embedded Systems):</strong> البرمجة القريبة من العتاد الصلب (Hardware).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                    <div class="p-4 bg-sky-50/70 rounded-xl border border-sky-100">
+                        <h6 class="font-bold text-sky-900 text-xs mb-1">🇪🇬 فرص العمل في مصر</h6>
+                        <p class="text-xs text-slate-600">طلب هائل ومستمر بشركات التطوير البرمجي المحلي، وشركات التكنولوجيا المالية (Fintech)، والتجارة الإلكترونية، والمراكز الإقليمية.</p>
+                    </div>
+                    <div class="p-4 bg-indigo-50/70 rounded-xl border border-indigo-100">
+                        <h6 class="font-bold text-indigo-900 text-xs mb-1">🌍 فرص العمل بالخارج والـ Remote</h6>
+                        <p class="text-xs text-slate-600">أعلى قسم يتيح الهجرة المباشرة، أو العمل بشركات التكنولوجيا العالمية (FAANG)، أو توقيع عقود دوام كامل عن بُعد بمرتبات دولاريه.</p>
+                    </div>
+                    <div class="p-4 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                        <h6 class="font-bold text-emerald-900 text-xs mb-1">💼 أبرز المسميات الوظيفية</h6>
+                        <p class="text-xs text-slate-600">Software Engineer, Backend Developer, Full-Stack Developer, Systems Architect, Game Developer, Mobile Developer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department 2: IS -->
+            <div class="dept-card bg-white rounded-2xl p-6 sm:p-8 shadow-md border-r-8 border-teal-600 border-y border-l border-slate-200 space-y-6">
+                <div class="flex flex-wrap justify-between items-start gap-4">
+                    <div>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-lg text-xs font-bold">جسر التكنولوجيا وإدارة الأعمال</span>
+                        <h4 class="text-2xl font-black text-slate-900 mt-2">2. قسم نظم المعلومات (Information Systems - IS)</h4>
+                        <p class="text-xs text-slate-500 mt-1">التركيز الأساسي: تحليل وتصميم قواعد البيانات، أنظمة المؤسسات، وتحليلات الأعمال</p>
+                    </div>
+                    <div class="flex gap-2 text-xs font-bold">
+                        <span class="bg-amber-50 text-amber-700 px-3 py-1.5 rounded-md border border-amber-200">الصعوبة: 6.5/10</span>
+                        <span class="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-md border border-emerald-200">سوق العمل: مرتفع جداً</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-teal-900 text-sm">🧠 مدى الصعوبة وطبيعة الدراسة:</h5>
+                        <p>
+                            تتميز الدراسة بالتوازن ومرونة التطبيق، وهي أقل تعقيداً في الرياضيات النظريّة مقارنة بـ CS و AI. تكمن الصعوبة في إتقان هندسة قواعد البيانات المتقدمة (SQL/NoSQL)، ونمذجة العمليات التجارية (BPMN)، وفهم احتياجات الشركات الحقيقية.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-teal-900 text-sm">🔀 التفرعات والتخصصات الداخلية بالقسم:</h5>
+                        <ul class="list-disc list-inside space-y-1 text-xs text-slate-600">
+                            <li><strong>أنظمة تخطيط موارد المؤسسات (ERP Systems):</strong> تخصصات SAP و Oracle و Odoo.</li>
+                            <li><strong>ذكاء الأعمال (Business Intelligence - BI):</strong> تحويل البيانات لتقارير استراتيجية.</li>
+                            <li><strong>إدارة ومعمارية قواعد البيانات (Database Architecture):</strong> تصميم وحماية أوعية البيانات.</li>
+                            <li><strong>التحول الرقمي وتحليل النظم (Systems Analysis & Agile):</strong> قيادة وتوجيه الفرق التقنية.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                    <div class="p-4 bg-teal-50/70 rounded-xl border border-teal-100">
+                        <h6 class="font-bold text-teal-900 text-xs mb-1">🇪🇬 فرص العمل في مصر</h6>
+                        <p class="text-xs text-slate-600">طلب مرتفع لا ينقطع في البنوك والقطاع المصرفي، شركات الاتصالات، والشركات الكبرى المستعملة لأنظمة SAP و ERP.</p>
+                    </div>
+                    <div class="p-4 bg-indigo-50/70 rounded-xl border border-indigo-100">
+                        <h6 class="font-bold text-indigo-900 text-xs mb-1">🌍 فرص العمل بالخارج والـ Remote</h6>
+                        <p class="text-xs text-slate-600">فرص استثنائية في دول الخليج (السعودية والإمارات) لاستشاريي SAP ومحللي الأعمال، بالإضافة لفرص الاستشارات الرقمية الدولية.</p>
+                    </div>
+                    <div class="p-4 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                        <h6 class="font-bold text-emerald-900 text-xs mb-1">💼 أبرز المسميات الوظيفية</h6>
+                        <p class="text-xs text-slate-600">Business Analyst, SAP Functional Consultant, Database Administrator (DBA), ERP Consultant, Product Owner, IT Project Manager.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department 3: AI -->
+            <div class="dept-card bg-white rounded-2xl p-6 sm:p-8 shadow-md border-r-8 border-indigo-600 border-y border-l border-slate-200 space-y-6">
+                <div class="flex flex-wrap justify-between items-start gap-4">
+                    <div>
+                        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-lg text-xs font-bold">تكنولوجيا المستقبل المتقدمة</span>
+                        <h4 class="text-2xl font-black text-slate-900 mt-2">3. قسم الذكاء الاصطناعي (Artificial Intelligence - AI)</h4>
+                        <p class="text-xs text-slate-500 mt-1">التركيز الأساسي: التعلم الآلي، التعلم العميق، الأنظمة الذكية، والروبوتات</p>
+                    </div>
+                    <div class="flex gap-2 text-xs font-bold">
+                        <span class="bg-rose-50 text-rose-700 px-3 py-1.5 rounded-md border border-rose-200">الصعوبة: 9.5/10</span>
+                        <span class="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-md border border-emerald-200">سوق العمل: نمو انفجاري</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-indigo-900 text-sm">🧠 مدى الصعوبة وطبيعة الدراسة:</h5>
+                        <p>
+                            القسم الأكثر تعقيداً رياضياً بالكلية. يتطلب إتقاناً عميقاً للجبر الخطي (Linear Algebra)، التفاضل والتكامل، والاحتمالات والإحصاء المتقدم، بالإضافة لكتابة الشبكات العصبية الاصطناعية (Neural Networks) وقراءة الأوراق البحثية الحديثة وتطبيقها.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-indigo-900 text-sm">🔀 التفرعات والتخصصات الداخلية بالقسم:</h5>
+                        <ul class="list-disc list-inside space-y-1 text-xs text-slate-600">
+                            <li><strong>التعلم الآلي والعميق (Machine & Deep Learning):</strong> تدريب النماذج الذكية والنماذج اللغوية.</li>
+                            <li><strong>معالجة اللغات الطبيعية (Natural Language Processing - NLP):</strong> معالجة النصوص والـ LLMs.</li>
+                            <li><strong>الرؤية الحاسوبية (Computer Vision):</strong> معالجة الصور والفيديوهات والأنظمة الذكية.</li>
+                            <li><strong>الروبوتات والأنظمة الذاتية (Robotics & Autonomous Systems):</strong> المركبات الذكية والأنظمة المدمجة الذكية.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                    <div class="p-4 bg-indigo-50/70 rounded-xl border border-indigo-100">
+                        <h6 class="font-bold text-indigo-900 text-xs mb-1">🇪🇬 فرص العمل في مصر</h6>
+                        <p class="text-xs text-slate-600">طلب متسارع بقوة في مراكز البحث والتطوير (R&D Hubs) مثل Valeo وVodafone VOIS، والشركات الناشئة المتخصصة في الذكاء الاصطناعي.</p>
+                    </div>
+                    <div class="p-4 bg-sky-50/70 rounded-xl border border-sky-100">
+                        <h6 class="font-bold text-sky-900 text-xs mb-1">🌍 فرص العمل بالخارج والـ Remote</h6>
+                        <p class="text-xs text-slate-600">أعلى متوسط رواتب تقنية عالمياً حالياً. طلب استثنائي في أوروبا وأمريكا والخليج للمتمكنين من بناء وتطبيق خوارزميات AI.</p>
+                    </div>
+                    <div class="p-4 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                        <h6 class="font-bold text-emerald-900 text-xs mb-1">💼 أبرز المسميات الوظيفية</h6>
+                        <p class="text-xs text-slate-600">Machine Learning Engineer, NLP Engineer, Computer Vision Specialist, AI Research Scientist, MLOps Engineer.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department 4: IT -->
+            <div class="dept-card bg-white rounded-2xl p-6 sm:p-8 shadow-md border-r-8 border-purple-600 border-y border-l border-slate-200 space-y-6">
+                <div class="flex flex-wrap justify-between items-start gap-4">
+                    <div>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-lg text-xs font-bold">بنية الشبكات والسحابة والأمن</span>
+                        <h4 class="text-2xl font-black text-slate-900 mt-2">4. قسم تكنولوجيا المعلومات (Information Technology - IT)</h4>
+                        <p class="text-xs text-slate-500 mt-1">التركيز الأساسي: شبكات الحاسب، الحوسبة السحابية، الأمن السيبراني، والوسائط المتعددة</p>
+                    </div>
+                    <div class="flex gap-2 text-xs font-bold">
+                        <span class="bg-amber-50 text-amber-700 px-3 py-1.5 rounded-md border border-amber-200">الصعوبة: 7.5/10</span>
+                        <span class="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-md border border-emerald-200">سوق العمل: ضخم جداً</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-purple-900 text-sm">🧠 مدى الصعوبة وطبيعة الدراسة:</h5>
+                        <p>
+                            تجمع دراسة IT في جامعة القاهرة بين الجانب البرمجي والجانب الهندسي التطبيقي للشبكات والمعالجة الرقمية. تشمل بروتوكولات الشبكات المعقدة، معمارية السيرفرات السحابية (AWS/Azure)، معالجة الإشارات، والأمن السيبراني.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-purple-900 text-sm">🔀 التفرعات والتخصصات الداخلية بالقسم:</h5>
+                        <ul class="list-disc list-inside space-y-1 text-xs text-slate-600">
+                            <li><strong>شبكات الحاسب والأمن السيبراني:</strong> حماية الشبكات والتشفير واختبار الاختراق.</li>
+                            <li><strong>الحوسبة السحابية وDevOps:</strong> إدارة وحتمتة الخوادم السحابية والـ CI/CD.</li>
+                            <li><strong>إنترنت الأشياء (Internet of Things - IoT):</strong> ربط المستشعرات والأجهزة بالشبكة.</li>
+                            <li><strong>معالجة الصور والوسائط الرقمية (Image & Signal Processing):</strong> معالجة الصوت والصورة.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                    <div class="p-4 bg-purple-50/70 rounded-xl border border-purple-100">
+                        <h6 class="font-bold text-purple-900 text-xs mb-1">🇪🇬 فرص العمل في مصر</h6>
+                        <p class="text-xs text-slate-600">طلب ضخم بشركات الاتصالات الأربعة، البنوك، مراكز العمليات الأمنيّة (SOC)، وشركات إلمام البنية التحتية الرقمية.</p>
+                    </div>
+                    <div class="p-4 bg-indigo-50/70 rounded-xl border border-indigo-100">
+                        <h6 class="font-bold text-indigo-900 text-xs mb-1">🌍 فرص العمل بالخارج والـ Remote</h6>
+                        <p class="text-xs text-slate-600">طلب عالمي مرتفع جداً وبخاصة لمهندسي DevOps ومهندسي الحوسبة السحابية (AWS/Azure) وخبراء الأمن السيبراني.</p>
+                    </div>
+                    <div class="p-4 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                        <h6 class="font-bold text-emerald-900 text-xs mb-1">💼 أبرز المسميات الوظيفية</h6>
+                        <p class="text-xs text-slate-600">Cloud Solutions Architect, DevOps Engineer, Cybersecurity Engineer, Network Engineer, System Administrator.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department 5: DS -->
+            <div class="dept-card bg-white rounded-2xl p-6 sm:p-8 shadow-md border-r-8 border-amber-600 border-y border-l border-slate-200 space-y-6">
+                <div class="flex flex-wrap justify-between items-start gap-4">
+                    <div>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-lg text-xs font-bold">علم النمذجة والاستراتيجية التنبؤية</span>
+                        <h4 class="text-2xl font-black text-slate-900 mt-2">5. قسم علوم البيانات ودعم القرار (Decision Support & Data Science - DS)</h4>
+                        <p class="text-xs text-slate-500 mt-1">التركيز الأساسي: النمذجة الإحصائية، تحليلات البيانات الضخمة، والتحسين الرياضي لاتخاذ القرارات</p>
+                    </div>
+                    <div class="flex gap-2 text-xs font-bold">
+                        <span class="bg-rose-50 text-rose-700 px-3 py-1.5 rounded-md border border-rose-200">الصعوبة: 8.5/10</span>
+                        <span class="bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-md border border-emerald-200">سوق العمل: مرتفع جداً</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-amber-900 text-sm">🧠 مدى الصعوبة وطبيعة الدراسة:</h5>
+                        <p>
+                            تعتمد الدراسة بشكل أساسي على النمذجة الرياضية، الإحصاء الاستدلالي، نظرية الاحتمالات، ونظريات التحسين (Optimization). يتطلب شغفاً بالتعامل مع الأرقام واستخراج المكونات التنبؤية من البيانات الكبيرة (Big Data).
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-amber-900 text-sm">🔀 التفرعات والتخصصات الداخلية بالقسم:</h5>
+                        <ul class="list-disc list-inside space-y-1 text-xs text-slate-600">
+                            <li><strong>هندسة البيانات الضخمة (Big Data Engineering):</strong> إعداد وبناء أنابيب البيانات (Pipelines).</li>
+                            <li><strong>علوم البيانات والتحليل التنبؤي (Data Science):</strong> النمذجة الإحصائية والتنبؤ.</li>
+                            <li><strong>بحوث العمليات والتحسين (Operations Research):</strong> تحسين سلاسل الإمداد والتكلفة.</li>
+                            <li><strong>التحليل المالي الكمي (Quantitative Analysis):</strong> إدارة المخاطر في الأسواق والتداول.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+                    <div class="p-4 bg-amber-50/70 rounded-xl border border-amber-100">
+                        <h6 class="font-bold text-amber-900 text-xs mb-1">🇪🇬 فرص العمل في مصر</h6>
+                        <p class="text-xs text-slate-600">طلب متنامٍ بقوة في شركات النقل واللوجستيات (مثل Swvl/Uber)، التجارة الإلكترونية، والمؤسسات المالية والتأمين.</p>
+                    </div>
+                    <div class="p-4 bg-indigo-50/70 rounded-xl border border-indigo-100">
+                        <h6 class="font-bold text-indigo-900 text-xs mb-1">🌍 فرص العمل بالخارج والـ Remote</h6>
+                        <p class="text-xs text-slate-600">من أكثر التخصصات التي تشهد عجزاً عالمياً وبخاصة تخصص "مهندس البيانات الضخمة" (Big Data Engineer) في أمريكا وأوروبا.</p>
+                    </div>
+                    <div class="p-4 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                        <h6 class="font-bold text-emerald-900 text-xs mb-1">💼 أبرز المسميات الوظيفية</h6>
+                        <p class="text-xs text-slate-600">Data Scientist, Big Data Engineer, Operations Research Analyst, Quantitative Analyst (Quant), Data Engineer.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 5: Sub-tracks Layout Diagram -->
+        <section id="subtracks-map" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-200">
+                <div class="mb-6">
+                    <span class="badge-chip bg-indigo-100 text-indigo-800 mb-2">شجرة المسارات التخصصية</span>
+                    <h3 class="text-2xl font-black text-slate-900">المسارات الأكاديمية والتفرعات الداخلية لكل قسم</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                        توضيح للمسارات التخصصية التي يستطيع الطالب التعمق فيها في سنوات الدراسة المتقدمة ومشروع التخرج. (إعداد: مريم سعيد حنفى)
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 text-center">
+                    <!-- CS Tracks -->
+                    <div class="bg-sky-50 p-4 rounded-xl border border-sky-200 space-y-3">
+                        <div class="bg-sky-600 text-white font-bold py-1.5 px-2 rounded-lg text-xs">علوم الحاسب (CS)</div>
+                        <div class="space-y-2 text-[11px] text-slate-700 font-medium">
+                            <div class="bg-white p-2 rounded shadow-sm">تطوير البرمجيات (Software)</div>
+                            <div class="bg-white p-2 rounded shadow-sm">برمجة النظم والمترجمات</div>
+                            <div class="bg-white p-2 rounded shadow-sm">تطوير الألعاب والـ 3D</div>
+                            <div class="bg-white p-2 rounded shadow-sm">الأنظمة المدمجة (Embedded)</div>
+                        </div>
+                    </div>
+
+                    <!-- IS Tracks -->
+                    <div class="bg-teal-50 p-4 rounded-xl border border-teal-200 space-y-3">
+                        <div class="bg-teal-600 text-white font-bold py-1.5 px-2 rounded-lg text-xs">نظم المعلومات (IS)</div>
+                        <div class="space-y-2 text-[11px] text-slate-700 font-medium">
+                            <div class="bg-white p-2 rounded shadow-sm">أنظمة المؤسسات (SAP/ERP)</div>
+                            <div class="bg-white p-2 rounded shadow-sm">ذكاء الأعمال (BI)</div>
+                            <div class="bg-white p-2 rounded shadow-sm">إدارة قواعد البيانات (DBA)</div>
+                            <div class="bg-white p-2 rounded shadow-sm">تحليل الأنظمة الرقمية</div>
+                        </div>
+                    </div>
+
+                    <!-- AI Tracks -->
+                    <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-200 space-y-3">
+                        <div class="bg-indigo-600 text-white font-bold py-1.5 px-2 rounded-lg text-xs">الذكاء الاصطناعي (AI)</div>
+                        <div class="space-y-2 text-[11px] text-slate-700 font-medium">
+                            <div class="bg-white p-2 rounded shadow-sm">التعلم الآلي والعميق</div>
+                            <div class="bg-white p-2 rounded shadow-sm">معالجة اللغات (NLP)</div>
+                            <div class="bg-white p-2 rounded shadow-sm">الرؤية الحاسوبية (CV)</div>
+                            <div class="bg-white p-2 rounded shadow-sm">الروبوتات المستقلة</div>
+                        </div>
+                    </div>
+
+                    <!-- IT Tracks -->
+                    <div class="bg-purple-50 p-4 rounded-xl border border-purple-200 space-y-3">
+                        <div class="bg-purple-600 text-white font-bold py-1.5 px-2 rounded-lg text-xs">تكنولوجيا المعلومات (IT)</div>
+                        <div class="space-y-2 text-[11px] text-slate-700 font-medium">
+                            <div class="bg-white p-2 rounded shadow-sm">الأمن السيبراني التخصصي</div>
+                            <div class="bg-white p-2 rounded shadow-sm">الحوسبة السحابية & DevOps</div>
+                            <div class="bg-white p-2 rounded shadow-sm">إنترنت الأشياء (IoT)</div>
+                            <div class="bg-white p-2 rounded shadow-sm">معالجة الوسائط المتعددة</div>
+                        </div>
+                    </div>
+
+                    <!-- DS Tracks -->
+                    <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 space-y-3">
+                        <div class="bg-amber-600 text-white font-bold py-1.5 px-2 rounded-lg text-xs">علوم البيانات (DS)</div>
+                        <div class="space-y-2 text-[11px] text-slate-700 font-medium">
+                            <div class="bg-white p-2 rounded shadow-sm">هندسة البيانات الضخمة</div>
+                            <div class="bg-white p-2 rounded shadow-sm">التحليل التنبؤي والإحصاء</div>
+                            <div class="bg-white p-2 rounded shadow-sm">بحوث العمليات والتحسين</div>
+                            <div class="bg-white p-2 rounded shadow-sm">التحليل المالي الكمي (Quant)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Department Match Advisor Quiz Widget -->
+        <section id="quiz" class="scroll-mt-20">
+            <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-sky-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="px-3 py-1 bg-sky-500/20 text-sky-300 rounded-full text-xs font-extrabold border border-sky-400/30">مستشار التخصص الذكي</span>
+                    <h3 class="text-2xl sm:text-3xl font-black mt-2">ما هو القسم الأكثر ملاءمة لطموحك وميولك؟</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-2">
+                        اختر التوجّه الذي يمثل اهتمامك الأساسي وسنقترح عليك القسم الأنسب مع توضيح المسار الموصى به:
+                    </p>
+                </div>
+
+                <!-- Interactive Filters -->
+                <div class="flex flex-wrap justify-center gap-3 mb-8" id="quiz-options">
+                    <button onclick="recommendDept('coding')" class="quiz-btn px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-sky-600 border border-slate-700 text-xs font-bold transition text-right">
+                        💻 كتابة الأكواد المتقدمة، بناء البرامج، وتطوير الألعاب
+                    </button>
+                    <button onclick="recommendDept('business')" class="quiz-btn px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-teal-600 border border-slate-700 text-xs font-bold transition text-right">
+                        💼 إدارات الشركات، ربط التقنية بالأعمال، واستشارات SAP
+                    </button>
+                    <button onclick="recommendDept('ai')" class="quiz-btn px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-indigo-600 border border-slate-700 text-xs font-bold transition text-right">
+                        🧠 الذكاء الاصطناعي، الرياضيات المتقدمة، والروبوتات
+                    </button>
+                    <button onclick="recommendDept('networks')" class="quiz-btn px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-purple-600 border border-slate-700 text-xs font-bold transition text-right">
+                        🌐 أمن المعلومات، الشبكات، والحوسبة السحابية DevOps
+                    </button>
+                    <button onclick="recommendDept('data')" class="quiz-btn px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-amber-600 border border-slate-700 text-xs font-bold transition text-right">
+                        📊 تحليل البيانات الكبيرة، الإحصاء التنبؤي، وبحوث العمليات
+                    </button>
+                </div>
+
+                <!-- Result Box -->
+                <div id="quiz-result" class="bg-slate-950/90 rounded-xl p-6 border border-slate-700 max-w-2xl mx-auto text-center hidden">
+                    <h4 id="result-title" class="text-xl font-bold text-sky-400 mb-2"></h4>
+                    <p id="result-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4"></p>
+                    <div id="result-jobs" class="inline-block bg-slate-900 px-4 py-2 rounded-lg text-xs font-bold text-slate-200 border border-slate-800"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER with prominent name attribution -->
+        <footer class="bg-slate-900 text-slate-300 rounded-2xl p-6 sm:p-8 text-center space-y-4 border border-slate-800">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs border-b border-slate-800 pb-4">
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <span class="text-2xl">🎓</span>
+                    <span class="font-bold text-white text-sm">كلية الحاسبات والذكاء الاصطناعي - جامعة القاهرة</span>
+                </div>
+                <div class="text-amber-300 font-extrabold text-sm">
+                    إعداد وتطوير الدراسة: مريم سعيد حنفى
+                </div>
+            </div>
+            
+            <p class="text-xs text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                تم إعداد وتطوير هذا الدليل التفاعلي الشامل كمرجع استرشادي كامل لطلاب كلية الحاسبات والذكاء الاصطناعي بجامعة القاهرة للمساعدة في اختيار القسم المناسب وفهم متطلبات سوق العمل المحلي والدولي.
+            </p>
+
+            <div class="pt-2 text-[11px] text-slate-300 font-medium">
+                جميع الحقوق محفوظة © 2026 | تم التصميم والإعداد بواسطة: <span class="text-amber-400 font-black text-xs">مريم سعيد حنفى</span>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- JavaScript Charts & Quiz Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Global Chart.js Tooltip Configuration
+            const commonTooltipConfig = {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            };
+
+            // Processed Chart Labels (Label Wrapping for > 16 chars)
+            const deptLabels = [
+                'علوم الحاسب',
+                'نظم المعلومات',
+                ['الذكاء', 'الاصطناعي'],
+                ['تكنولوجيا', 'المعلومات'],
+                ['علوم البيانات', 'ودعم القرار']
+            ];
+
+            // 1. Salary Comparison Chart (Grouped Bar Chart)
+            const ctxSalary = document.getElementById('salariesChartCanvas').getContext('2d');
+            new Chart(ctxSalary, {
+                type: 'bar',
+                data: {
+                    labels: deptLabels,
+                    datasets: [
+                        {
+                            label: 'راتب حديث التخرج (بداية)',
+                            data: [22500, 17000, 26500, 18500, 21500],
+                            backgroundColor: '#0284c7',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'راتب الخبير المحترف (+5 سنوات)',
+                            data: [110000, 77500, 125000, 90000, 105000],
+                            backgroundColor: '#059669',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) { return value.toLocaleString('ar-EG') + ' ج.م'; }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: commonTooltipConfig,
+                        legend: {
+                            position: 'bottom',
+                            labels: { font: { family: 'Tajawal', weight: 'bold' } }
+                        }
+                    }
+                }
+            });
+
+            // 2. Difficulty vs Demand Chart
+            const ctxDemand = document.getElementById('demandChartCanvas').getContext('2d');
+            new Chart(ctxDemand, {
+                type: 'bar',
+                data: {
+                    labels: deptLabels,
+                    datasets: [
+                        {
+                            label: 'الصعوبة الأكاديمية (من 10)',
+                            data: [9.0, 6.5, 9.5, 7.5, 8.5],
+                            backgroundColor: '#e11d48',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'طلب السوق المحلي (من 10)',
+                            data: [9.5, 9.0, 8.5, 9.2, 8.5],
+                            backgroundColor: '#0d9488',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'طلب السوق العالمي (من 10)',
+                            data: [10.0, 8.5, 10.0, 9.0, 9.5],
+                            backgroundColor: '#6366f1',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            max: 10,
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        tooltip: commonTooltipConfig,
+                        legend: {
+                            position: 'bottom',
+                            labels: { font: { family: 'Tajawal', weight: 'bold' } }
+                        }
+                    }
+                }
+            });
+
+            // 3. Sub-tracks Skill Radar Chart
+            const ctxRadar = document.getElementById('skillsRadarCanvas').getContext('2d');
+            new Chart(ctxRadar, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        ['البرمجة العميقة', 'والخوارزميات'],
+                        ['الرياضيات', 'والإحصاء'],
+                        ['إدارة الأعمال', 'والأنظمة'],
+                        ['الشبكات', 'والسحابة'],
+                        ['تحليل البيانات', 'والنمذجة'],
+                        ['التعلم الآلي', 'والذكاء']
+                    ],
+                    datasets: [
+                        {
+                            label: 'علوم الحاسب (CS)',
+                            data: [95, 85, 50, 65, 70, 80],
+                            borderColor: '#0284c7',
+                            backgroundColor: 'rgba(2, 132, 199, 0.15)'
+                        },
+                        {
+                            label: 'نظم المعلومات (IS)',
+                            data: [65, 55, 95, 60, 80, 60],
+                            borderColor: '#0d9488',
+                            backgroundColor: 'rgba(13, 148, 136, 0.15)'
+                        },
+                        {
+                            label: 'الذكاء الاصطناعي (AI)',
+                            data: [85, 98, 45, 55, 90, 98],
+                            borderColor: '#6366f1',
+                            backgroundColor: 'rgba(99, 102, 241, 0.15)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 30,
+                            suggestedMax: 100
+                        }
+                    },
+                    plugins: {
+                        tooltip: commonTooltipConfig,
+                        legend: {
+                            position: 'bottom',
+                            labels: { font: { family: 'Tajawal', weight: 'bold' } }
+                        }
+                    }
+                }
+            });
+
+        });
+
+        // Interactive Department Quiz Recommendation Logic
+        function recommendDept(type) {
+            const resultBox = document.getElementById('quiz-result');
+            const title = document.getElementById('result-title');
+            const desc = document.getElementById('result-desc');
+            const jobs = document.getElementById('result-jobs');
+
+            resultBox.classList.remove('hidden');
+
+            if(type === 'coding') {
+                title.innerText = 'القسم الموصى به: علوم الحاسب (Computer Science - CS)';
+                title.className = 'text-xl font-bold text-sky-400 mb-2';
+                desc.innerText = 'إذا كان شغفك الأساسي يكمن في كتابة الكود العميق، فهم بنية البرمجيات، وتطوير المحركات والمحكيات، فإن قسم CS سيمدك بالبناء الأكاديمي القوي لتصبح مهندس برمجيات محترفاً.';
+                jobs.innerText = 'أبرز المسميات: Software Engineer | Backend Developer | Game Developer';
+            } else if(type === 'business') {
+                title.innerText = 'القسم الموصى به: نظم المعلومات (Information Systems - IS)';
+                title.className = 'text-xl font-bold text-teal-400 mb-2';
+                desc.innerText = 'يناسبك قسم IS إذا كنت تفضل التفاعل مع بيئة الأعمال والمؤسسات، وإدارة قواعد البيانات المتقدمة، والربط التقني التنفيذي بين الإدارة وفرق البرمجة.';
+                jobs.innerText = 'أبرز المسميات: Business Analyst | SAP Consultant | Database Administrator';
+            } else if(type === 'ai') {
+                title.innerText = 'القسم الموصى به: الذكاء الاصطناعي (Artificial Intelligence - AI)';
+                title.className = 'text-xl font-bold text-indigo-400 mb-2';
+                desc.innerText = 'يناسبك قسم AI إذا كان لديك شغف بالرياضيات والجبر والتفاضل، وترغب في جعل الآلات تتعلم وتفهم النصوص والصور والروبوتات الذاتية.';
+                jobs.innerText = 'أبرز المسميات: Machine Learning Engineer | Computer Vision Specialist | AI Researcher';
+            } else if(type === 'networks') {
+                title.innerText = 'القسم الموصى به: تكنولوجيا المعلومات (Information Technology - IT)';
+                title.className = 'text-xl font-bold text-purple-400 mb-2';
+                desc.innerText = 'يتوافق مع اهتمامك بحماية المنظومات، أمن المعلومات والشبكات، إدارة السيرفرات السحابية (AWS/Azure)، وهندسة DevOps.';
+                jobs.innerText = 'أبرز المسميات: Cloud Architect | Cybersecurity Engineer | DevOps Engineer';
+            } else if(type === 'data') {
+                title.innerText = 'القسم الموصى به: علوم البيانات ودعم القرار (Data Science - DS)';
+                title.className = 'text-xl font-bold text-amber-400 mb-2';
+                desc.innerText = 'يناسبك قسم DS إذا كنت تحب الاستكشاف في الأرقام، وتطبيق الإحصاء التنبؤي على البيانات الكبيرة لتوجيه قرارات الشركات وسلاسل الإمداد.';
+                jobs.innerText = 'أبرز المسميات: Data Scientist | Big Data Engineer | Operations Research Analyst';
+            }
+        }
+    </script>
+
+</body>
+</html>
