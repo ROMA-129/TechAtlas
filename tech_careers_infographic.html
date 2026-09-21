@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل وتصنيف تخصصات التكنولوجيا ورسم خرائط المسارات المهنية</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome for Icons (No SVG) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            card: '#1e293b',
+                            border: '#334155',
+                            accent: '#38bdf8',
+                            purple: '#8b5cf6',
+                            emerald: '#10b981',
+                            amber: '#f59e0b',
+                            rose: '#f43f5e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 380px;
+            }
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-12">
+
+    <!-- Header & Author Section -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-700 shadow-2xl mb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-2">
+                    <i class="fa-solid font-bold fa-chart-line ml-1"></i> التقرير الاستراتيجي التفاعلي 2026
+                </span>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+                    خريطة تخصصات التكنولوجيا والمسارات المهنية
+                </h1>
+            </div>
+            
+            <!-- Static Author Name Badge -->
+            <div class="flex items-center bg-slate-800/90 border border-slate-600 rounded-xl p-3 px-5 shadow-inner">
+                <div class="w-10 h-10 rounded-lg bg-cyan-600/30 text-cyan-400 flex items-center justify-center font-bold text-lg ml-3 border border-cyan-500/30">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <div>
+                    <span class="block text-xs text-slate-400 font-medium">إعداد الباحثة:</span>
+                    <span class="font-extrabold text-cyan-300 text-base">مريم سعيد حنفى</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        <!-- Executive Summary & Quick KPIs -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass-panel p-6 rounded-2xl relative overflow-hidden group hover:border-cyan-500/50 transition-all">
+                <div class="absolute -left-4 -bottom-4 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl group-hover:bg-cyan-500/20 transition-all"></div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-400 text-sm font-medium">المحاور الرئيسية</span>
+                    <i class="fa-solid fa-layer-group text-cyan-400 text-xl"></i>
+                </div>
+                <div class="text-3xl font-black text-white">9 محاور</div>
+                <p class="text-xs text-slate-400 mt-2">تغطي أكثر من 40 تخصصاً فرعياً ومساراً وظيفياً</p>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl relative overflow-hidden group hover:border-emerald-500/50 transition-all">
+                <div class="absolute -left-4 -bottom-4 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl group-hover:bg-emerald-500/20 transition-all"></div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-400 text-sm font-medium">أعلى الرواتب عالمياً</span>
+                    <i class="fa-solid fa-sack-dollar text-emerald-400 text-xl"></i>
+                </div>
+                <div class="text-3xl font-black text-emerald-400">$200,000+</div>
+                <p class="text-xs text-slate-400 mt-2">سنوياً للذكاء الاصطناعي، السحابة والأنظمة الموزعة</p>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl relative overflow-hidden group hover:border-purple-500/50 transition-all">
+                <div class="absolute -left-4 -bottom-4 w-24 h-24 bg-purple-500/10 rounded-full blur-xl group-hover:bg-purple-500/20 transition-all"></div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-400 text-sm font-medium">أسرع دخول لسوق العمل</span>
+                    <i class="fa-solid fa-bolt text-purple-400 text-xl"></i>
+                </div>
+                <div class="text-3xl font-black text-purple-300">3 - 6 أشهر</div>
+                <p class="text-xs text-slate-400 mt-2">عبر اختبـار الجـودة (QA) وواجهـات المستخدم (UI/UX)</p>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl relative overflow-hidden group hover:border-amber-500/50 transition-all">
+                <div class="absolute -left-4 -bottom-4 w-24 h-24 bg-amber-500/10 rounded-full blur-xl group-hover:bg-amber-500/20 transition-all"></div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-400 text-sm font-medium">تأثير الذكاء الاصطناعي</span>
+                    <i class="fa-solid fa-robot text-amber-400 text-xl"></i>
+                </div>
+                <div class="text-3xl font-black text-amber-400">+17.7%</div>
+                <p class="text-xs text-slate-400 mt-2">علاوة أجور للمهندسين المتمكنين من أدوات AI</p>
+            </div>
+        </section>
+
+        <!-- Visual Analytics Section -->
+        <section class="space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-r-4 border-cyan-400 pr-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">التحليلات المقارنة للتخصصات</h2>
+                    <p class="text-slate-400 text-sm">بيانات شاملة عن الرواتب، صعوبة التعلم، والجاهزية لسوق العمل</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Chart 1: Salary Ranges -->
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-white"><i class="fa-solid fa-money-bill-wave text-emerald-400 ml-2"></i>مقارنة متوسط رواتب الخبرة (Senior) سنوياً</h3>
+                        <span class="text-xs text-slate-400">بالدولار الأمريكي ($)</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="salaryChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed bg-slate-800/50 p-3 rounded-lg border border-slate-700">
+                        * توضح البيانات تفوق الذكاء الاصطناعي والهندسة السحابية وأنظمة HPC في المقابل المالي عالمياً، بينما تظل الرواتب إقليمياً متقاربة مع نمو ملحوظ في دول الخليج.
+                    </p>
+                </div>
+
+                <!-- Chart 2: Difficulty & Competition Matrix -->
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-white"><i class="fa-solid fa-chart-radar text-cyan-400 ml-2"></i>مؤشر الصعوبة والمنافسة (من 10)</h3>
+                        <span class="text-xs text-slate-400">تقييم معيار المهارات</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="difficultyChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed bg-slate-800/50 p-3 rounded-lg border border-slate-700">
+                        * يتطلب الذكاء الاصطناعي والأنظمة المدمجة خلفية رياضية وبرمجية عميقة، بينما تعتمد تخصصات DevOps على التحكم بالأنظمة وإدارة الأعطال.
+                    </p>
+                </div>
+
+                <!-- Chart 3: Time to Job Readiness -->
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-white"><i class="fa-solid fa-clock text-amber-400 ml-2"></i>الوقت المقدر للجاهزية لسوق العمل (بالأشهر)</h3>
+                        <span class="text-xs text-slate-400">للمبتدئين الجادين</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="timeToJobChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed bg-slate-800/50 p-3 rounded-lg border border-slate-700">
+                        * يمكن دخول مجال القواعد واختبار الجودة وواجهات المستخدم في مدة قصيرة، مقارنة بالذكاء الاصطناعي والأمن السيبراني الذي يتطلب سنة أو أكثر.
+                    </p>
+                </div>
+
+                <!-- Chart 4: AI Automation Risk vs Demand -->
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-white"><i class="fa-solid fa-brain text-purple-400 ml-2"></i>تأثير الذكاء الاصطناعي: الأتمتة مقابل النمو</h3>
+                        <span class="text-xs text-slate-400">تحليل المدى المتوسط</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="aiImpactChart"></canvas>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed bg-slate-800/50 p-3 rounded-lg border border-slate-700">
+                        * المهام التكرارية في الواجهات الأمامية واختبار الجودة تتأثر سريعاً بالأتمتة، في حين تزداد الحاجة لمهندسي البنية التحتية، السحابة، والأمن السيبراني.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Decision Tree Wizard -->
+        <section class="glass-panel p-8 rounded-3xl space-y-6 border border-cyan-500/30">
+            <div class="border-r-4 border-indigo-500 pr-4">
+                <h2 class="text-2xl font-bold text-white"><i class="fa-solid fa-compass text-indigo-400 ml-2"></i>الموجه التفاعلي لاختيار التخصص (Decision Wizard)</h2>
+                <p class="text-slate-400 text-sm">أجب عن الأسئلة التالية لتحديد المسار التقني الأكثر ملاءمة لشغفك وقدراتك:</p>
+            </div>
+
+            <div id="wizardContainer" class="bg-slate-900/80 p-6 rounded-2xl border border-slate-700 min-h-[220px] flex flex-col justify-center">
+                <!-- Step content dynamic via JS -->
+            </div>
+        </section>
+
+        <!-- Domain Deep-Dive Explorer -->
+        <section class="space-y-6">
+            <div class="border-r-4 border-purple-500 pr-4">
+                <h2 class="text-2xl font-bold text-white">المحاور الرئيسية وتفاصيل التخصصات</h2>
+                <p class="text-slate-400 text-sm">استكشف المهارات الأساسية، خارطة الطريق، والشهادات المطلوبة لكل مجال</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap gap-2 border-b border-slate-700 pb-4" id="domainTabs">
+                <button onclick="switchTab('backend')" class="tab-btn active bg-indigo-600 text-white px-4 py-2 rounded-xl font-bold text-sm transition-all hover:bg-indigo-500">
+                    <i class="fa-solid fa-server ml-1"></i> الواجهات الخلفية والأنظمة
+                </button>
+                <button onclick="switchTab('devops')" class="tab-btn bg-slate-800 text-slate-300 hover:text-white px-4 py-2 rounded-xl font-bold text-sm transition-all hover:bg-slate-700">
+                    <i class="fa-solid fa-cloud ml-1"></i> السحابة والعمليات (DevOps)
+                </button>
+                <button onclick="switchTab('data')" class="tab-btn bg-slate-800 text-slate-300 hover:text-white px-4 py-2 rounded-xl font-bold text-sm transition-all hover:bg-slate-700">
+                    <i class="fa-solid fa-database ml-1"></i> البيانات والذكاء الاصطناعي
+                </button>
+                <button onclick="switchTab('cyber')" class="tab-btn bg-slate-800 text-slate-300 hover:text-white px-4 py-2 rounded-xl font-bold text-sm transition-all hover:bg-slate-700">
+                    <i class="fa-solid fa-shield-halved ml-1"></i> الأمن السيبراني
+                </button>
+                <button onclick="switchTab('embedded')" class="tab-btn bg-slate-800 text-slate-300 hover:text-white px-4 py-2 rounded-xl font-bold text-sm transition-all hover:bg-slate-700">
+                    <i class="fa-solid fa-microchip ml-1"></i> الأنظمة المدمجة و IoT
+                </button>
+                <button onclick="switchTab('qa_ux')" class="tab-btn bg-slate-800 text-slate-300 hover:text-white px-4 py-2 rounded-xl font-bold text-sm transition-all hover:bg-slate-700">
+                    <i class="fa-solid fa-vial ml-1"></i> الجودة والـ UI/UX
+                </button>
+            </div>
+
+            <!-- Tab Panels Content -->
+            <div id="tabContent" class="glass-panel p-6 sm:p-8 rounded-2xl min-h-[400px]">
+                <!-- Dynamic Content Rendered Here -->
+            </div>
+        </section>
+
+        <!-- Comprehensive Comparison Table -->
+        <section class="glass-panel p-6 rounded-2xl space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-r-4 border-emerald-400 pr-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">جدول المقارنة الشامل بين المجالات التقنية</h2>
+                    <p class="text-slate-400 text-sm">مقارنة سريعة تساعدك على الموازنة بين المتطلبات والفرص المتاحة</p>
+                </div>
+                <input type="text" id="tableSearch" onkeyup="filterTable()" placeholder="ابحث عن تخصص..." 
+                       class="bg-slate-900 border border-slate-700 text-white text-sm rounded-xl px-4 py-2 focus:outline-none focus:border-cyan-400 w-full md:w-64">
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-right text-sm text-slate-300" id="comparisonTable">
+                    <thead class="bg-slate-900/90 text-cyan-400 uppercase text-xs">
+                        <tr>
+                            <th class="p-3 border-b border-slate-700">المجال التقني</th>
+                            <th class="p-3 border-b border-slate-700">عمق البرمجة</th>
+                            <th class="p-3 border-b border-slate-700">عمق الرياضيات</th>
+                            <th class="p-3 border-b border-slate-700">مدة الجاهزية</th>
+                            <th class="p-3 border-b border-slate-700">الرواتب التقديرية</th>
+                            <th class="p-3 border-b border-slate-700">العمل عن بعد</th>
+                            <th class="p-3 border-b border-slate-700">الطلب الإقليمي</th>
+                            <th class="p-3 border-b border-slate-700">تأثير AI</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800">
+                        <tr class="hover:bg-slate-800/50 transition-colors">
+                            <td class="p-3 font-bold text-white">هندسة الواجهات الخلفية (Backend)</td>
+                            <td class="p-3 text-emerald-400">عالي جداً</td>
+                            <td class="p-3 text-amber-400">متوسط</td>
+                            <td class="p-3">6 - 9 أشهر</td>
+                            <td class="p-3 text-emerald-400">مرتفع جداً</td>
+                            <td class="p-3 text-cyan-400">ممتازة</td>
+                            <td class="p-3">مرتفع جداً</td>
+                            <td class="p-3 text-amber-400">متوسط</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/50 transition-colors">
+                            <td class="p-3 font-bold text-white">برمجة الأنظمة والحوسبة فائقة السرعة (HPC)</td>
+                            <td class="p-3 text-rose-400">مطلق (10/10)</td>
+                            <td class="p-3 text-emerald-400">متقدم</td>
+                            <td class="p-3">10 - 18 شهر</td>
+                            <td class="p-3 text-emerald-400">استثنائي</td>
+                            <td class="p-3 text-amber-400">متوسطة</td>
+                            <td class="p-3 text-slate-400">متمركز بقطاعات محددة</td>
+                            <td class="p-3 text-emerald-400">منخفض جداً</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/50 transition-colors">
+                            <td class="p-3 font-bold text-white">الحوسبة السحابية وDevOps</td>
+                            <td class="p-3 text-amber-400">متوسط</td>
+                            <td class="p-3 text-slate-400">منخفض</td>
+                            <td class="p-3">8 - 12 شهر</td>
+                            <td class="p-3 text-emerald-400">مرتفع جداً</td>
+                            <td class="p-3 text-cyan-400">جيدة جداً</td>
+                            <td class="p-3 text-emerald-400">مرتفع جداً (قياسي)</td>
+                            <td class="p-3 text-emerald-400">منخفض-متوسط</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/50 transition-colors">
+                            <td class="p-3 font-bold text-white">الأمن السيبراني وااختبار الاختراق</td>
+                            <td class="p-3 text-amber-400">متوسط</td>
+                            <td class="p-3 text-amber-400">متوسط</td>
+                            <td class="p-3">9 - 15 شهر</td>
+                            <td class="p-3 text-emerald-400">مرتفع جداً</td>
+                            <td class="p-3 text-slate-400">متوسطة</td>
+                            <td class="p-3 text-emerald-400">مرتفع جداً</td>
+                            <td class="p-3 text-emerald-400">منخفض</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/50 transition-colors">
+                            <td class="p-3 font-bold text-white">هندسة البيانات (Data Engineering)</td>
+                            <td class="p-3 text-emerald-400">عالي</td>
+                            <td class="p-3 text-amber-400">متوسط</td>
+                            <td class="p-3">8 - 12 شهر</td>
+                            <td class="p-3 text-emerald-400">مرتفع جداً</td>
+                            <td class="p-3 text-cyan-400">جيدة جداً</td>
+                            <td class="p-3 text-emerald-400">مرتفع جداً</td>
+                            <td class="p-3 text-emerald-400">منخفض</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/50 transition-colors">
+                            <td class="p-3 font-bold text-white">الذكاء الاصطناعي والتعلم الآلي (AI/ML)</td>
+                            <td class="p-3 text-emerald-400">عالي</td>
+                            <td class="p-3 text-rose-400">متقدم جداً</td>
+                            <td class="p-3">12 - 24 شهر</td>
+                            <td class="p-3 text-emerald-400">استثنائي</td>
+                            <td class="p-3 text-cyan-400">جيدة</td>
+                            <td class="p-3 text-emerald-400">مرتفع جداً</td>
+                            <td class="p-3 text-emerald-400">منخفض (يبني الأدوات)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/50 transition-colors">
+                            <td class="p-3 font-bold text-white">الأنظمة المدمجة (Embedded Systems)</td>
+                            <td class="p-3 text-emerald-400">عالي جداً</td>
+                            <td class="p-3 text-emerald-400">متقدم</td>
+                            <td class="p-3">10 - 18 شهر</td>
+                            <td class="p-3 text-emerald-400">مرتفع</td>
+                            <td class="p-3 text-rose-400">ضعيفة (تتطلب عتاد)</td>
+                            <td class="p-3 text-slate-400">شركات محددة (Valeo..)</td>
+                            <td class="p-3 text-emerald-400">منخفض جداً</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/50 transition-colors">
+                            <td class="p-3 font-bold text-white">اختبار الجودة والأتمتة (QA)</td>
+                            <td class="p-3 text-amber-400">متوسط</td>
+                            <td class="p-3 text-slate-400">منخفض</td>
+                            <td class="p-3 text-purple-300 font-bold">3 - 5 أشهر</td>
+                            <td class="p-3 text-slate-300">متوسط</td>
+                            <td class="p-3 text-cyan-400">جيدة</td>
+                            <td class="p-3 text-emerald-400">مرتفع</td>
+                            <td class="p-3 text-rose-400">مرتفع (أتمتة سهلة)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-800/50 transition-colors">
+                            <td class="p-3 font-bold text-white">تصميم واجهات وتجربة المستخدم (UI/UX)</td>
+                            <td class="p-3 text-slate-400">منعدم - منخفض</td>
+                            <td class="p-3 text-slate-400">منخفض</td>
+                            <td class="p-3 text-purple-300 font-bold">3 - 6 أشهر</td>
+                            <td class="p-3 text-slate-300">متوسط - مرتفع</td>
+                            <td class="p-3 text-cyan-400">ممتازة</td>
+                            <td class="p-3 text-emerald-400">مرتفع</td>
+                            <td class="p-3 text-amber-400">متوسط</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Final Category Specific Recommendations -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-panel p-6 rounded-2xl border-t-4 border-emerald-500 space-y-3">
+                <div class="flex items-center text-emerald-400 font-bold text-lg">
+                    <i class="fa-solid fa-trophy ml-2"></i> أعلى الأجور والنمو
+                </div>
+                <ul class="text-sm space-y-2 text-slate-300">
+                    <li>• مهندس ذكاء اصطناعي وتوليدي (GenAI)</li>
+                    <li>• مهندس حلول سحابية و SRE</li>
+                    <li>• برمجيات الأنظمة وحوسبة C++/Rust</li>
+                    <li>• مهندس أمن التطبيقات (AppSec)</li>
+                </ul>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl border-t-4 border-cyan-500 space-y-3">
+                <div class="flex items-center text-cyan-400 font-bold text-lg">
+                    <i class="fa-solid fa-laptop-house ml-2"></i> الأفضل للعمل عن بعد والحر
+                </div>
+                <ul class="text-sm space-y-2 text-slate-300">
+                    <li>• تطوير تطبيقات الويب الشاملة (Full-Stack)</li>
+                    <li>• هندسة البيانات واستعلامات SQL</li>
+                    <li>• تصميم UI/UX وبناء البروتوتايب</li>
+                    <li>• تطوير تطبيقات الهواتف (Flutter/React Native)</li>
+                </ul>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl border-t-4 border-purple-500 space-y-3">
+                <div class="flex items-center text-purple-400 font-bold text-lg">
+                    <i class="fa-solid fa-gauge-high ml-2"></i> أسرع المسارات للتوظيف
+                </div>
+                <ul class="text-sm space-y-2 text-slate-300">
+                    <li>• ضمان واختبار جودة البرمجيات (QA Automation)</li>
+                    <li>• تطوير الواجهات الأمامية (Frontend with React)</li>
+                    <li>• الدعم الفني وإدارة الأنظمة (SysAdmin)</li>
+                    <li>• تصميم الواجهات وتجربة المستخدم (UI/UX)</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
+        <p>تم إعداد وتصميم هذا التقرير البحثي بواسطة الباحثة: <span class="text-cyan-400 font-bold">مريم سعيد حنفى</span> &copy; 2026</p>
+        <p class="text-xs mt-1 text-slate-600">جميع البيانات مدعومة بأحدث الإحصائيات ودراسات سوق العمل التكنولوجي إقليمياً وعالمياً.</p>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Helper function to line-wrap Chart.js labels exceeding 16 chars
+        function formatLabel(str, maxLen = 16) {
+            if (typeof str !== 'string' || str.length <= maxLen) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxLen) {
+                    if (currentLine) lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine += (currentLine ? ' ' : '') + word;
+                }
+            });
+            if (currentLine) lines.push(currentLine.trim());
+            return lines;
+        }
+
+        // Global Chart Defaults
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = 'Tajawal';
+
+        // Tooltip Title Callback requirement
+        const commonTooltipOptions = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        // Initialize Charts on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            initSalaryChart();
+            initDifficultyChart();
+            initTimeToJobChart();
+            initAiImpactChart();
+            initWizard();
+            switchTab('backend');
+        });
+
+        // Chart 1: Salary Spectrum
+        function initSalaryChart() {
+            const ctx = document.getElementById('salaryChart').getContext('2d');
+            const rawLabels = ['الذكاء الاصطناعي', 'السحابة وDevOps', 'الأنظمة والـ HPC', 'الأمن السيبراني', 'الواجهات الخلفية', 'اختبار الجودة'];
+            const processedLabels = rawLabels.map(l => formatLabel(l, 16));
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: processedLabels,
+                    datasets: [
+                        {
+                            label: 'أمريكا (ألف $/سنة)',
+                            data: [200, 189, 175, 157, 160, 95],
+                            backgroundColor: '#38bdf8'
+                        },
+                        {
+                            label: 'ألمانيا (ألف €/سنة)',
+                            data: [110, 98, 105, 92, 85, 55],
+                            backgroundColor: '#8b5cf6'
+                        },
+                        {
+                            label: 'الخليج (ألف $/سنة)',
+                            data: [130, 120, 115, 110, 100, 60],
+                            backgroundColor: '#10b981'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: commonTooltipOptions
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#334155' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        // Chart 2: Difficulty Matrix Radar
+        function initDifficultyChart() {
+            const ctx = document.getElementById('difficultyChart').getContext('2d');
+            const rawLabels = ['البرمجة', 'الرياضيات', 'صعوبة التعلم', 'منافسة المبتدئين', 'صعوبة الوصول للـ Senior'];
+            const processedLabels = rawLabels.map(l => formatLabel(l, 16));
+
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: processedLabels,
+                    datasets: [
+                        {
+                            label: 'الذكاء الاصطناعي',
+                            data: [8, 9.5, 9.5, 9, 9],
+                            borderColor: '#f43f5e',
+                            backgroundColor: 'rgba(244, 63, 94, 0.2)'
+                        },
+                        {
+                            label: 'الواجهات الخلفية',
+                            data: [8.5, 5, 7, 8, 8],
+                            borderColor: '#38bdf8',
+                            backgroundColor: 'rgba(56, 189, 248, 0.2)'
+                        },
+                        {
+                            label: 'DevOps والسحابة',
+                            data: [6, 3, 8, 5, 8],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.2)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: commonTooltipOptions
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: '#334155' },
+                            grid: { color: '#334155' },
+                            pointLabels: { color: '#cbd5e1' },
+                            ticks: { backdropColor: 'transparent', color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Chart 3: Time to Job Readiness
+        function initTimeToJobChart() {
+            const ctx = document.getElementById('timeToJobChart').getContext('2d');
+            const rawLabels = ['اختبار الجودة (QA)', 'تصميم UI/UX', 'تطوير الواجهات', 'الواجهات الخلفية', 'السحابة وDevOps', 'الذكاء الاصطناعي'];
+            const processedLabels = rawLabels.map(l => formatLabel(l, 16));
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: processedLabels,
+                    datasets: [{
+                        label: 'عدد الأشهر المقدرة',
+                        data: [4, 5, 6, 8, 10, 18],
+                        backgroundColor: [
+                            '#8b5cf6', '#a855f7', '#38bdf8', '#0284c7', '#10b981', '#f43f5e'
+                        ],
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: commonTooltipOptions
+                    },
+                    scales: {
+                        x: { beginAtZero: true, grid: { color: '#334155' } },
+                        y: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        // Chart 4: AI Impact Scatter / Bar
+        function initAiImpactChart() {
+            const ctx = document.getElementById('aiImpactChart').getContext('2d');
+            const rawLabels = ['اختبار الجودة اليدوي', 'كتابة أشرطة الكود', 'هندسة الواجهات', 'هندسة السحابة', 'الأمن السيبراني', 'نماذج الذكاء الاصطناعي'];
+            const processedLabels = rawLabels.map(l => formatLabel(l, 16));
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: processedLabels,
+                    datasets: [
+                        {
+                            label: 'نسبة الأتمتة بالذكاء الاصطناعي (%)',
+                            data: [85, 70, 50, 25, 15, 10],
+                            backgroundColor: '#f43f5e'
+                        },
+                        {
+                            label: 'معدل زيادة الطلب المستقبلي (%)',
+                            data: [10, 20, 45, 80, 90, 95],
+                            backgroundColor: '#10b981'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: commonTooltipOptions
+                    },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#334155' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        // Interactive Decision Tree Logic
+        let currentStep = 0;
+        const wizardData = [
+            {
+                question: "هل تمتلك شغفاً بالرياضيات المتقدمة (الجبر الخطي، التفاضل والتكامل، والاحتمالات)؟",
+                options: [
+                    { text: "نعم، أعشق الرياضيات والتحليل العددي", next: 1 },
+                    { text: "لا، أُفضل البرمجة المنطقية أو الحلول العملية بدون تعقيد رياضي", next: 2 }
+                ]
+            },
+            {
+                question: "ما نوع التطبيقات التي ترغب في العمل عليها؟",
+                options: [
+                    { text: "تطوير أنظمة الذكاء الاصطناعي والتنبؤ بالبيانات", result: "علوم البيانات والذكاء الاصطناعي (AI / Machine Learning)" },
+                    { text: "برمجة الأنظمة عالية الأداء والألعاب ثلاثية الأبعاد", result: "برمجة الأنظمة والحوسبة عالية الأداء (Systems & HPC / Game Engines)" }
+                ]
+            },
+            {
+                question: "هل تحب كتابة الأكواد والحلول البرمجية المباشرة؟",
+                options: [
+                    { text: "نعم، أحب كتابة البرامج وبناء الخوادم أو الواجهات", next: 3 },
+                    { text: "لا، أُفضل إدارة البنية التحتية، الأمن، أو التخطيط بدون كود كثيف", next: 4 }
+                ]
+            },
+            {
+                question: "ما الجانب الذي يثير اهتمامك أكثر في التطبيقات؟",
+                options: [
+                    { text: "منطق الخوادم، قواعد البيانات والأنظمة الموزعة خلف الكواليس", result: "هندسة الواجهات الخلفية (Backend Engineering)" },
+                    { text: "تصميم الواجهات البصرية وتفاعل المستخدم المباشر", result: "تطوير الواجهات الأمامية أو الهواتف (Frontend / Mobile Development)" }
+                ]
+            },
+            {
+                question: "ما المجال غير البرمجي الذي يستهويك أكثر؟",
+                options: [
+                    { text: "حماية الأنظمة، اكتشاف الثغرات، والدفاع السيبراني", result: "الأمن السيبراني واختبار الاختراق (Cybersecurity / PenTesting)" },
+                    { text: "أتمتة السحابة وإدارة الخوادم وحاوية التطبيقات", result: "الحوسبة السحابية وعمليات التطوير (Cloud Computing & DevOps)" },
+                    { text: "تصميم تجربة المستخدم واختبار الجودة قبل الإطلاق", result: "تصميم تجربة المستخدم (UI/UX) أو اختبار الجودة (QA Testing)" }
+                ]
+            }
+        ];
+
+        function initWizard() {
+            currentStep = 0;
+            renderWizardStep();
+        }
+
+        function renderWizardStep() {
+            const container = document.getElementById('wizardContainer');
+            const step = wizardData[currentStep];
+
+            if (!step) return;
+
+            let html = `
+                <div class="space-y-4 animate-fade-in">
+                    <span class="text-xs text-indigo-400 font-bold uppercase tracking-wider">السؤال ${currentStep + 1}</span>
+                    <h3 class="text-xl font-bold text-white">${step.question}</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            `;
+
+            step.options.forEach(opt => {
+                if (opt.next !== undefined) {
+                    html += `<button onclick="nextWizardStep(${opt.next})" class="p-4 rounded-xl bg-slate-800 hover:bg-indigo-600/30 border border-slate-700 hover:border-indigo-500 text-right font-medium text-slate-200 transition-all text-sm flex items-center justify-between">
+                                <span>${opt.text}</span>
+                                <i class="fa-solid fa-chevron-left text-xs text-indigo-400"></i>
+                             </button>`;
+                } else if (opt.result) {
+                    html += `<button onclick="showWizardResult('${opt.result}')" class="p-4 rounded-xl bg-slate-800 hover:bg-emerald-600/30 border border-slate-700 hover:border-emerald-500 text-right font-medium text-slate-200 transition-all text-sm flex items-center justify-between">
+                                <span>${opt.text}</span>
+                                <i class="fa-solid fa-check text-xs text-emerald-400"></i>
+                             </button>`;
+                }
+            });
+
+            html += `</div></div>`;
+            container.innerHTML = html;
+        }
+
+        function nextWizardStep(stepIndex) {
+            currentStep = stepIndex;
+            renderWizardStep();
+        }
+
+        function showWizardResult(resultText) {
+            const container = document.getElementById('wizardContainer');
+            container.innerHTML = `
+                <div class="text-center space-y-4 py-4">
+                    <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl border border-emerald-500/40">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white">التخصص الأنسب لك هو:</h3>
+                    <p class="text-xl font-bold text-cyan-400 bg-cyan-900/30 py-2 px-6 rounded-full inline-block border border-cyan-500/30">${resultText}</p>
+                    <div>
+                        <button onclick="initWizard()" class="mt-4 text-xs text-slate-400 hover:text-white underline">
+                            <i class="fa-solid fa-rotate-right ml-1"></i> إعادة الاختبار
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Domain Tab Switcher Data
+        const domainData = {
+            backend: {
+                title: "هندسة الواجهات الخلفية (Backend) وبرمجة الأنظمة",
+                desc: "المسؤول عن المنطق الداخلي للتطبيقات، معمارية قواعد البيانات، والأنظمة الموزعة عالية الأداء.",
+                fundamentals: [
+                    "الأساسيات العلمية: معمارية الحاسوب، إدارة الذاكرة، شبكات HTTP/TCP, WebSockets",
+                    "خوارزميات وهياكل البيانات: مستوى متقدم جداً (Trees, Graphs, Sorting, Dynamic Programming)",
+                    "الرياضيات: الرياضيات المنفصلة، المنطق الرياضي واحتمالات"
+                ],
+                skills: {
+                    essential: ["Java / Go / Python / C#", "PostgreSQL / MySQL", "RESTful APIs", "Git & Linux"],
+                    important: ["Docker", "Redis / MongoDB", "Kafka / RabbitMQ", "Microservices"],
+                    optional: ["Rust", "GraphQL", "Kubernetes", "gRPC"]
+                },
+                roadmap: "Beginner (لغة صلبة + SQL + Git) ➔ Intermediate (OOP + REST APIs + Indexing) ➔ Job Ready (Docker + Testing + Caching) ➔ Advanced (System Design + Microservices)",
+                certifications: "AWS Certified Developer Associate ($150) | Oracle Certified Professional Java ($245)"
+            },
+            devops: {
+                title: "الحوسبة السحابية وعمليات التطوير (Cloud & DevOps / SRE)",
+                desc: "إدارة البنية التحتية السحابية، أتمتة إطلاق البرمجيات وضمان الاستقرار والتوافرية العالية (High Availability).",
+                fundamentals: [
+                    "الأساسيات العلمية: شبكات الحاسوب (TCP/IP, DNS, Firewalls, Load Balancing)، أنظمة Linux",
+                    "مستوى البرمجة: متوسط (كتابة سكريبتات متقنة بـ Python/Go/Bash)",
+                    "الرياضيات: المنطق العام وإدارة السعة"
+                ],
+                skills: {
+                    essential: ["Linux Administration", "AWS / Azure", "Docker", "Kubernetes", "Terraform", "CI/CD"],
+                    important: ["Python / Go", "Prometheus & Grafana", "Ansible"],
+                    optional: ["Service Mesh (Istio)", "ArgoCD", "FinOps"]
+                },
+                roadmap: "Beginner (Linux + Networking + Bash) ➔ Intermediate (AWS + Docker + Terraform) ➔ Job Ready (Kubernetes + CI/CD Pipelines) ➔ Advanced (Multi-cloud + Disaster Recovery)",
+                certifications: "AWS Solutions Architect Associate ($150) [الشهادة الذهبية] | CKA - Certified Kubernetes Administrator ($395)"
+            },
+            data: {
+                title: "علوم البيانات، الذكاء الاصطناعي وهندسة البيانات (Data & AI)",
+                desc: "بناء أنابيب البيانات الضخمة، وتطوير النماذج التنبؤية وأنظمة الذكاء الاصطناعي التوليدي (GenAI).",
+                fundamentals: [
+                    "الأساسيات العلمية: الجبر الخطي، التفاضل والتكامل متعدد المتغيرات، الاحتمالات والإحصاء المتقدم",
+                    "البرمجة: إتقان متقدم جداً لـ Python ولغات الأداء العالي C++",
+                    "الخوارزميات: خوارزميات التعلم الآلي والشبكات العصبية العميقة"
+                ],
+                skills: {
+                    essential: ["Python", "PyTorch / TensorFlow", "Advanced SQL", "Pandas & NumPy", "Transformers"],
+                    important: ["LangChain / LlamaIndex", "Vector DBs (Pinecone)", "Apache Spark", "Airflow"],
+                    optional: ["CUDA C++", "MLOps (Kubeflow)", "Quantization"]
+                },
+                roadmap: "Beginner (Python + Math fundamentals) ➔ Intermediate (Machine & Deep Learning + PyTorch) ➔ Job Ready (LLMs + RAG Systems + Data Pipelines) ➔ Advanced (Model Fine-tuning + Custom Architecture)",
+                certifications: "Databricks Certified Data Engineer | AWS Certified Machine Learning Specialty"
+            },
+            cyber: {
+                title: "الأمن السيبراني واختبار الاختراق (Cybersecurity & PenTesting)",
+                desc: "حماية الأنظمة والتطبيقات والشبكات من الاختراق ومحاكاة الهجمات الرقمية لترقيع الثغرات.",
+                fundamentals: [
+                    "الأساسيات العلمية: شبكات عميقة (Packet Sniffing, Protocols)، أنظمة التشغيل (Linux/Windows Internals)",
+                    "البرمجة: كتابة سكريبتات أتمتة باستخدام Python/Bash/PowerShell",
+                    "التشفير: أساسيات Cryptography والبروتوكولات الأمنية"
+                ],
+                skills: {
+                    essential: ["Networking Protocols", "Linux & Windows Admin", "Burp Suite", "Nmap", "Wireshark"],
+                    important: ["Active Directory Hacking", "OWASP Top 10", "Metasploit", "SIEM (Splunk)"],
+                    optional: ["Reverse Engineering", "Exploit Development", "Cloud Security"]
+                },
+                roadmap: "Beginner (Network+ + Linux) ➔ Intermediate (OWASP Top 10 + Burp Suite + TryHackMe) ➔ Job Ready (Active Directory Hacking + OSCP Prep) ➔ Advanced (Red/Blue Teaming)",
+                certifications: "CompTIA Security+ ($425) [مدخلية معترف بها] | OSCP ($1,499) [المعيار الذهبي العملي]"
+            },
+            embedded: {
+                title: "الأنظمة المدمجة وإنترنت الأشياء (Embedded Systems & IoT)",
+                desc: "برمجة المتحكمات الدقيقة وتطوير البرمجيات المتفاعلة مباشرة مع العتاد والدوائر الإلكترونية.",
+                fundamentals: [
+                    "الأساسيات العلمية: الدوائر الإلكترونية، بنية المعالجات (ARM Architecture)",
+                    "البرمجة: إتقان مطلق بدون منازع لـ C وC++ والـ Assembly",
+                    "أنظمة التشغيل: أنظمة التشغيل لحظية الاستجابة (RTOS)"
+                ],
+                skills: {
+                    essential: ["C / C++", "ARM Cortex-M / STM32", "Protocols (SPI, I2C, UART)", "FreeRTOS"],
+                    important: ["Embedded Linux", "Yocto", "CAN bus", "Oscilloscopes"],
+                    optional: ["ROS (Robot Operating System)", "Rust for Embedded"]
+                },
+                roadmap: "Beginner (C Language + Electronics basics) ➔ Intermediate (Microcontrollers STM32 + SPI/I2C) ➔ Job Ready (FreeRTOS + Embedded Linux) ➔ Advanced (Automotive CAN Bus + Yocto)",
+                certifications: "الاعتماد الأول يعتمد على المشاريع الملموسة واختبارات الكود العملية."
+            },
+            qa_ux: {
+                title: "ضمان جودة البرمجيات وتصميم تجربة المستخدم (QA & UI/UX)",
+                desc: "ضمان خلو البرامج من الأخطاء وتسهيل الرحلة التفاعلية والواجهات البصرية للمستخدم.",
+                fundamentals: [
+                    "مبادئ التفاعل البشري الحاسوبي (HCI) والتفكير المنطقي للتفتيش عن الثغرات",
+                    "البرمجة: غير مطلوبة للـ UI/UX ومطلوبة بمستوى متوسط لأتمتة الاختبارات (QA Automation)",
+                    "أدوات البحث والتحليل وتتبع تجربة المستخدم"
+                ],
+                skills: {
+                    essential: ["Figma (UI/UX)", "Test Cases Design", "Selenium / Playwright", "Postman (API Testing)"],
+                    important: ["Python / JS (for QA)", "Jira", "User Research", "Prototyping"],
+                    optional: ["CI/CD Integration", "Performance Testing (JMeter)"]
+                },
+                roadmap: "Beginner (Manual Testing / Figma basics) ➔ Intermediate (API Testing + Automation logic) ➔ Job Ready (Playwright Framework / Full UX Case Study) ➔ Advanced (QA Lead / Design System Specialist)",
+                certifications: "ISTQB Certified Tester Foundation Level (CTFL) [شهادة أساسية ومطلوبة لـ QA]"
+            }
+        };
+
+        function switchTab(tabKey) {
+            // Update Active Button
+            document.querySelectorAll('#domainTabs .tab-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            event.currentTarget.classList.remove('bg-slate-800', 'text-slate-300');
+            event.currentTarget.classList.add('bg-indigo-600', 'text-white');
+
+            const data = domainData[tabKey];
+            if (!data) return;
+
+            const container = document.getElementById('tabContent');
+            container.innerHTML = `
+                <div class="space-y-6 animate-fade-in">
+                    <div>
+                        <h3 class="text-2xl font-black text-cyan-400 mb-2">${data.title}</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">${data.desc}</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-indigo-400 mb-3 text-sm"><i class="fa-solid fa-graduation-cap ml-2"></i>الأساسيات العلمية (Fundamentals)</h4>
+                            <ul class="text-xs text-slate-300 space-y-2">
+                                ${data.fundamentals.map(f => `<li class="flex items-start"><i class="fa-solid fa-angle-left text-cyan-400 mt-1 ml-2"></i><span>${f}</span></li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-emerald-400 mb-3 text-sm"><i class="fa-solid fa-screwdriver-wrench ml-2"></i>المهارات والتقنيات (Skills Stack)</h4>
+                            <div class="space-y-2 text-xs">
+                                <div><strong class="text-emerald-400">أساسي:</strong> ${data.skills.essential.join(', ')}</div>
+                                <div><strong class="text-amber-400">مهم:</strong> ${data.skills.important.join(', ')}</div>
+                                <div><strong class="text-slate-400">اختياري:</strong> ${data.skills.optional.join(', ')}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-2 text-sm"><i class="fa-solid fa-route ml-2"></i>خارطة الطريق (Roadmap)</h4>
+                        <p class="text-xs text-slate-300 dir-ltr text-right leading-relaxed font-mono">${data.roadmap}</p>
+                    </div>
+
+                    <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-700 flex items-center justify-between">
+                        <div class="text-xs text-slate-300">
+                            <strong class="text-purple-400 block mb-1"><i class="fa-solid fa-certificate ml-1"></i>الشهادات المهنية الموصى بها:</strong>
+                            ${data.certifications}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Table Search Filter
+        function filterTable() {
+            const input = document.getElementById("tableSearch");
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById("comparisonTable");
+            const tr = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    let txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
