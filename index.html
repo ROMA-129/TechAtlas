@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Cairo for Arabic & Inter for English -->
+    <!-- Google Fonts: Cairo & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,6 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -42,7 +43,7 @@
     </script>
     <style>
         body {
-            transition: font-family 0.2s, direction 0.2s;
+            transition: background-color 0.3s, color 0.3s, font-family 0.2s;
         }
         .lang-ar { font-family: 'Cairo', sans-serif; }
         .lang-en { font-family: 'Inter', sans-serif; }
@@ -50,41 +51,53 @@
             width: 100%;
             height: 320px;
             position: relative;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
             border-radius: 1rem;
             overflow: hidden;
+            transition: background 0.3s;
+        }
+        .dark .canvas-container {
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+        }
+        .light .canvas-container {
+            background: radial-gradient(circle at center, #f1f5f9 0%, #e2e8f0 100%);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col lang-ar">
+<body class="bg-slate-950 text-slate-100 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col lang-ar">
 
     <!-- Header / Navbar -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+    <header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center space-x-3 space-x-reverse cursor-pointer" onclick="switchTab('home')">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-emerald-500 flex items-center justify-center shadow-lg shadow-brand-500/20">
                     <i class="fa-solid fa-atlas text-xl text-white"></i>
                 </div>
-                <span class="text-xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">TechAtlas</span>
+                <span class="text-xl font-bold text-slate-900 dark:text-white">TechAtlas</span>
             </div>
 
             <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center space-x-1 space-x-reverse bg-slate-800/50 p-1.5 rounded-xl border border-slate-700/50">
+            <nav class="hidden md:flex items-center space-x-1 space-x-reverse bg-slate-100 dark:bg-slate-800/50 p-1.5 rounded-xl border border-slate-200 dark:border-slate-700/50">
                 <button onclick="switchTab('home')" id="nav-home" class="px-4 py-1.5 rounded-lg text-sm font-semibold transition-all bg-brand-600 text-white shadow">
                     <i class="fa-solid fa-house ml-1.5 mr-1.5"></i> <span data-i18n="nav_home">الرئيسية</span>
                 </button>
-                <button onclick="switchTab('networking')" id="nav-networking" class="px-4 py-1.5 rounded-lg text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-700/50">
+                <button onclick="switchTab('networking')" id="nav-networking" class="px-4 py-1.5 rounded-lg text-sm font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700/50">
                     <i class="fa-solid fa-network-wired ml-1.5 mr-1.5"></i> <span data-i18n="nav_networking">الشبكات</span>
                 </button>
-                <button onclick="switchTab('cybersecurity')" id="nav-cybersecurity" class="px-4 py-1.5 rounded-lg text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-700/50">
+                <button onclick="switchTab('cybersecurity')" id="nav-cybersecurity" class="px-4 py-1.5 rounded-lg text-sm font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700/50">
                     <i class="fa-solid fa-shield-halved ml-1.5 mr-1.5"></i> <span data-i18n="nav_cybersecurity">الأمن السيبراني</span>
                 </button>
             </nav>
 
-            <!-- Language Switcher Button -->
-            <div class="flex items-center space-x-3 space-x-reverse">
-                <button onclick="toggleLanguage()" class="flex items-center px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-sm font-medium transition-all shadow-sm group">
+            <!-- Language & Theme Switcher Controls -->
+            <div class="flex items-center space-x-2 space-x-reverse">
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleTheme()" id="theme-btn" class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-amber-400 transition-all shadow-sm flex items-center justify-center w-10 h-10">
+                    <i id="theme-icon" class="fa-solid fa-sun text-amber-400 text-lg"></i>
+                </button>
+
+                <!-- Language Switcher Button -->
+                <button onclick="toggleLanguage()" class="flex items-center px-3.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-sm font-medium transition-all shadow-sm group">
                     <i class="fa-solid fa-globe text-brand-500 group-hover:rotate-180 transition-transform duration-500 ml-2 mr-2"></i>
                     <span id="lang-btn-text">English</span>
                 </button>
@@ -98,16 +111,16 @@
         <!-- HOME TAB -->
         <section id="tab-home" class="space-y-10">
             <!-- Hero Banner -->
-            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-8 sm:p-12">
+            <div class="relative overflow-hidden rounded-3xl bg-slate-100 dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-950 border border-slate-200 dark:border-slate-800 p-8 sm:p-12 transition-colors">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     <div class="space-y-6">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-500 border border-brand-500/20">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20">
                             <i class="fa-solid fa-sparkles ml-1.5 mr-1.5"></i> <span data-i18n="hero_badge">تطبيق عملي لمادة الويب</span>
                         </span>
-                        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight" data-i18n="hero_title">
+                        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight" data-i18n="hero_title">
                             منصتك التفاعلية لشرح الشبكات والأمن السيبراني
                         </h1>
-                        <p class="text-slate-400 text-base sm:text-lg leading-relaxed" data-i18n="hero_desc">
+                        <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed" data-i18n="hero_desc">
                             موقع تعليمي ثنائي اللغة يُبسط المفاهيم المعقدة من خلال الشروحات التفاعلية والمجسمات ثلاثية الأبعاد (3D).
                         </p>
                         <div class="flex flex-wrap gap-4 pt-2">
@@ -115,7 +128,7 @@
                                 <span data-i18n="btn_explore_net">استكشف الشبكات</span>
                                 <i class="fa-solid fa-arrow-left mr-2 ml-2 transition-transform group-hover:-translate-x-1"></i>
                             </button>
-                            <button onclick="switchTab('cybersecurity')" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold border border-slate-700 transition-all flex items-center">
+                            <button onclick="switchTab('cybersecurity')" class="px-6 py-3 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-white font-bold border border-slate-300 dark:border-slate-700 transition-all flex items-center shadow-sm">
                                 <span data-i18n="btn_explore_sec">الأمن السيبراني</span>
                             </button>
                         </div>
@@ -123,11 +136,11 @@
 
                     <!-- 3D Interactive Canvas -->
                     <div class="space-y-2">
-                        <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+                        <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-1">
                             <span data-i18n="canvas_title"><i class="fa-solid fa-cube ml-1 mr-1"></i> مجسم 3D تفاعلي (اسحب لتدوير الشكل)</span>
-                            <span class="text-emerald-400 font-mono text-[10px] uppercase">Three.js Engine</span>
+                            <span class="text-emerald-600 dark:text-emerald-400 font-mono text-[10px] uppercase">Three.js Engine</span>
                         </div>
-                        <div id="home-3d-canvas" class="canvas-container shadow-2xl border border-slate-800"></div>
+                        <div id="home-3d-canvas" class="canvas-container shadow-xl border border-slate-200 dark:border-slate-800"></div>
                     </div>
                 </div>
             </div>
@@ -135,26 +148,26 @@
             <!-- Features / Modules Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Networking Card -->
-                <div class="bg-slate-900 border border-slate-800 hover:border-brand-500/50 transition-all rounded-2xl p-6 space-y-4 group cursor-pointer" onclick="switchTab('networking')">
-                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-brand-500/50 transition-all rounded-2xl p-6 space-y-4 group cursor-pointer shadow-sm hover:shadow-md" onclick="switchTab('networking')">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-network-wired"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors" data-i18n="card_net_title">قسم شبكات الحاسوب (Networking)</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="card_net_desc">شرح معمق لطبقات OSI و TCP/IP، البروتوكولات الأساسية، أجهزة الراوتر والسويتش، وعناوين IP.</p>
-                    <div class="pt-2 flex items-center text-sm font-semibold text-brand-500">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors" data-i18n="card_net_title">قسم شبكات الحاسوب (Networking)</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="card_net_desc">شرح معمق لطبقات OSI و TCP/IP، البروتوكولات الأساسية، أجهزة الراوتر والسويتش، وعناوين IP.</p>
+                    <div class="pt-2 flex items-center text-sm font-semibold text-brand-600 dark:text-brand-400">
                         <span data-i18n="view_topics">استعراض الموضوعات</span>
                         <i class="fa-solid fa-chevron-left mr-2 ml-2 group-hover:-translate-x-1 transition-transform"></i>
                     </div>
                 </div>
 
                 <!-- Cybersecurity Card -->
-                <div class="bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition-all rounded-2xl p-6 space-y-4 group cursor-pointer" onclick="switchTab('cybersecurity')">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-emerald-500/50 transition-all rounded-2xl p-6 space-y-4 group cursor-pointer shadow-sm hover:shadow-md" onclick="switchTab('cybersecurity')">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors" data-i18n="card_sec_title">قسم الأمن السيبراني (Cybersecurity)</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="card_sec_desc">دراسة مبادئ مثلث الحماية CIA Triad، خوارزميات التشفير، الجدران النارية، وكيفية الوقاية من الهجمات.</p>
-                    <div class="pt-2 flex items-center text-sm font-semibold text-emerald-400">
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" data-i18n="card_sec_title">قسم الأمن السيبراني (Cybersecurity)</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" data-i18n="card_sec_desc">دراسة مبادئ مثلث الحماية CIA Triad، خوارزميات التشفير، الجدران النارية، وكيفية الوقاية من الهجمات.</p>
+                    <div class="pt-2 flex items-center text-sm font-semibold text-emerald-600 dark:text-emerald-400">
                         <span data-i18n="view_topics">استعراض الموضوعات</span>
                         <i class="fa-solid fa-chevron-left mr-2 ml-2 group-hover:-translate-x-1 transition-transform"></i>
                     </div>
@@ -164,10 +177,10 @@
 
         <!-- NETWORKING TAB -->
         <section id="tab-networking" class="hidden space-y-8">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
                 <div>
-                    <h2 class="text-3xl font-extrabold text-white" data-i18n="net_heading">دليل شبكات الحاسوب (Computer Networking)</h2>
-                    <p class="text-slate-400 text-sm mt-1" data-i18n="net_sub">تعلم الأساسيات والبروتوكولات بنظرة هندسية شمولية.</p>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white" data-i18n="net_heading">دليل شبكات الحاسوب (Computer Networking)</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mt-1" data-i18n="net_sub">تعلم الأساسيات والبروتوكولات بنظرة هندسية شمولية.</p>
                 </div>
                 <button onclick="startQuiz('networking')" class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm transition-all shadow flex items-center">
                     <i class="fa-solid fa-pen-to-square ml-2 mr-2"></i> <span data-i18n="btn_start_net_quiz">ابدأ اختبار الشبكات</span>
@@ -176,39 +189,39 @@
 
             <!-- Lessons Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-                    <span class="text-xs font-bold text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded-md">Topic 01</span>
-                    <h4 class="text-lg font-bold text-white" data-i18n="net_topic1_t">نموذج OSI Layers</h4>
-                    <p class="text-slate-400 text-sm" data-i18n="net_topic1_d">يتكون من 7 طبقات تبدأ من الطبقة الفيزيائية وحتى طبقة التطبيقات لضمان نقل البيانات بدقة.</p>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 space-y-3 shadow-sm">
+                    <span class="text-xs font-bold text-brand-600 dark:text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded-md">Topic 01</span>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white" data-i18n="net_topic1_t">نموذج OSI Layers</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="net_topic1_d">يتكون من 7 طبقات تبدأ من الطبقة الفيزيائية وحتى طبقة التطبيقات لضمان نقل البيانات بدقة.</p>
                 </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-                    <span class="text-xs font-bold text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded-md">Topic 02</span>
-                    <h4 class="text-lg font-bold text-white" data-i18n="net_topic2_t">بروتوكولات TCP vs UDP</h4>
-                    <p class="text-slate-400 text-sm" data-i18n="net_topic2_d">مقارنة بين TCP الموثوق (Connection-oriented) و UDP السريع المناسب للبث المباشر والألعاب.</p>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 space-y-3 shadow-sm">
+                    <span class="text-xs font-bold text-brand-600 dark:text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded-md">Topic 02</span>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white" data-i18n="net_topic2_t">بروتوكولات TCP vs UDP</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="net_topic2_d">مقارنة بين TCP الموثوق (Connection-oriented) و UDP السريع المناسب للبث المباشر والألعاب.</p>
                 </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-                    <span class="text-xs font-bold text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded-md">Topic 03</span>
-                    <h4 class="text-lg font-bold text-white" data-i18n="net_topic3_t">عناوين IP & Subnetting</h4>
-                    <p class="text-slate-400 text-sm" data-i18n="net_topic3_d">فهم الفرق بين IPv4 و IPv6 وكيفية تقسيم الشبكات الكبيرة إلى شبكات فرعية أصغر.</p>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 space-y-3 shadow-sm">
+                    <span class="text-xs font-bold text-brand-600 dark:text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded-md">Topic 03</span>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white" data-i18n="net_topic3_t">عناوين IP & Subnetting</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="net_topic3_d">فهم الفرق بين IPv4 و IPv6 وكيفية تقسيم الشبكات الكبيرة إلى شبكات فرعية أصغر.</p>
                 </div>
             </div>
 
             <!-- Quiz Modal Area (networking) -->
-            <div id="quiz-networking" class="hidden bg-slate-900 border border-brand-500/30 rounded-2xl p-6 space-y-4">
-                <h3 class="text-xl font-bold text-white flex items-center">
+            <div id="quiz-networking" class="hidden bg-white dark:bg-slate-900 border border-brand-500/30 rounded-2xl p-6 space-y-4 shadow-lg">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
                     <i class="fa-solid fa-clipboard-question text-brand-500 ml-2 mr-2"></i>
                     <span data-i18n="net_quiz_title">اختبار سريع في الشبكات</span>
                 </h3>
-                <div id="net-quiz-content" class="space-y-4 text-slate-300 text-sm"></div>
+                <div id="net-quiz-content" class="space-y-4 text-slate-700 dark:text-slate-300 text-sm"></div>
             </div>
         </section>
 
         <!-- CYBERSECURITY TAB -->
         <section id="tab-cybersecurity" class="hidden space-y-8">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
                 <div>
-                    <h2 class="text-3xl font-extrabold text-white" data-i18n="sec_heading">دليل الأمن السيبراني (Cybersecurity)</h2>
-                    <p class="text-slate-400 text-sm mt-1" data-i18n="sec_sub">استكشاف المبادئ وأساليب حماية البيانات والأنظمة من التهديدات.</p>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white" data-i18n="sec_heading">دليل الأمن السيبراني (Cybersecurity)</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mt-1" data-i18n="sec_sub">استكشاف المبادئ وأساليب حماية البيانات والأنظمة من التهديدات.</p>
                 </div>
                 <button onclick="startQuiz('cybersecurity')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all shadow flex items-center">
                     <i class="fa-solid fa-pen-to-square ml-2 mr-2"></i> <span data-i18n="btn_start_sec_quiz">ابدأ اختبار الأمن السيبراني</span>
@@ -217,40 +230,40 @@
 
             <!-- Lessons Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-                    <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">Module 01</span>
-                    <h4 class="text-lg font-bold text-white" data-i18n="sec_topic1_t">مثلث الأمان CIA Triad</h4>
-                    <p class="text-slate-400 text-sm" data-i18n="sec_topic1_d">السرية (Confidentiality)، السلامة (Integrity)، والتوافر (Availability) هي الركائز الأساسية لأي نظام أمني.</p>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 space-y-3 shadow-sm">
+                    <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">Module 01</span>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white" data-i18n="sec_topic1_t">مثلث الأمان CIA Triad</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="sec_topic1_d">السرية (Confidentiality)، السلامة (Integrity)، والتوافر (Availability) هي الركائز الأساسية لأي نظام أمني.</p>
                 </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-                    <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">Module 02</span>
-                    <h4 class="text-lg font-bold text-white" data-i18n="sec_topic2_t">أساسيات التشفير (Encryption)</h4>
-                    <p class="text-slate-400 text-sm" data-i18n="sec_topic2_d">الفارق بين التشفير المتماثل (Symmetric) والتشفير غير المتماثل (Asymmetric / RSA).</p>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 space-y-3 shadow-sm">
+                    <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">Module 02</span>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white" data-i18n="sec_topic2_t">أساسيات التشفير (Encryption)</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="sec_topic2_d">الفارق بين التشفير المتماثل (Symmetric) والتشفير غير المتماثل (Asymmetric / RSA).</p>
                 </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
-                    <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">Module 03</span>
-                    <h4 class="text-lg font-bold text-white" data-i18n="sec_topic3_t">الجدران النارية (Firewalls)</h4>
-                    <p class="text-slate-400 text-sm" data-i18n="sec_topic3_d">تصفية حركة المرور القادمة والخارجية لمنع الوصول غير المصرح به للشبكة.</p>
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 space-y-3 shadow-sm">
+                    <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">Module 03</span>
+                    <h4 class="text-lg font-bold text-slate-900 dark:text-white" data-i18n="sec_topic3_t">الجدران النارية (Firewalls)</h4>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm" data-i18n="sec_topic3_d">تصفية حركة المرور القادمة والخارجية لمنع الوصول غير المصرح به للشبكة.</p>
                 </div>
             </div>
 
             <!-- Quiz Modal Area (cybersecurity) -->
-            <div id="quiz-cybersecurity" class="hidden bg-slate-900 border border-emerald-500/30 rounded-2xl p-6 space-y-4">
-                <h3 class="text-xl font-bold text-white flex items-center">
-                    <i class="fa-solid fa-shield-virus text-emerald-400 ml-2 mr-2"></i>
+            <div id="quiz-cybersecurity" class="hidden bg-white dark:bg-slate-900 border border-emerald-500/30 rounded-2xl p-6 space-y-4 shadow-lg">
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center">
+                    <i class="fa-solid fa-shield-virus text-emerald-500 ml-2 mr-2"></i>
                     <span data-i18n="sec_quiz_title">اختبار سريع في الأمن السيبراني</span>
                 </h3>
-                <div id="sec-quiz-content" class="space-y-4 text-slate-300 text-sm"></div>
+                <div id="sec-quiz-content" class="space-y-4 text-slate-700 dark:text-slate-300 text-sm"></div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-900/50 mt-12 py-6 text-center text-xs text-slate-500">
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/50 mt-12 py-6 text-center text-xs text-slate-500 transition-colors">
         <p data-i18n="footer_text">TechAtlas Project &copy; 2026 - تطبيق عملي لمادة الويب</p>
     </footer>
 
-    <!-- JavaScript Translations & Application Logic -->
+    <!-- JavaScript Application Logic -->
     <script>
         // i18n Translations Dictionary
         const translations = {
@@ -331,6 +344,27 @@
         };
 
         let currentLang = 'ar';
+        let currentTheme = 'dark';
+
+        // Theme Toggle Function (Light / Dark)
+        function toggleTheme() {
+            currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (currentTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                document.body.classList.remove('bg-slate-950', 'text-slate-100');
+                document.body.classList.add('bg-slate-50', 'text-slate-900');
+                themeIcon.className = "fa-solid fa-moon text-slate-700 text-lg";
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+                document.body.classList.remove('bg-slate-50', 'text-slate-900');
+                document.body.classList.add('bg-slate-950', 'text-slate-100');
+                themeIcon.className = "fa-solid fa-sun text-amber-400 text-lg";
+            }
+        }
 
         // Toggle Language Function
         function toggleLanguage() {
@@ -369,7 +403,7 @@
                     navBtn.className = "px-4 py-1.5 rounded-lg text-sm font-semibold transition-all bg-brand-600 text-white shadow";
                 } else {
                     tabEl.classList.add('hidden');
-                    navBtn.className = "px-4 py-1.5 rounded-lg text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-700/50";
+                    navBtn.className = "px-4 py-1.5 rounded-lg text-sm font-semibold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700/50";
                 }
             });
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -383,8 +417,8 @@
 
             if (type === 'networking') {
                 quizContent.innerHTML = `
-                    <div class="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
-                        <p class="font-bold text-white">س1: كم عدد طبقات نموذج OSI؟ / Q1: How many layers are in the OSI model?</p>
+                    <div class="space-y-3 bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                        <p class="font-bold text-slate-900 dark:text-white">س1: كم عدد طبقات نموذج OSI؟ / Q1: How many layers are in the OSI model?</p>
                         <div class="space-y-2">
                             <label class="flex items-center space-x-2 space-x-reverse cursor-pointer"><input type="radio" name="q1" value="5" class="accent-brand-500"> <span>5</span></label>
                             <label class="flex items-center space-x-2 space-x-reverse cursor-pointer"><input type="radio" name="q1" value="7" class="accent-brand-500"> <span>7 (إجابة صحيحة)</span></label>
@@ -394,8 +428,8 @@
                 `;
             } else {
                 quizContent.innerHTML = `
-                    <div class="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
-                        <p class="font-bold text-white">س1: إلى ماذا ترمز حرف C في مثلث CIA؟ / Q1: What does 'C' stand for in CIA triad?</p>
+                    <div class="space-y-3 bg-slate-50 dark:bg-slate-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                        <p class="font-bold text-slate-900 dark:text-white">س1: إلى ماذا ترمز حرف C في مثلث CIA؟ / Q1: What does 'C' stand for in CIA triad?</p>
                         <div class="space-y-2">
                             <label class="flex items-center space-x-2 space-x-reverse cursor-pointer"><input type="radio" name="sq1" value="c" class="accent-emerald-500"> <span>Confidentiality / السرية (إجابة صحيحة)</span></label>
                             <label class="flex items-center space-x-2 space-x-reverse cursor-pointer"><input type="radio" name="sq1" value="a" class="accent-emerald-500"> <span>Control / التحكم</span></label>
