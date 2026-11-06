@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechAtlas - المنصة التعليمية التفاعلية</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo for Arabic & Inter for English -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Three.js for 3D Visualizations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        cyber: {
+                            500: '#10b981',
+                            600: '#059669',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            transition: font-family 0.2s, direction 0.2s;
+        }
+        .lang-ar { font-family: 'Cairo', sans-serif; }
+        .lang-en { font-family: 'Inter', sans-serif; }
+        .canvas-container {
+            width: 100%;
+            height: 320px;
+            position: relative;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col lang-ar">
+
+    <!-- Header / Navbar -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 space-x-reverse cursor-pointer" onclick="switchTab('home')">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-emerald-500 flex items-center justify-center shadow-lg shadow-brand-500/20">
+                    <i class="fa-solid fa-atlas text-xl text-white"></i>
+                </div>
+                <span class="text-xl font-bold bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">TechAtlas</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-1 space-x-reverse bg-slate-800/50 p-1.5 rounded-xl border border-slate-700/50">
+                <button onclick="switchTab('home')" id="nav-home" class="px-4 py-1.5 rounded-lg text-sm font-semibold transition-all bg-brand-600 text-white shadow">
+                    <i class="fa-solid fa-house ml-1.5 mr-1.5"></i> <span data-i18n="nav_home">الرئيسية</span>
+                </button>
+                <button onclick="switchTab('networking')" id="nav-networking" class="px-4 py-1.5 rounded-lg text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-700/50">
+                    <i class="fa-solid fa-network-wired ml-1.5 mr-1.5"></i> <span data-i18n="nav_networking">الشبكات</span>
+                </button>
+                <button onclick="switchTab('cybersecurity')" id="nav-cybersecurity" class="px-4 py-1.5 rounded-lg text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-700/50">
+                    <i class="fa-solid fa-shield-halved ml-1.5 mr-1.5"></i> <span data-i18n="nav_cybersecurity">الأمن السيبراني</span>
+                </button>
+            </nav>
+
+            <!-- Language Switcher Button -->
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <button onclick="toggleLanguage()" class="flex items-center px-3.5 py-1.5 rounded-lg border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-sm font-medium transition-all shadow-sm group">
+                    <i class="fa-solid fa-globe text-brand-500 group-hover:rotate-180 transition-transform duration-500 ml-2 mr-2"></i>
+                    <span id="lang-btn-text">English</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- HOME TAB -->
+        <section id="tab-home" class="space-y-10">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-8 sm:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-500 border border-brand-500/20">
+                            <i class="fa-solid fa-sparkles ml-1.5 mr-1.5"></i> <span data-i18n="hero_badge">تطبيق عملي لمادة الويب</span>
+                        </span>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight" data-i18n="hero_title">
+                            منصتك التفاعلية لشرح الشبكات والأمن السيبراني
+                        </h1>
+                        <p class="text-slate-400 text-base sm:text-lg leading-relaxed" data-i18n="hero_desc">
+                            موقع تعليمي ثنائي اللغة يُبسط المفاهيم المعقدة من خلال الشروحات التفاعلية والمجسمات ثلاثية الأبعاد (3D).
+                        </p>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <button onclick="switchTab('networking')" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold transition-all shadow-lg shadow-brand-600/30 flex items-center">
+                                <span data-i18n="btn_explore_net">استكشف الشبكات</span>
+                                <i class="fa-solid fa-arrow-left mr-2 ml-2 transition-transform group-hover:-translate-x-1"></i>
+                            </button>
+                            <button onclick="switchTab('cybersecurity')" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold border border-slate-700 transition-all flex items-center">
+                                <span data-i18n="btn_explore_sec">الأمن السيبراني</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 3D Interactive Canvas -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+                            <span data-i18n="canvas_title"><i class="fa-solid fa-cube ml-1 mr-1"></i> مجسم 3D تفاعلي (اسحب لتدوير الشكل)</span>
+                            <span class="text-emerald-400 font-mono text-[10px] uppercase">Three.js Engine</span>
+                        </div>
+                        <div id="home-3d-canvas" class="canvas-container shadow-2xl border border-slate-800"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features / Modules Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Networking Card -->
+                <div class="bg-slate-900 border border-slate-800 hover:border-brand-500/50 transition-all rounded-2xl p-6 space-y-4 group cursor-pointer" onclick="switchTab('networking')">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors" data-i18n="card_net_title">قسم شبكات الحاسوب (Networking)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="card_net_desc">شرح معمق لطبقات OSI و TCP/IP، البروتوكولات الأساسية، أجهزة الراوتر والسويتش، وعناوين IP.</p>
+                    <div class="pt-2 flex items-center text-sm font-semibold text-brand-500">
+                        <span data-i18n="view_topics">استعراض الموضوعات</span>
+                        <i class="fa-solid fa-chevron-left mr-2 ml-2 group-hover:-translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Cybersecurity Card -->
+                <div class="bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition-all rounded-2xl p-6 space-y-4 group cursor-pointer" onclick="switchTab('cybersecurity')">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors" data-i18n="card_sec_title">قسم الأمن السيبراني (Cybersecurity)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="card_sec_desc">دراسة مبادئ مثلث الحماية CIA Triad، خوارزميات التشفير، الجدران النارية، وكيفية الوقاية من الهجمات.</p>
+                    <div class="pt-2 flex items-center text-sm font-semibold text-emerald-400">
+                        <span data-i18n="view_topics">استعراض الموضوعات</span>
+                        <i class="fa-solid fa-chevron-left mr-2 ml-2 group-hover:-translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NETWORKING TAB -->
+        <section id="tab-networking" class="hidden space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-white" data-i18n="net_heading">دليل شبكات الحاسوب (Computer Networking)</h2>
+                    <p class="text-slate-400 text-sm mt-1" data-i18n="net_sub">تعلم الأساسيات والبروتوكولات بنظرة هندسية شمولية.</p>
+                </div>
+                <button onclick="startQuiz('networking')" class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm transition-all shadow flex items-center">
+                    <i class="fa-solid fa-pen-to-square ml-2 mr-2"></i> <span data-i18n="btn_start_net_quiz">ابدأ اختبار الشبكات</span>
+                </button>
+            </div>
+
+            <!-- Lessons Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <span class="text-xs font-bold text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded-md">Topic 01</span>
+                    <h4 class="text-lg font-bold text-white" data-i18n="net_topic1_t">نموذج OSI Layers</h4>
+                    <p class="text-slate-400 text-sm" data-i18n="net_topic1_d">يتكون من 7 طبقات تبدأ من الطبقة الفيزيائية وحتى طبقة التطبيقات لضمان نقل البيانات بدقة.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <span class="text-xs font-bold text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded-md">Topic 02</span>
+                    <h4 class="text-lg font-bold text-white" data-i18n="net_topic2_t">بروتوكولات TCP vs UDP</h4>
+                    <p class="text-slate-400 text-sm" data-i18n="net_topic2_d">مقارنة بين TCP الموثوق (Connection-oriented) و UDP السريع المناسب للبث المباشر والألعاب.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <span class="text-xs font-bold text-brand-400 bg-brand-500/10 px-2.5 py-1 rounded-md">Topic 03</span>
+                    <h4 class="text-lg font-bold text-white" data-i18n="net_topic3_t">عناوين IP & Subnetting</h4>
+                    <p class="text-slate-400 text-sm" data-i18n="net_topic3_d">فهم الفرق بين IPv4 و IPv6 وكيفية تقسيم الشبكات الكبيرة إلى شبكات فرعية أصغر.</p>
+                </div>
+            </div>
+
+            <!-- Quiz Modal Area (networking) -->
+            <div id="quiz-networking" class="hidden bg-slate-900 border border-brand-500/30 rounded-2xl p-6 space-y-4">
+                <h3 class="text-xl font-bold text-white flex items-center">
+                    <i class="fa-solid fa-clipboard-question text-brand-500 ml-2 mr-2"></i>
+                    <span data-i18n="net_quiz_title">اختبار سريع في الشبكات</span>
+                </h3>
+                <div id="net-quiz-content" class="space-y-4 text-slate-300 text-sm"></div>
+            </div>
+        </section>
+
+        <!-- CYBERSECURITY TAB -->
+        <section id="tab-cybersecurity" class="hidden space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-white" data-i18n="sec_heading">دليل الأمن السيبراني (Cybersecurity)</h2>
+                    <p class="text-slate-400 text-sm mt-1" data-i18n="sec_sub">استكشاف المبادئ وأساليب حماية البيانات والأنظمة من التهديدات.</p>
+                </div>
+                <button onclick="startQuiz('cybersecurity')" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition-all shadow flex items-center">
+                    <i class="fa-solid fa-pen-to-square ml-2 mr-2"></i> <span data-i18n="btn_start_sec_quiz">ابدأ اختبار الأمن السيبراني</span>
+                </button>
+            </div>
+
+            <!-- Lessons Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">Module 01</span>
+                    <h4 class="text-lg font-bold text-white" data-i18n="sec_topic1_t">مثلث الأمان CIA Triad</h4>
+                    <p class="text-slate-400 text-sm" data-i18n="sec_topic1_d">السرية (Confidentiality)، السلامة (Integrity)، والتوافر (Availability) هي الركائز الأساسية لأي نظام أمني.</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">Module 02</span>
+                    <h4 class="text-lg font-bold text-white" data-i18n="sec_topic2_t">أساسيات التشفير (Encryption)</h4>
+                    <p class="text-slate-400 text-sm" data-i18n="sec_topic2_d">الفارق بين التشفير المتماثل (Symmetric) والتشفير غير المتماثل (Asymmetric / RSA).</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3">
+                    <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">Module 03</span>
+                    <h4 class="text-lg font-bold text-white" data-i18n="sec_topic3_t">الجدران النارية (Firewalls)</h4>
+                    <p class="text-slate-400 text-sm" data-i18n="sec_topic3_d">تصفية حركة المرور القادمة والخارجية لمنع الوصول غير المصرح به للشبكة.</p>
+                </div>
+            </div>
+
+            <!-- Quiz Modal Area (cybersecurity) -->
+            <div id="quiz-cybersecurity" class="hidden bg-slate-900 border border-emerald-500/30 rounded-2xl p-6 space-y-4">
+                <h3 class="text-xl font-bold text-white flex items-center">
+                    <i class="fa-solid fa-shield-virus text-emerald-400 ml-2 mr-2"></i>
+                    <span data-i18n="sec_quiz_title">اختبار سريع في الأمن السيبراني</span>
+                </h3>
+                <div id="sec-quiz-content" class="space-y-4 text-slate-300 text-sm"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900/50 mt-12 py-6 text-center text-xs text-slate-500">
+        <p data-i18n="footer_text">TechAtlas Project &copy; 2026 - تطبيق عملي لمادة الويب</p>
+    </footer>
+
+    <!-- JavaScript Translations & Application Logic -->
+    <script>
+        // i18n Translations Dictionary
+        const translations = {
+            ar: {
+                nav_home: "الرئيسية",
+                nav_networking: "الشبكات",
+                nav_cybersecurity: "الأمن السيبراني",
+                hero_badge: "تطبيق عملي لمادة الويب",
+                hero_title: "منصتك التفاعلية لشرح الشبكات والأمن السيبراني",
+                hero_desc: "موقع تعليمي ثنائي اللغة يُبسط المفاهيم المعقدة من خلال الشروحات التفاعلية والمجسمات ثلاثية الأبعاد (3D).",
+                btn_explore_net: "استكشف الشبكات",
+                btn_explore_sec: "الأمن السيبراني",
+                canvas_title: "مجسم 3D تفاعلي (اسحب لتدوير الشكل)",
+                card_net_title: "قسم شبكات الحاسوب (Networking)",
+                card_net_desc: "شرح معمق لطبقات OSI و TCP/IP، البروتوكولات الأساسية، أجهزة الراوتر والسويتش، وعناوين IP.",
+                card_sec_title: "قسم الأمن السيبراني (Cybersecurity)",
+                card_sec_desc: "دراسة مبادئ مثلث الحماية CIA Triad، خوارزميات التشفير، الجدران النارية، وكيفية الوقاية من الهجمات.",
+                view_topics: "استعراض الموضوعات",
+                net_heading: "دليل شبكات الحاسوب (Computer Networking)",
+                net_sub: "تعلم الأساسيات والبروتوكولات بنظرة هندسية شمولية.",
+                btn_start_net_quiz: "ابدأ اختبار الشبكات",
+                net_topic1_t: "نموذج OSI Layers",
+                net_topic1_d: "يتكون من 7 طبقات تبدأ من الطبقة الفيزيائية وحتى طبقة التطبيقات لضمان نقل البيانات بدقة.",
+                net_topic2_t: "بروتوكولات TCP vs UDP",
+                net_topic2_d: "مقارنة بين TCP الموثوق (Connection-oriented) و UDP السريع المناسب للبث المباشر والألعاب.",
+                net_topic3_t: "عناوين IP & Subnetting",
+                net_topic3_d: "فهم الفرق بين IPv4 و IPv6 وكيفية تقسيم الشبكات الكبيرة إلى شبكات فرعية أصغر.",
+                net_quiz_title: "اختبار سريع في الشبكات",
+                sec_heading: "دليل الأمن السيبراني (Cybersecurity)",
+                sec_sub: "استكشاف المبادئ وأساليب حماية البيانات والأنظمة من التهديدات.",
+                btn_start_sec_quiz: "ابدأ اختبار الأمن السيبراني",
+                sec_topic1_t: "مثلث الأمان CIA Triad",
+                sec_topic1_d: "السرية (Confidentiality)، السلامة (Integrity)، والتوافر (Availability) هي الركائز الأساسية لأي نظام أمني.",
+                sec_topic2_t: "أساسيات التشفير (Encryption)",
+                sec_topic2_d: "الفارق بين التشفير المتماثل (Symmetric) والتشفير غير المتماثل (Asymmetric / RSA).",
+                sec_topic3_t: "الجدران النارية (Firewalls)",
+                sec_topic3_d: "تصفية حركة المرور القادمة والخارجية لمنع الوصول غير المصرح به للشبكة.",
+                sec_quiz_title: "اختبار سريع في الأمن السيبراني",
+                footer_text: "TechAtlas Project © 2026 - تطبيق عملي لمادة الويب"
+            },
+            en: {
+                nav_home: "Home",
+                nav_networking: "Networking",
+                nav_cybersecurity: "Cybersecurity",
+                hero_badge: "Web Course College Project",
+                hero_title: "Interactive Platform for Networking & Cybersecurity",
+                hero_desc: "A bilingual educational site simplifying complex concepts through interactive lessons and 3D visual models.",
+                btn_explore_net: "Explore Networking",
+                btn_explore_sec: "Explore Cybersecurity",
+                canvas_title: "Interactive 3D Object (Drag to rotate)",
+                card_net_title: "Computer Networking Module",
+                card_net_desc: "In-depth explanations of OSI & TCP/IP layers, core protocols, routers, switches, and IP addressing.",
+                card_sec_title: "Cybersecurity Module",
+                card_sec_desc: "Learn the CIA Triad, cryptographic algorithms, firewalls, and attack prevention techniques.",
+                view_topics: "Explore Topics",
+                net_heading: "Computer Networking Guide",
+                net_sub: "Master networking fundamentals and protocols with an engineering approach.",
+                btn_start_net_quiz: "Start Networking Quiz",
+                net_topic1_t: "OSI Reference Model",
+                net_topic1_d: "Consists of 7 layers from Physical to Application ensuring accurate data transmission.",
+                net_topic2_t: "TCP vs UDP Protocols",
+                net_topic2_d: "Comparing connection-oriented reliable TCP vs fast connectionless UDP for streaming.",
+                net_topic3_t: "IP Addresses & Subnetting",
+                net_topic3_d: "Understanding IPv4 vs IPv6 and partitioning large networks into smaller subnets.",
+                net_quiz_title: "Quick Networking Quiz",
+                sec_heading: "Cybersecurity Guide",
+                sec_sub: "Exploring principles of protecting data and infrastructure from threats.",
+                btn_start_sec_quiz: "Start Cybersecurity Quiz",
+                sec_topic1_t: "CIA Triad Principles",
+                sec_topic1_d: "Confidentiality, Integrity, and Availability form the foundation of any secure system.",
+                sec_topic2_t: "Cryptography Basics",
+                sec_topic2_d: "Differences between Symmetric key encryption and Asymmetric RSA encryption.",
+                sec_topic3_t: "Firewalls & Network Security",
+                sec_topic3_d: "Filtering incoming and outgoing network traffic to block unauthorized access.",
+                sec_quiz_title: "Quick Cybersecurity Quiz",
+                footer_text: "TechAtlas Project © 2026 - Web Course College Project"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        // Toggle Language Function
+        function toggleLanguage() {
+            currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
+            
+            // Toggle body font family
+            if (currentLang === 'ar') {
+                document.body.classList.remove('lang-en');
+                document.body.classList.add('lang-ar');
+                document.getElementById('lang-btn-text').innerText = 'English';
+            } else {
+                document.body.classList.remove('lang-ar');
+                document.body.classList.add('lang-en');
+                document.getElementById('lang-btn-text').innerText = 'عربي';
+            }
+
+            // Update all i18n text nodes
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+        }
+
+        // Tab Switcher Function
+        function switchTab(tabId) {
+            ['home', 'networking', 'cybersecurity'].forEach(id => {
+                const tabEl = document.getElementById('tab-' + id);
+                const navBtn = document.getElementById('nav-' + id);
+                if (id === tabId) {
+                    tabEl.classList.remove('hidden');
+                    navBtn.className = "px-4 py-1.5 rounded-lg text-sm font-semibold transition-all bg-brand-600 text-white shadow";
+                } else {
+                    tabEl.classList.add('hidden');
+                    navBtn.className = "px-4 py-1.5 rounded-lg text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-700/50";
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Quiz Logic
+        function startQuiz(type) {
+            const quizContainer = document.getElementById(`quiz-${type}`);
+            const quizContent = document.getElementById(`${type === 'networking' ? 'net' : 'sec'}-quiz-content`);
+            quizContainer.classList.remove('hidden');
+
+            if (type === 'networking') {
+                quizContent.innerHTML = `
+                    <div class="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <p class="font-bold text-white">س1: كم عدد طبقات نموذج OSI؟ / Q1: How many layers are in the OSI model?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-2 space-x-reverse cursor-pointer"><input type="radio" name="q1" value="5" class="accent-brand-500"> <span>5</span></label>
+                            <label class="flex items-center space-x-2 space-x-reverse cursor-pointer"><input type="radio" name="q1" value="7" class="accent-brand-500"> <span>7 (إجابة صحيحة)</span></label>
+                            <label class="flex items-center space-x-2 space-x-reverse cursor-pointer"><input type="radio" name="q1" value="4" class="accent-brand-500"> <span>4</span></label>
+                        </div>
+                    </div>
+                `;
+            } else {
+                quizContent.innerHTML = `
+                    <div class="space-y-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <p class="font-bold text-white">س1: إلى ماذا ترمز حرف C في مثلث CIA؟ / Q1: What does 'C' stand for in CIA triad?</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-2 space-x-reverse cursor-pointer"><input type="radio" name="sq1" value="c" class="accent-emerald-500"> <span>Confidentiality / السرية (إجابة صحيحة)</span></label>
+                            <label class="flex items-center space-x-2 space-x-reverse cursor-pointer"><input type="radio" name="sq1" value="a" class="accent-emerald-500"> <span>Control / التحكم</span></label>
+                            <label class="flex items-center space-x-2 space-x-reverse cursor-pointer"><input type="radio" name="sq1" value="b" class="accent-emerald-500"> <span>Connection / الاتصال</span></label>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Three.js 3D Interactive Canvas Setup
+        window.onload = function() {
+            const container = document.getElementById('home-3d-canvas');
+            if (!container) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // Create 3D Tech Cube Object
+            const geometry = new THREE.BoxGeometry(2, 2, 2);
+            const materials = [
+                new THREE.MeshBasicMaterial({ color: 0x0ea5e9, wireframe: true }),
+                new THREE.MeshBasicMaterial({ color: 0x10b981, wireframe: true }),
+                new THREE.MeshBasicMaterial({ color: 0x6366f1, wireframe: true }),
+                new THREE.MeshBasicMaterial({ color: 0x3b82f6, wireframe: true }),
+                new THREE.MeshBasicMaterial({ color: 0x14b8a6, wireframe: true }),
+                new THREE.MeshBasicMaterial({ color: 0xf59e0b, wireframe: true })
+            ];
+            const cube = new THREE.Mesh(geometry, materials);
+            scene.add(cube);
+
+            // Inner solid glowing sphere
+            const innerGeo = new THREE.SphereGeometry(0.8, 16, 16);
+            const innerMat = new THREE.MeshBasicMaterial({ color: 0x0ea5e9 });
+            const innerSphere = new THREE.Mesh(innerGeo, innerMat);
+            scene.add(innerSphere);
+
+            camera.position.z = 5;
+
+            // Drag Controls Interaction
+            let isDragging = false;
+            let previousMousePosition = { x: 0, y: 0 };
+
+            container.addEventListener('mousedown', () => isDragging = true);
+            container.addEventListener('mouseup', () => isDragging = false);
+            container.addEventListener('mouseleave', () => isDragging = false);
+
+            container.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const deltaMove = {
+                        x: e.clientX - previousMousePosition.x,
+                        y: e.clientY - previousMousePosition.y
+                    };
+                    cube.rotation.y += deltaMove.x * 0.01;
+                    cube.rotation.x += deltaMove.y * 0.01;
+                }
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+
+            // Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+                if (!isDragging) {
+                    cube.rotation.x += 0.005;
+                    cube.rotation.y += 0.008;
+                }
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Resize listener
+            window.addEventListener('resize', () => {
+                if (!container) return;
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        };
+    </script>
+</body>
+</html>
