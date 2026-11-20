@@ -1,0 +1,82 @@
+
+/* Tablet */
+
+@media (max-width: 1024px) {
+
+    .fields-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 44px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 45px 5%;
+        gap: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .careers-grid,
+    .about-grid,
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .fields-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+
+    .logo img {
+        width: 130px;
+    }
+}
