@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>الكورسات | TechAtlas</title>
+
+    <link rel="icon" href="../assets/icons/favicon.ico">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/courses.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="../index.html" class="logo">
+
+                <img src="../assets/images/logo-light1.png"
+                     alt="TechAtlas"
+                     id="site-logo">
+
+            </a>
+
+            <ul class="nav-links">
+
+                <li><a href="../index.html">الرئيسية</a></li>
+
+                <li><a href="fields.html">المجالات</a></li>
+
+                <li><a href="courses.html" class="active">الكورسات</a></li>
+
+                <li><a href="encyclopedia.html">الموسوعة</a></li>
+
+                <li><a href="about.html">عن المشروع</a></li>
+
+            </ul>
+
+            <button id="theme-toggle"
+                    type="button"
+                    aria-label="تغيير وضع الألوان">
+                🌙
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- Page Introduction -->
+
+        <section class="page-intro">
+
+            <div class="breadcrumb">
+
+                <a href="../index.html">الرئيسية</a>
+                <span>/</span>
+                <span>الكورسات</span>
+
+            </div>
+
+            <h1>مكتبة الكورسات</h1>
+
+            <p>
+                تعلم المهارات التقنية التي تحتاجها في مسارك المهني
+                من خلال مناهج منظمة ودروس تفاعلية.
+            </p>
+
+        </section>
+
+
+        <!-- Courses Library -->
+
+        <section class="fields course-library">
+
+            <!-- Search and Filters -->
+
+            <div class="library-controls">
+
+                <input type="search"
+                       id="course-search"
+                       aria-label="البحث عن كورس"
+                       placeholder="ابحث عن كورس...">
+
+                <div class="course-filters">
+
+                    <button type="button"
+                            class="filter-btn active"
+                            data-filter="all">
+                        الكل
+                    </button>
+
+                    <button type="button"
+                            class="filter-btn"
+                            data-filter="security">
+                        الأمن
+                    </button>
+
+                    <button type="button"
+                            class="filter-btn"
+                            data-filter="infrastructure">
+                        البنية التحتية
+                    </button>
+
+                    <button type="button"
+                            class="filter-btn"
+                            data-filter="data">
+                        البيانات
+                    </button>
+
+                </div>
+
+            </div>
+
+            <p id="results-count" aria-live="polite"></p>
+
+
+            <!-- Course Cards -->
+
+            <div class="fields-grid">
+
+                <!-- Cybersecurity Fundamentals -->
+
+                <a href="../courses/cybersecurity/index.html"
+                   class="field-card"
+                   data-category="security">
+
+                    <img src="../assets/icons/cybersecurity.png"
+                         alt="">
+
+                    <h3>أساسيات الأمن السيبراني</h3>
+
+                    <span>Cybersecurity Fundamentals</span>
+
+                    <p>
+                        تعلم المفاهيم الأمنية والتهديدات الرقمية
+                        وأساليب حماية الأنظمة والمعلومات.
+                    </p>
+
+                    <span class="card-link">
+                        ابدأ التعلم ←
+                    </span>
+
+                </a>
+
+
+                <!-- Computer Networks -->
+
+                <a href="../courses/networking/index.html"
+                   class="field-card"
+                   data-category="infrastructure">
+
+                    <img src="../assets/icons/networking.png"
+                         alt="">
+
+                    <h3>الشبكات</h3>
+
+                    <span>Computer Networks</span>
+
+                    <p>
+                        افهم كيفية اتصال الأجهزة
+                        وانتقال البيانات عبر الشبكات.
+                    </p>
+
+                    <span class="card-link">
+                        ابدأ التعلم ←
+                    </span>
+
+                </a>
+
+
+                <!-- Databases -->
+
+                <a href="../courses/databases/index.html"
+                   class="field-card"
+                   data-category="data">
+
+                    <img src="../assets/icons/databases.png"
+                         alt="">
+
+                    <h3>قواعد البيانات</h3>
+
+                    <span>Databases</span>
+
+                    <p>
+                        تعلم كيفية تخزين البيانات
+                        وتنظيمها واسترجاعها وإدارتها.
+                    </p>
+
+                    <span class="card-link">
+                        ابدأ التعلم ←
+                    </span>
+
+                </a>
+
+
+                <!-- Operating Systems -->
+
+                <a href="../courses/operating-systems/index.html"
+                   class="field-card"
+                   data-category="infrastructure">
+
+                    <img src="../assets/icons/operating-systems.png"
+                         alt="">
+
+                    <h3>أنظمة التشغيل</h3>
+
+                    <span>Operating Systems</span>
+
+                    <p>
+                        اكتشف كيف يدير نظام التشغيل
+                        الذاكرة والعمليات وموارد الحاسوب.
+                    </p>
+
+                    <span class="card-link">
+                        ابدأ التعلم ←
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- Empty Search Results -->
+
+            <p id="no-results" hidden>
+                لا توجد كورسات مطابقة للبحث.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            <p lang="en" dir="ltr">
+                &copy; 2026 TechAtlas. All Rights Reserved.
+            </p>
+
+            <p>جميع الحقوق محفوظة</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript Files -->
+
+    <script src="../js/main.js"></script>
+    <script src="../js/courses.js"></script>
+
+</body>
+
+</html>

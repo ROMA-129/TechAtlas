@@ -1,0 +1,170 @@
+/* ===================================
+   TechAtlas — Fields Library
+   =================================== */
+
+
+/* 1. Introduction */
+
+.fields-intro {
+    max-width: 1280px;
+    margin: auto;
+    padding: 35px 5% 20px;
+    text-align: center;
+}
+
+.fields-intro h1 {
+    font-size: clamp(30px, 5vw, 48px);
+    color: var(--primary);
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+
+.fields-intro p {
+    max-width: 650px;
+    margin: auto;
+    color: var(--text-secondary);
+    font-size: 17px;
+}
+
+
+/* 2. Breadcrumb */
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 35px;
+
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.breadcrumb a {
+    color: var(--primary);
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+
+/* 3. Active Navigation */
+
+.nav-links a.active {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 5px;
+}
+
+
+/* 4. Fields Library */
+
+.fields-library {
+    padding-top: 30px;
+    min-height: 400px;
+}
+
+.fields-grid.technical-fields-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+/* 5. Search */
+
+.search-container {
+    max-width: 750px;
+    margin: 0 auto 30px;
+}
+
+#field-search {
+    width: 100%;
+
+    padding: 15px 20px;
+
+    background: var(--surface);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    font-family: inherit;
+    font-size: 16px;
+}
+
+#field-search::placeholder {
+    color: var(--text-secondary);
+}
+
+#field-search:focus {
+    outline: 2px solid var(--primary);
+}
+
+
+/* 6. Programming Symbol */
+
+.field-symbol {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--surface-secondary);
+    color: var(--primary);
+
+    border-radius: 16px;
+    margin-bottom: 20px;
+
+    font-family: monospace;
+    font-size: 30px;
+    font-weight: 800;
+
+    transition: transform 0.3s;
+}
+
+.field-card:hover .field-symbol {
+    transform: scale(1.1);
+}
+
+
+/* 7. Search Results */
+
+#fields-count {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+#no-fields {
+    text-align: center;
+    padding: 50px;
+    color: var(--text-secondary);
+}
+
+.fields-library [hidden] {
+    display: none;
+}
+
+
+/* 8. Responsive */
+
+@media (max-width: 1024px) {
+
+    .fields-grid.technical-fields-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .fields-grid.technical-fields-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fields-intro p {
+        font-size: 15px;
+    }
+
+}

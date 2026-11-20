@@ -1,0 +1,154 @@
+/* ===================================
+   TechAtlas — Courses Library
+   =================================== */
+
+/* 1. Page Introduction */
+
+.page-intro {
+    max-width: 1280px;
+    margin: auto;
+    padding: 35px 5% 20px;
+    text-align: center;
+}
+
+
+/* 2. Breadcrumb */
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 35px;
+    text-align: right;
+}
+
+.breadcrumb a {
+    color: var(--primary);
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+
+/* 3. Page Title */
+
+.page-intro h1 {
+    font-size: clamp(30px, 5vw, 48px);
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.page-intro p {
+    max-width: 650px;
+    margin: auto;
+    font-size: 17px;
+    color: var(--text-secondary);
+}
+
+
+/* 4. Active Navigation */
+
+.nav-links a.active {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 5px;
+}
+
+
+/* 5. Courses Library */
+
+.course-library {
+    padding-top: 35px;
+    min-height: 400px;
+}
+
+/* 6. Library Controls */
+
+.library-controls {
+    max-width: 750px;
+    margin: 0 auto 25px;
+}
+
+
+/* Search Input */
+
+#course-search {
+    width: 100%;
+    padding: 15px 20px;
+
+    background: var(--surface);
+    color: var(--text);
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    transition: border-color 0.3s;
+}
+
+#course-search::placeholder {
+    color: var(--text-secondary);
+}
+
+#course-search:focus {
+    outline: 2px solid var(--primary);
+}
+
+
+/* Category Filters */
+
+.course-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.filter-btn {
+    padding: 8px 22px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+    color: var(--text);
+
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.filter-btn.active {
+    background: #6845C5;
+    color: white;
+    border-color: #6845C5;
+}
+
+
+/* Search Results */
+
+#results-count {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+#no-results {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 50px 20px;
+}
+
+.course-library [hidden] {
+    display: none;
+}

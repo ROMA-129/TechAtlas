@@ -1,0 +1,668 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Computer Networks | TechAtlas</title>
+
+    <link rel="icon" href="../../assets/icons/favicon.ico">
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/curriculum.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+
+</head>
+
+<body data-course="networking">
+
+    <!-- Navigation Bar -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="../../index.html" class="logo">
+                <img src="../../assets/images/logo-light1.png"
+                     alt="TechAtlas"
+                     id="site-logo">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="../../index.html">الرئيسية</a></li>
+                <li><a href="../../pages/fields.html">المجالات</a></li>
+                <li><a href="../../pages/courses.html">الكورسات</a></li>
+                <li><a href="../../pages/encyclopedia.html">الموسوعة</a></li>
+                <li><a href="../../pages/about.html">عن المشروع</a></li>
+            </ul>
+
+            <button id="theme-toggle"
+                    type="button"
+                    aria-label="تغيير وضع الألوان">
+                🌙
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <main class="curriculum-container">
+
+        <!-- Breadcrumb -->
+
+        <div class="breadcrumb">
+            <a href="../../index.html">الرئيسية</a>
+            <span>/</span>
+            <a href="../../pages/courses.html">الكورسات</a>
+            <span>/</span>
+            <span>الشبكات</span>
+        </div>
+
+
+        <!-- Course Introduction -->
+
+        <section class="course-intro">
+
+            <img src="../../assets/icons/networking.png"
+                 alt=""
+                 class="course-icon">
+
+            <h1>Computer Networks</h1>
+
+            <h2>شبكات الحاسوب</h2>
+
+            <p>
+                تعلم كيف تتصل الأجهزة ببعضها، وكيف تنتقل البيانات
+                عبر الشبكات، وافهم البروتوكولات والتقنيات التي
+                تجعل الإنترنت يعمل.
+            </p>
+
+            <div class="course-meta">
+
+                <span>Beginner to Intermediate</span>
+
+                <span>6 Chapters</span>
+
+                <span>22 Lessons</span>
+
+                <span>Practical Examples</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- Course Overview -->
+
+        <section class="course-overview">
+
+            <div class="overview-card">
+
+                <h2>ماذا ستتعلم؟</h2>
+
+                <ul>
+                    <li>أساسيات شبكات الحاسوب.</li>
+                    <li>نماذج OSI وTCP/IP.</li>
+                    <li>عناوين IP وتقسيم الشبكات.</li>
+                    <li>طريقة عمل أجهزة الشبكات.</li>
+                    <li>بروتوكولات الاتصال.</li>
+                    <li>المبادئ الأساسية لأمن الشبكات.</li>
+                </ul>
+
+            </div>
+
+            <div class="overview-card">
+
+                <h2>متطلبات الكورس</h2>
+
+                <ul>
+                    <li>معرفة أساسية باستخدام الحاسوب.</li>
+                    <li>لا تحتاج خبرة سابقة في الشبكات.</li>
+                    <li>الرغبة في التعلم والتطبيق العملي.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- Progress -->
+
+        <section class="progress-card">
+
+            <div class="progress-header">
+
+                <h2>تقدمك في الكورس</h2>
+
+                <span id="progress-percent">0%</span>
+
+            </div>
+
+            <div class="progress-track"
+                 role="progressbar"
+                 aria-label="التقدم في الكورس"
+                 aria-valuemin="0"
+                 aria-valuemax="100"
+                 aria-valuenow="0">
+
+                <div id="progress-fill"></div>
+
+            </div>
+
+            <div class="progress-details">
+
+                <p id="progress-text">
+                    0 من 22 درس مكتمل
+                </p>
+
+                <button id="reset-progress" type="button">
+                    إعادة ضبط التقدم
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Curriculum -->
+
+        <section class="curriculum">
+
+            <h2 class="curriculum-heading">
+                المنهج الدراسي
+            </h2>
+
+            <div class="chapters">
+
+                <!-- Chapter 1 -->
+
+                <details class="chapter" open>
+
+                    <summary class="chapter-header">
+
+                        <span class="chapter-number">1</span>
+
+                        <div class="chapter-info">
+                            <h3>Network Fundamentals</h3>
+                            <p>أساسيات الشبكات — 4 دروس</p>
+                        </div>
+
+                        <span class="chapter-arrow">⌄</span>
+
+                    </summary>
+
+                    <div class="lesson-list">
+
+                        <a href="lessons/introduction.html"
+                           class="lesson-item"
+                           data-lesson="introduction">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Introduction to Networks</h4>
+                                <p>مقدمة في شبكات الحاسوب</p>
+                            </div>
+
+                            <span class="lesson-action">
+                                ابدأ الدرس ←
+                            </span>
+
+                        </a>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="network-types">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Network Types</h4>
+                                <p>أنواع الشبكات</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="network-topologies">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Network Topologies</h4>
+                                <p>أشكال توصيل الشبكات</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="transmission-media">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Transmission Media</h4>
+                                <p>وسائط نقل البيانات</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+
+                <!-- Chapter 2 -->
+
+                <details class="chapter">
+
+                    <summary class="chapter-header">
+
+                        <span class="chapter-number">2</span>
+
+                        <div class="chapter-info">
+                            <h3>Network Models</h3>
+                            <p>نماذج الشبكات — 3 دروس</p>
+                        </div>
+
+                        <span class="chapter-arrow">⌄</span>
+
+                    </summary>
+
+                    <div class="lesson-list">
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="osi-model">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>OSI Model</h4>
+                                <p>نموذج الطبقات السبع</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="tcp-ip-model">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>TCP/IP Model</h4>
+                                <p>نموذج بروتوكولات الإنترنت</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="encapsulation">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Encapsulation</h4>
+                                <p>تغليف البيانات</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+
+                <!-- Chapter 3 -->
+
+                <details class="chapter">
+
+                    <summary class="chapter-header">
+
+                        <span class="chapter-number">3</span>
+
+                        <div class="chapter-info">
+                            <h3>Network Addressing</h3>
+                            <p>عناوين الشبكات — 4 دروس</p>
+                        </div>
+
+                        <span class="chapter-arrow">⌄</span>
+
+                    </summary>
+
+                    <div class="lesson-list">
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="binary-numbers">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Binary Numbers</h4>
+                                <p>النظام الثنائي</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="ipv4">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>IPv4 Addressing</h4>
+                                <p>عناوين IPv4</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="subnetting">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Subnetting</h4>
+                                <p>تقسيم الشبكات</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="ipv6">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>IPv6 Addressing</h4>
+                                <p>عناوين IPv6</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+
+                <!-- Chapter 4 -->
+
+                <details class="chapter">
+
+                    <summary class="chapter-header">
+
+                        <span class="chapter-number">4</span>
+
+                        <div class="chapter-info">
+                            <h3>Network Devices</h3>
+                            <p>أجهزة الشبكات — 3 دروس</p>
+                        </div>
+
+                        <span class="chapter-arrow">⌄</span>
+
+                    </summary>
+
+                    <div class="lesson-list">
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="hubs-switches">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Hubs and Switches</h4>
+                                <p>أجهزة الربط والتبديل</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="routers">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Routers</h4>
+                                <p>أجهزة التوجيه</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="wireless">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Wireless Access Points</h4>
+                                <p>نقاط الاتصال اللاسلكية</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+
+                <!-- Chapter 5 -->
+
+                <details class="chapter">
+
+                    <summary class="chapter-header">
+
+                        <span class="chapter-number">5</span>
+
+                        <div class="chapter-info">
+                            <h3>Network Protocols</h3>
+                            <p>بروتوكولات الشبكات — 5 دروس</p>
+                        </div>
+
+                        <span class="chapter-arrow">⌄</span>
+
+                    </summary>
+
+                    <div class="lesson-list">
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="tcp-udp">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>TCP and UDP</h4>
+                                <p>بروتوكولات النقل</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="dns">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>DNS</h4>
+                                <p>نظام أسماء النطاقات</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="dhcp">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>DHCP</h4>
+                                <p>التوزيع التلقائي لعناوين IP</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="http-https">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>HTTP and HTTPS</h4>
+                                <p>بروتوكولات الويب</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="icmp">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>ICMP</h4>
+                                <p>رسائل التحكم وتشخيص الاتصال</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+
+                <!-- Chapter 6 -->
+
+                <details class="chapter">
+
+                    <summary class="chapter-header">
+
+                        <span class="chapter-number">6</span>
+
+                        <div class="chapter-info">
+                            <h3>Network Security</h3>
+                            <p>أمن الشبكات — 3 دروس</p>
+                        </div>
+
+                        <span class="chapter-arrow">⌄</span>
+
+                    </summary>
+
+                    <div class="lesson-list">
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="firewalls">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Firewalls</h4>
+                                <p>جدران الحماية</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="vpn">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>VPN</h4>
+                                <p>الشبكات الخاصة الافتراضية</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                        <div class="lesson-item unavailable"
+                             data-lesson="security-basics">
+
+                            <span class="lesson-status">○</span>
+
+                            <div class="lesson-info">
+                                <h4>Network Security Basics</h4>
+                                <p>أساسيات تأمين الشبكات</p>
+                            </div>
+
+                            <span class="lesson-action">قريبًا</span>
+
+                        </div>
+
+                    </div>
+
+                </details>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            <p lang="en" dir="ltr">
+                &copy; 2026 TechAtlas. All Rights Reserved.
+            </p>
+
+            <p>جميع الحقوق محفوظة</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/curriculum.js"></script>
+
+</body>
+
+</html>
