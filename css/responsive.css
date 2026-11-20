@@ -1,14 +1,15 @@
 
-/* Tablet */
+/* ===================================
+   TechAtlas — Shared Responsive Styles
+   =================================== */
+
+
+/* 1. Tablet */
 
 @media (max-width: 1024px) {
 
     .fields-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .hero-content h1 {
-        font-size: 44px;
     }
 
     .nav-links {
@@ -17,7 +18,7 @@
 }
 
 
-/* Mobile */
+/* 2. Mobile */
 
 @media (max-width: 768px) {
 
@@ -32,31 +33,7 @@
         flex-wrap: wrap;
     }
 
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 45px 5%;
-        gap: 30px;
-    }
-
-    .hero-content h1 {
-        font-size: 36px;
-    }
-
-    .hero-content p {
-        font-size: 16px;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .hero-image {
-        width: 100%;
-    }
-
     .careers-grid,
-    .about-grid,
     .footer-content {
         grid-template-columns: 1fr;
     }
@@ -66,14 +43,13 @@
     }
 }
 
+
+/* 3. Small Screens */
+
 @media (max-width: 480px) {
 
     .fields-grid {
         grid-template-columns: 1fr;
-    }
-
-    .hero-content h1 {
-        font-size: 30px;
     }
 
     .logo img {

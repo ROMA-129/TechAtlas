@@ -1,14 +1,12 @@
 
 /* ===================================
-   TechAtlas — Main Stylesheet
+   TechAtlas — Shared Styles
    =================================== */
-
-/* Arabic Font */
 
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
 
 
-/* 1. Light Mode Colors */
+/* 1. Light Mode */
 
 :root {
     --background: #F0E9FA;
@@ -28,7 +26,7 @@
 }
 
 
-/* 2. Dark Mode Colors */
+/* 2. Dark Mode */
 
 [data-theme="dark"] {
     --background: #100D24;
@@ -136,108 +134,7 @@ button {
 }
 
 
-/* 5. Hero Section */
-
-.hero {
-    max-width: 1280px;
-    margin: auto;
-    min-height: 400px;
-    padding: 35px 5%;
-
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.hero-content {
-    flex: 1;
-}
-
-.hero-content h1 {
-    font-size: 58px;
-    font-weight: 800;
-    line-height: 1.4;
-    margin-bottom: 24px;
-
-    background: linear-gradient(
-        120deg,
-        var(--primary),
-        #9380E8,
-        #42C9D9
-    );
-
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-.hero-content p {
-    color: var(--text-secondary);
-    font-size: 19px;
-    margin-bottom: 32px;
-    max-width: 530px;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-.hero-image {
-    flex: 1;
-}
-
-.hero-image img {
-    width: 100%;
-    border-radius: 24px;
-}
-
-/* Hero Image — Blend Edges */
-
-.hero-image img {
-    border-radius: 0;
-
-    -webkit-mask-image: radial-gradient(
-        ellipse at center,
-        black 85%,
-        transparent 100%
-    );
-
-    mask-image: radial-gradient(
-        ellipse at center,
-        black 65%,
-        transparent 100%
-    );
-}
-
-
-/* Hero Image — Floating Animation */
-
-.hero-image {
-    animation: floating 5s ease-in-out infinite;
-}
-
-@keyframes floating {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-}
-
-
-/* Accessibility — Reduced Motion */
-
-@media (prefers-reduced-motion: reduce) {
-    .hero-image {
-        animation: none;
-    }
-}
-
-/* 6. Buttons */
+/* 5. Shared Buttons */
 
 .btn-primary,
 .btn-secondary {
@@ -270,7 +167,7 @@ button {
 }
 
 
-/* 7. Shared Section Settings */
+/* 6. Shared Sections */
 
 .fields,
 .careers,
@@ -302,7 +199,7 @@ button {
 }
 
 
-/* 8. Learning Fields */
+/* 7. Learning Field Cards */
 
 .fields-grid {
     display: grid;
@@ -313,8 +210,11 @@ button {
 .field-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 28px 20px;
+    border-radius: 24px;
+    padding: 30px 20px;
+
+    position: relative;
+    overflow: hidden;
 
     display: flex;
     flex-direction: column;
@@ -322,15 +222,19 @@ button {
 
     text-align: center;
     box-shadow: var(--shadow);
-    transition: all 0.3s;
+
+    transition: transform 0.3s,
+                box-shadow 0.3s,
+                border-color 0.3s;
 }
 
 .field-card img {
-    width: 85px;
-    height: 85px;
+    width: 90px;
+    height: 90px;
     object-fit: contain;
     border-radius: 16px;
     margin-bottom: 20px;
+    transition: transform 0.3s;
 }
 
 .field-card h3 {
@@ -356,22 +260,6 @@ button {
     margin-top: auto;
 }
 
-.field-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary);
-}
-
-/* Learning Fields — Visual Improvements */
-
-.field-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 24px;
-    padding: 30px 20px;
-    transition: transform 0.3s,
-                box-shadow 0.3s,
-                border-color 0.3s;
-}
 
 /* Individual Course Colors */
 
@@ -391,6 +279,7 @@ button {
     --field-color: #818CF8;
 }
 
+
 /* Colored Top Line */
 
 .field-card::before {
@@ -403,19 +292,9 @@ button {
     background: var(--field-color);
 }
 
-/* Icon Animation */
-
-.field-card img {
-    width: 90px;
-    height: 90px;
-    transition: transform 0.3s;
-}
-
 .field-card:hover img {
     transform: scale(1.1);
 }
-
-/* Card Hover */
 
 .field-card:hover {
     transform: translateY(-8px);
@@ -423,7 +302,8 @@ button {
     box-shadow: 0 10px 30px rgba(104, 69, 197, 0.15);
 }
 
-/* 9. Career Paths */
+
+/* 8. Career Cards */
 
 .careers-grid {
     display: grid;
@@ -486,34 +366,7 @@ button {
 }
 
 
-/* 10. About Section */
-
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-.about-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 32px 24px;
-    border-radius: 20px;
-    text-align: center;
-}
-
-.about-card h3 {
-    color: var(--primary);
-    font-size: 25px;
-    margin-bottom: 14px;
-}
-
-.about-card p {
-    color: var(--text-secondary);
-}
-
-
-/* 11. Footer */
+/* 9. Footer */
 
 .footer {
     background: #100D1D;
@@ -579,4 +432,3 @@ button {
     background: #090711;
     border-top: 1px solid #302747;
 }
-

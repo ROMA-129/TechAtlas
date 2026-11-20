@@ -1,0 +1,758 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Introduction to Networks | TechAtlas</title>
+
+    <link rel="icon"
+          href="../../../assets/icons/favicon.ico">
+
+    <link rel="stylesheet"
+          href="../../../css/main.css">
+
+    <link rel="stylesheet"
+          href="../../../css/lesson.css">
+
+    <link rel="stylesheet"
+          href="../../../css/responsive.css">
+
+</head>
+
+<body data-course="networking"
+      data-lesson="introduction">
+
+    <!-- Navigation Bar -->
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <a href="../../../index.html" class="logo">
+
+                <img src="../../../assets/images/logo-light1.png"
+                     alt="TechAtlas"
+                     id="site-logo">
+
+            </a>
+
+            <ul class="nav-links">
+
+                <li><a href="../../../index.html">الرئيسية</a></li>
+
+                <li><a href="../../../pages/fields.html">المجالات</a></li>
+
+                <li><a href="../../../pages/courses.html">الكورسات</a></li>
+
+                <li><a href="../../../pages/encyclopedia.html">الموسوعة</a></li>
+
+                <li><a href="../../../pages/about.html">عن المشروع</a></li>
+
+            </ul>
+
+            <button id="theme-toggle"
+                    type="button"
+                    aria-label="تغيير وضع الألوان">
+                🌙
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <main class="lesson-layout">
+
+        <!-- Sidebar -->
+
+        <aside class="lesson-sidebar">
+
+            <h2>Computer Networks</h2>
+
+            <a href="../index.html"
+               class="sidebar-link">
+
+                ← العودة إلى المنهج
+
+            </a>
+
+            <p class="sidebar-heading">
+                Chapter 1 — Network Fundamentals
+            </p>
+
+            <a href="introduction.html"
+               class="sidebar-link active"
+               aria-current="page">
+
+                1. Introduction to Networks
+
+            </a>
+
+            <span class="sidebar-link unavailable">
+                2. Network Types
+            </span>
+
+            <span class="sidebar-link unavailable">
+                3. Network Topologies
+            </span>
+
+            <span class="sidebar-link unavailable">
+                4. Transmission Media
+            </span>
+
+        </aside>
+
+
+        <!-- Lesson Content -->
+
+        <article class="lesson-content">
+
+            <div class="breadcrumb">
+
+                <a href="../../../index.html">الرئيسية</a>
+
+                <span>/</span>
+
+                <a href="../../../pages/courses.html">
+                    الكورسات
+                </a>
+
+                <span>/</span>
+
+                <a href="../index.html">الشبكات</a>
+
+                <span>/</span>
+
+                <span>الدرس الأول</span>
+
+            </div>
+
+
+            <!-- Lesson Header -->
+
+            <header class="lesson-header">
+
+                <span class="lesson-label">
+                    Chapter 1 · Lesson 1
+                </span>
+
+                <h1>Introduction to Networks</h1>
+
+                <h2>مقدمة في شبكات الحاسوب</h2>
+
+                <p>
+                    في هذا الدرس سنتعرف على مفهوم الشبكات،
+                    ومكوناتها، وكيف تتواصل الأجهزة مع بعضها.
+                </p>
+
+            </header>
+
+
+            <!-- Learning Objectives -->
+
+            <section class="lesson-section">
+
+                <h2>أهداف الدرس</h2>
+
+                <ul>
+                    <li>فهم معنى Computer Network.</li>
+                    <li>التعرف على مكونات الشبكة.</li>
+                    <li>فهم أسباب استخدام الشبكات.</li>
+                    <li>التمييز بين الشبكة والإنترنت.</li>
+                    <li>فهم نموذج Client and Server.</li>
+                </ul>
+
+            </section>
+
+
+            <!-- Section 1 -->
+
+            <section class="lesson-section">
+
+                <h2>1. ما هي الشبكة؟</h2>
+
+                <p>
+                    تخيل أن لديك جهازين حاسوب، وتريد إرسال
+                    ملف من الجهاز الأول إلى الجهاز الثاني.
+                </p>
+
+                <p>
+                    بدلًا من نقل الملف باستخدام وحدة تخزين،
+                    يمكن ربط الجهازين باستخدام وسيلة اتصال
+                    تسمح لهما بتبادل البيانات.
+                </p>
+
+                <div class="definition" lang="en" dir="ltr">
+
+                    A computer network is a group of
+                    interconnected devices that communicate
+                    and share data or resources.
+
+                </div>
+
+                <p>
+                    شبكة الحاسوب هي مجموعة من الأجهزة
+                    المتصلة ببعضها، بهدف تبادل البيانات
+                    ومشاركة الموارد والخدمات.
+                </p>
+
+
+                <!-- Visual Diagram -->
+
+                <figure class="visual-box">
+
+                    <svg viewBox="0 0 600 230"
+                         role="img"
+                         aria-label="جهازان يتبادلان البيانات عبر اتصال شبكي"
+                         xmlns="http://www.w3.org/2000/svg">
+
+                        <!-- Computer A -->
+
+                        <rect x="30" y="45"
+                              width="150" height="100"
+                              rx="12" fill="#6845C5"/>
+
+                        <rect x="45" y="60"
+                              width="120" height="68"
+                              rx="5" fill="#100D24"/>
+
+                        <path d="M105 145 V170 M70 170 H140"
+                              stroke="#A78BFA"
+                              stroke-width="6"/>
+
+                        <text x="105" y="208"
+                              text-anchor="middle"
+                              fill="currentColor"
+                              font-size="18"
+                              direction="ltr">
+                            Device A
+                        </text>
+
+
+                        <!-- Computer B -->
+
+                        <rect x="420" y="45"
+                              width="150" height="100"
+                              rx="12" fill="#6845C5"/>
+
+                        <rect x="435" y="60"
+                              width="120" height="68"
+                              rx="5" fill="#100D24"/>
+
+                        <path d="M495 145 V170 M460 170 H530"
+                              stroke="#A78BFA"
+                              stroke-width="6"/>
+
+                        <text x="495" y="208"
+                              text-anchor="middle"
+                              fill="currentColor"
+                              font-size="18"
+                              direction="ltr">
+                            Device B
+                        </text>
+
+
+                        <!-- Connection -->
+
+                        <path d="M180 95 H420"
+                              stroke="#42C9D9"
+                              stroke-width="4"
+                              stroke-dasharray="8 5"/>
+
+
+                        <!-- Moving Data -->
+
+                        <circle cx="190" cy="95"
+                                r="9" fill="#42C9D9">
+
+                            <animate
+                                attributeName="cx"
+                                values="190;410;190"
+                                dur="4s"
+                                repeatCount="indefinite"/>
+
+                        </circle>
+
+                        <text x="300" y="65"
+                              text-anchor="middle"
+                              fill="currentColor"
+                              font-size="16"
+                              direction="ltr">
+                            Data
+                        </text>
+
+                    </svg>
+
+                    <figcaption class="visual-caption">
+                        اتصال بين جهازين يسمح بتبادل البيانات.
+                    </figcaption>
+
+                </figure>
+
+                <div class="note-box">
+
+                    <strong>ملحوظة</strong>
+
+                    <p>
+                        لا يشترط أن تكون الأجهزة المتصلة
+                        حواسيب فقط؛ يمكن أن تكون هواتف،
+                        طابعات، خوادم أو أجهزة ذكية.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- Section 2 -->
+
+            <section class="lesson-section">
+
+                <h2>2. لماذا نستخدم الشبكات؟</h2>
+
+                <ul>
+
+                    <li>
+                        <strong>Communication:</strong>
+                        التواصل بين الأشخاص والأجهزة.
+                    </li>
+
+                    <li>
+                        <strong>Data Sharing:</strong>
+                        مشاركة الملفات والمعلومات.
+                    </li>
+
+                    <li>
+                        <strong>Resource Sharing:</strong>
+                        مشاركة الموارد مثل الطابعات.
+                    </li>
+
+                    <li>
+                        <strong>Remote Access:</strong>
+                        الوصول إلى الأنظمة عن بعد.
+                    </li>
+
+                    <li>
+                        <strong>Internet Access:</strong>
+                        الوصول إلى خدمات الإنترنت.
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <!-- Section 3 -->
+
+            <section class="lesson-section">
+
+                <h2>3. مكونات الشبكة</h2>
+
+                <div class="table-wrapper">
+
+                    <table class="lesson-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Component</th>
+                                <th>الوظيفة</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>End Devices</td>
+                                <td>
+                                    الأجهزة التي ترسل أو تستقبل
+                                    البيانات مثل الحاسوب والهاتف.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Switch</td>
+                                <td>
+                                    ربط الأجهزة داخل الشبكة المحلية
+                                    وتوجيه إطارات البيانات.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Router</td>
+                                <td>
+                                    ربط الشبكات المختلفة وتوجيه
+                                    حزم البيانات بينها.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Transmission Media</td>
+                                <td>
+                                    وسائل نقل البيانات السلكية
+                                    واللاسلكية.
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Protocols</td>
+                                <td>
+                                    قواعد تنظم عملية الاتصال
+                                    وتبادل البيانات.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- Section 4 -->
+
+            <section class="lesson-section">
+
+                <h2>4. Network vs. Internet</h2>
+
+                <h3>Network</h3>
+
+                <p>
+                    مجموعة أجهزة مرتبطة ببعضها،
+                    ويمكن أن تعمل دون اتصال بالإنترنت.
+                </p>
+
+                <h3>Internet</h3>
+
+                <p>
+                    شبكة عالمية تربط عددًا كبيرًا
+                    من الشبكات المستقلة باستخدام
+                    بروتوكولات الإنترنت.
+                </p>
+
+                <div class="note-box">
+
+                    <strong>مثال</strong>
+
+                    <p>
+                        عندما تتصل عدة أجهزة بجهاز Router داخل
+                        المنزل، تتكون شبكة محلية. ويمكن لبعض
+                        الخدمات المحلية أن تستمر في العمل
+                        حتى إذا انقطع اتصال الإنترنت.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- Section 5 -->
+
+            <section class="lesson-section">
+
+                <h2>5. Client and Server</h2>
+
+                <p>
+                    في نموذج العميل والخادم، يطلب جهاز
+                    أو برنامج يسمى Client خدمة معينة،
+                    ويعالج Server هذا الطلب ويرسل الاستجابة.
+                </p>
+
+                <figure class="visual-box">
+
+                    <svg viewBox="0 0 600 260"
+                         role="img"
+                         aria-label="العميل يرسل طلبًا إلى الخادم والخادم يرسل استجابة"
+                         xmlns="http://www.w3.org/2000/svg">
+
+                        <rect x="20" y="65"
+                              width="150" height="130"
+                              rx="15" fill="#6845C5"/>
+
+                        <text x="95" y="135"
+                              fill="white"
+                              text-anchor="middle"
+                              font-size="22">
+                            Client
+                        </text>
+
+                        <rect x="430" y="65"
+                              width="150" height="130"
+                              rx="15" fill="#6845C5"/>
+
+                        <text x="505" y="135"
+                              fill="white"
+                              text-anchor="middle"
+                              font-size="22">
+                            Server
+                        </text>
+
+                        <!-- Request -->
+
+                        <path d="M180 100 H418"
+                              stroke="#42C9D9"
+                              stroke-width="3"/>
+
+                        <path d="M405 92 L418 100 L405 108"
+                              fill="none"
+                              stroke="#42C9D9"
+                              stroke-width="3"/>
+
+                        <text x="300" y="85"
+                              fill="currentColor"
+                              text-anchor="middle"
+                              font-size="17">
+                            Request
+                        </text>
+
+                        <!-- Response -->
+
+                        <path d="M420 160 H182"
+                              stroke="#A78BFA"
+                              stroke-width="3"/>
+
+                        <path d="M195 152 L182 160 L195 168"
+                              fill="none"
+                              stroke="#A78BFA"
+                              stroke-width="3"/>
+
+                        <text x="300" y="190"
+                              fill="currentColor"
+                              text-anchor="middle"
+                              font-size="17">
+                            Response
+                        </text>
+
+                    </svg>
+
+                    <figcaption class="visual-caption">
+                        العميل يرسل طلبًا والخادم يرسل استجابة.
+                    </figcaption>
+
+                </figure>
+
+                <h3>مثال من الحياة اليومية</h3>
+
+                <p>
+                    عندما تفتح موقع TechAtlas، يؤدي المتصفح
+                    دور Client، ويرسل طلبًا إلى خادم الموقع.
+                    يرسل الخادم الملفات المطلوبة ليعرض
+                    المتصفح الصفحة.
+                </p>
+
+            </section>
+
+
+            <!-- Lesson Summary -->
+
+            <section class="lesson-section">
+
+                <h2>ملخص الدرس</h2>
+
+                <ul>
+                    <li>الشبكة تربط الأجهزة لتبادل البيانات.</li>
+                    <li>Switch يربط الأجهزة داخل الشبكة المحلية.</li>
+                    <li>Router يربط الشبكات المختلفة.</li>
+                    <li>الإنترنت عبارة عن شبكة من الشبكات.</li>
+                    <li>Client يطلب الخدمة وServer يقدمها.</li>
+                </ul>
+
+            </section>
+
+
+            <!-- Quiz -->
+
+            <section class="lesson-section">
+
+                <h2>اختبر فهمك</h2>
+
+
+                <!-- Question 1 -->
+
+                <div class="quiz-question"
+                     data-answer="b"
+                     data-explanation="يمكن للشبكة المحلية العمل دون الإنترنت.">
+
+                    <h3>
+                        1. هل تحتاج كل شبكة إلى الإنترنت؟
+                    </h3>
+
+                    <label>
+                        <input type="radio"
+                               name="q1"
+                               value="a">
+                        نعم، دائمًا.
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="q1"
+                               value="b">
+                        لا، يمكن أن تعمل شبكة محلية دون الإنترنت.
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="q1"
+                               value="c">
+                        نعم، إذا كان فيها جهازان فقط.
+                    </label>
+
+                    <p class="quiz-feedback"
+                       aria-live="polite"></p>
+
+                </div>
+
+
+                <!-- Question 2 -->
+
+                <div class="quiz-question"
+                     data-answer="c"
+                     data-explanation="Router يربط الشبكات المختلفة.">
+
+                    <h3>
+                        2. ما الجهاز الذي يربط الشبكات المختلفة؟
+                    </h3>
+
+                    <label>
+                        <input type="radio"
+                               name="q2"
+                               value="a">
+                        Printer
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="q2"
+                               value="b">
+                        Monitor
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="q2"
+                               value="c">
+                        Router
+                    </label>
+
+                    <p class="quiz-feedback"
+                       aria-live="polite"></p>
+
+                </div>
+
+
+                <!-- Question 3 -->
+
+                <div class="quiz-question"
+                     data-answer="a"
+                     data-explanation="Client هو الذي يطلب الخدمة.">
+
+                    <h3>
+                        3. من يرسل الطلب في نموذج Client/Server؟
+                    </h3>
+
+                    <label>
+                        <input type="radio"
+                               name="q3"
+                               value="a">
+                        Client
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="q3"
+                               value="b">
+                        Server
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="q3"
+                               value="c">
+                        Transmission Media
+                    </label>
+
+                    <p class="quiz-feedback"
+                       aria-live="polite"></p>
+
+                </div>
+
+
+                <button id="check-quiz"
+                        class="btn-primary"
+                        type="button">
+
+                    تحقق من الإجابات
+
+                </button>
+
+                <p id="quiz-result"
+                   aria-live="polite"></p>
+
+            </section>
+
+
+            <!-- Lesson Navigation -->
+
+            <div class="lesson-navigation">
+
+                <a href="../index.html"
+                   class="btn-secondary">
+
+                    العودة إلى المنهج
+
+                </a>
+
+                <button id="complete-lesson"
+                        class="btn-primary"
+                        type="button">
+
+                    إنهاء الدرس
+
+                </button>
+
+            </div>
+
+            <p id="completion-message"
+               aria-live="polite"></p>
+
+        </article>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            <p lang="en" dir="ltr">
+                &copy; 2026 TechAtlas. All Rights Reserved.
+            </p>
+
+            <p>جميع الحقوق محفوظة</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="../../../js/main.js"></script>
+
+    <script src="../../../js/lesson.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+/* ===================================
+   TechAtlas — Homepage Styles
+   =================================== */
+
+
+/* 1. Hero Section */
+
+.hero {
+    max-width: 1280px;
+    margin: auto;
+    min-height: 400px;
+    padding: 35px 5%;
+
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.hero-content h1 {
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 24px;
+
+    background: linear-gradient(
+        120deg,
+        var(--primary),
+        #9380E8,
+        #42C9D9
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-content p {
+    color: var(--text-secondary);
+    font-size: 19px;
+    margin-bottom: 32px;
+    max-width: 530px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+
+/* 2. Hero Image */
+
+.hero-image {
+    flex: 1;
+    min-width: 0;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 0;
+
+    -webkit-mask-image: radial-gradient(
+        ellipse at center,
+        black 85%,
+        transparent 100%
+    );
+
+    mask-image: radial-gradient(
+        ellipse at center,
+        black 65%,
+        transparent 100%
+    );
+}
+
+
+/* 3. Floating Animation */
+
+.hero-image {
+    animation: floating 5s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+}
+
+
+/* 4. Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-image {
+        animation: none;
+    }
+
+}
+
+
+/* 5. Technical Fields */
+
+.homepage-fields-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+/* Software Development Symbol */
+
+.field-symbol {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--surface-secondary);
+    color: var(--primary);
+
+    border-radius: 16px;
+    margin-bottom: 20px;
+
+    font-size: 30px;
+    font-weight: 800;
+    font-family: monospace;
+
+    transition: transform 0.3s;
+}
+
+.field-card:hover .field-symbol {
+    transform: scale(1.1);
+}
+
+
+/* 6. About Section */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.about-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px 24px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.about-card h3 {
+    color: var(--primary);
+    font-size: 25px;
+    margin-bottom: 14px;
+}
+
+.about-card p {
+    color: var(--text-secondary);
+}
+
+
+/* 7. Responsive — Tablet */
+
+@media (max-width: 1024px) {
+
+    .hero-content h1 {
+        font-size: 44px;
+    }
+
+    .fields-grid.homepage-fields-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* 8. Responsive — Mobile */
+
+@media (max-width: 768px) {
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 45px 5%;
+        gap: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* 9. Responsive — Small Screens */
+
+@media (max-width: 480px) {
+
+    .hero-content h1 {
+        font-size: 30px;
+    }
+
+    .fields-grid.homepage-fields-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

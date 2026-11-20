@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -8,63 +7,50 @@
 
     <title>TechAtlas | استكشف عالم التقنية</title>
 
-    <meta name="description" content="منصة تعليمية تفاعلية لاستكشاف عالم التقنية والمسارات المهنية.">
+    <meta name="description"
+          content="منصة تعليمية تفاعلية لاستكشاف المجالات التقنية والمسارات المهنية.">
 
     <link rel="icon" href="assets/icons/favicon.ico">
 
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/homepage.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
 
-    <header class="header">
+    <!-- Navigation Bar -->
 
+    <header class="header">
         <nav class="navbar">
 
-            <!-- Logo -->
             <a href="index.html" class="logo">
-                <img src="assets/images/logo-light1.png" alt="TechAtlas" id="site-logo">
+                <img src="assets/images/logo-light1.png"
+                     alt="TechAtlas"
+                     id="site-logo">
             </a>
 
-            <!-- Navigation Links -->
             <ul class="nav-links">
-
-                <li>
-                    <a href="index.html">الرئيسية</a>
-                </li>
-
-                <li>
-                    <a href="pages/courses.html">المجالات</a>
-                </li>
-
-                <li>
-                    <a href="pages/careers.html">الوظائف</a>
-                </li>
-
-                <li>
-                    <a href="pages/encyclopedia.html">الموسوعة</a>
-                </li>
-
-                <li>
-                    <a href="pages/about.html">عن المشروع</a>
-                </li>
-
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="pages/fields.html">المجالات</a></li>
+                <li><a href="pages/courses.html">الكورسات</a></li>
+                <li><a href="pages/encyclopedia.html">الموسوعة</a></li>
+                <li><a href="pages/about.html">عن المشروع</a></li>
             </ul>
 
-            <!-- Theme Button -->
             <button id="theme-toggle" type="button"
                     aria-label="تغيير وضع الألوان">
                 🌙
             </button>
 
         </nav>
-
     </header>
+
 
     <main>
 
         <!-- Hero Section -->
+
         <section class="hero">
 
             <div class="hero-content">
@@ -72,19 +58,21 @@
                 <h1>استكشف عالم التقنية</h1>
 
                 <p>
-                    منصة تعليمية تفاعلية تساعدك على فهم
-                    التكنولوجيا واكتشاف مسارك المهني
-                    بتجربة بصرية مميزة.
+                    اكتشف المجالات التقنية، واختر مسارك المهني،
+                    وتعلم المهارات التي تحتاجها لبناء مستقبلك
+                    في عالم التكنولوجيا.
                 </p>
 
                 <div class="hero-buttons">
 
-                    <a href="pages/courses.html" class="btn-primary">
+                    <a href="pages/fields.html"
+                       class="btn-primary">
                         ابدأ الاستكشاف
                     </a>
 
-                    <a href="pages/about.html" class="btn-secondary">
-                        تعرف على المشروع
+                    <a href="pages/courses.html"
+                       class="btn-secondary">
+                        تصفح الكورسات
                     </a>
 
                 </div>
@@ -92,307 +80,250 @@
             </div>
 
             <div class="hero-image">
-
                 <img src="assets/images/hero-light.webp"
-                    alt="مدينة تكنولوجية عائمة"
-                    id="hero-city">
+                     alt="مدينة تكنولوجية عائمة"
+                     id="hero-city">
+            </div>
+
+        </section>
+
+
+        <!-- Technical Fields -->
+
+        <section class="fields" id="fields">
+
+            <div class="section-heading">
+                <h2>استكشف المجالات التقنية</h2>
+                <p>اكتشف المجال المناسب لك والوظائف التي يقدمها.</p>
+            </div>
+
+            <div class="fields-grid homepage-fields-grid">
+
+                <!-- Cybersecurity -->
+
+                <a href="fields/cybersecurity.html"
+                   class="field-card">
+
+                    <img src="assets/icons/cybersecurity.png" alt="">
+
+                    <h3>الأمن السيبراني</h3>
+                    <span>Cybersecurity</span>
+
+                    <p>
+                        اكتشف عالم الحماية الرقمية
+                        والاختراق الأخلاقي.
+                    </p>
+
+                    <span class="card-link">
+                        استكشف المجال ←
+                    </span>
+
+                </a>
+
+
+                <!-- Networking -->
+
+                <a href="fields/networking.html"
+                   class="field-card">
+
+                    <img src="assets/icons/networking.png" alt="">
+
+                    <h3>الشبكات</h3>
+                    <span>Networking</span>
+
+                    <p>
+                        اكتشف عالم الاتصالات
+                        والبنية التحتية للشبكات.
+                    </p>
+
+                    <span class="card-link">
+                        استكشف المجال ←
+                    </span>
+
+                </a>
+
+
+                <!-- Software Development -->
+
+                <a href="fields/software-development.html"
+                   class="field-card">
+
+                    <div class="field-symbol" aria-hidden="true">
+                        &lt;/&gt;
+                    </div>
+
+                    <h3>تطوير البرمجيات</h3>
+                    <span>Software Development</span>
+
+                    <p>
+                        اكتشف عالم البرمجة وتطوير
+                        المواقع والتطبيقات.
+                    </p>
+
+                    <span class="card-link">
+                        استكشف المجال ←
+                    </span>
+
+                </a>
+
+            </div>
+
+            <div class="section-action">
+
+                <a href="pages/fields.html"
+                   class="btn-secondary">
+                    عرض جميع المجالات
+                </a>
 
             </div>
 
         </section>
 
 
-    <!-- Explore Fields Section -->
+        <!-- Popular Courses -->
 
-    <section class="fields" id="fields">
+        <section class="fields" id="courses">
 
-        <div class="section-heading">
+            <div class="section-heading">
+                <h2>ابدأ رحلة التعلم</h2>
+                <p>تعلم الأساسيات التي تحتاجها في مسارك المهني.</p>
+            </div>
 
-            <h2>استكشف المجالات التقنية</h2>
+            <div class="fields-grid">
 
-            <p>اختر مجالك وابدأ رحلتك في عالم المعرفة.</p>
+                <!-- Networking Course -->
 
-        </div>
+                <a href="courses/networking/index.html"
+                   class="field-card">
 
-        <div class="fields-grid">
+                    <img src="assets/icons/networking.png" alt="">
 
-            <!-- Cybersecurity -->
+                    <h3>الشبكات</h3>
+                    <span>Computer Networks</span>
 
-            <a href="courses/cybersecurity/index.html"
-            class="field-card">
+                    <p>تعلم أساسيات الشبكات والاتصالات.</p>
 
-                <img src="assets/icons/cybersecurity.png"
-                    alt="">
+                    <span class="card-link">ابدأ التعلم ←</span>
 
-                <h3>الأمن السيبراني</h3>
+                </a>
 
-                <span>Cybersecurity</span>
 
-                <p>تعلم حماية الأنظمة والمعلومات.</p>
+                <!-- Databases Course -->
 
-                <span class="card-link">
-                    استكشف المجال ←
-                </span>
+                <a href="courses/databases/index.html"
+                   class="field-card">
 
-            </a>
+                    <img src="assets/icons/databases.png" alt="">
 
-            <!-- Networking -->
-
-            <a href="courses/networking/index.html"
-            class="field-card">
-
-                <img src="assets/icons/networking.png"
-                    alt="">
-
-                <h3>الشبكات</h3>
-
-                <span>Networking</span>
-
-                <p>افهم كيف تتواصل الأجهزة مع بعضها.</p>
-
-                <span class="card-link">
-                    استكشف المجال ←
-                </span>
-
-            </a>
-
-            <!-- Databases -->
-
-            <a href="courses/databases/index.html"
-            class="field-card">
-
-                <img src="assets/icons/databases.png"
-                    alt="">
-
-                <h3>قواعد البيانات</h3>
-
-                <span>Databases</span>
-
-                <p>تعلم تنظيم البيانات وإدارتها.</p>
-
-                <span class="card-link">
-                    استكشف المجال ←
-                </span>
-
-            </a>
-
-            <!-- Operating Systems -->
-
-            <a href="courses/operating-systems/index.html"
-            class="field-card">
-
-                <img src="assets/icons/operating-systems.png"
-                    alt="">
-
-                <h3>أنظمة التشغيل</h3>
-
-                <span>Operating Systems</span>
-
-                <p>اكتشف كيف تعمل أنظمة التشغيل.</p>
-
-                <span class="card-link">
-                    استكشف المجال ←
-                </span>
-
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- Career Paths Section -->
-
-    <section class="careers" id="careers">
-
-        <div class="section-heading">
-
-            <h2>اكتشف مسارك المهني</h2>
-
-            <p>
-                لكل هدف طريق، اكتشف المهارات
-                التي تحتاجها للوصول إليه.
-            </p>
-
-        </div>
-
-        <div class="careers-grid">
-
-            <!-- Cybersecurity Analyst -->
-
-            <a href="pages/careers/cybersecurity-analyst.html"
-            class="career-card">
-
-                <img src="assets/icons/cybersecurity.png"
-                    alt="">
-
-                <h3>محلل الأمن السيبراني</h3>
-
-                <span>Cybersecurity Analyst</span>
-
-                <p>
-                    تعلم اكتشاف التهديدات وتحليلها
-                    وحماية الأنظمة.
-                </p>
-
-                <div class="skills">
-
-                    <span>Networking</span>
-                    <span>Linux</span>
-                    <span>Security</span>
-
-                </div>
-
-                <span class="card-link">
-                    استكشف المسار ←
-                </span>
-
-            </a>
-
-            <!-- Network Engineer -->
-
-            <a href="pages/careers/network-engineer.html"
-            class="career-card">
-
-                <img src="assets/icons/networking.png"
-                    alt="">
-
-                <h3>مهندس الشبكات</h3>
-
-                <span>Network Engineer</span>
-
-                <p>
-                    تعلم تصميم الشبكات وإدارتها
-                    وحل مشكلات الاتصال.
-                </p>
-
-                <div class="skills">
-
-                    <span>Networking</span>
-                    <span>Routing</span>
-                    <span>Switching</span>
-
-                </div>
-
-                <span class="card-link">
-                    استكشف المسار ←
-                </span>
-
-            </a>
-
-            <!-- Database Administrator -->
-
-            <a href="pages/careers/database-administrator.html"
-            class="career-card">
-
-                <img src="assets/icons/databases.png"
-                    alt="">
-
-                <h3>مسؤول قواعد البيانات</h3>
-
-                <span>Database Administrator</span>
-
-                <p>
-                    تعلم إدارة قواعد البيانات
-                    وتأمينها وتحسين أدائها.
-                </p>
-
-                <div class="skills">
-
-                    <span>SQL</span>
+                    <h3>قواعد البيانات</h3>
                     <span>Databases</span>
-                    <span>Security</span>
 
+                    <p>تعلم تخزين البيانات وتنظيمها وإدارتها.</p>
+
+                    <span class="card-link">ابدأ التعلم ←</span>
+
+                </a>
+
+
+                <!-- Operating Systems Course -->
+
+                <a href="courses/operating-systems/index.html"
+                   class="field-card">
+
+                    <img src="assets/icons/operating-systems.png" alt="">
+
+                    <h3>أنظمة التشغيل</h3>
+                    <span>Operating Systems</span>
+
+                    <p>افهم كيفية عمل أنظمة التشغيل.</p>
+
+                    <span class="card-link">ابدأ التعلم ←</span>
+
+                </a>
+
+
+                <!-- Cybersecurity Course -->
+
+                <a href="courses/cybersecurity/index.html"
+                   class="field-card">
+
+                    <img src="assets/icons/cybersecurity.png" alt="">
+
+                    <h3>أساسيات الأمن السيبراني</h3>
+                    <span>Cybersecurity Fundamentals</span>
+
+                    <p>تعلم أساسيات حماية الأنظمة والمعلومات.</p>
+
+                    <span class="card-link">ابدأ التعلم ←</span>
+
+                </a>
+
+            </div>
+
+            <div class="section-action">
+                <a href="pages/courses.html"
+                   class="btn-secondary">
+                    عرض جميع الكورسات
+                </a>
+            </div>
+
+        </section>
+
+
+        <!-- About TechAtlas -->
+
+        <section class="about" id="about">
+
+            <div class="section-heading">
+
+                <h2>أكثر من مجرد منصة تعليمية</h2>
+
+                <p>
+                    TechAtlas هو أطلسك الرقمي لاكتشاف
+                    عالم التكنولوجيا وبناء مستقبلك المهني.
+                </p>
+
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-card">
+                    <h3>استكشف</h3>
+                    <p>
+                        اكتشف المجالات التقنية والوظائف
+                        التي يمكنك العمل بها.
+                    </p>
                 </div>
 
-                <span class="card-link">
-                    استكشف المسار ←
-                </span>
+                <div class="about-card">
+                    <h3>تعلم</h3>
+                    <p>
+                        اتبع خريطة تعلم منظمة تناسب
+                        المسار المهني الذي اخترته.
+                    </p>
+                </div>
 
-            </a>
-
-        </div>
-
-        <div class="section-action">
-
-            <a href="pages/careers.html"
-            class="btn-secondary">
-
-                عرض جميع المسارات المهنية
-
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- About Section -->
-
-    <section class="about" id="about">
-
-        <div class="section-heading">
-
-            <h2>أكثر من مجرد منصة تعليمية</h2>
-
-            <p>
-                TechAtlas هو أطلسك الرقمي لاستكشاف
-                عالم التكنولوجيا، وفهم المفاهيم التقنية،
-                واكتشاف مسارك المهني.
-            </p>
-
-        </div>
-
-        <div class="about-grid">
-
-            <div class="about-card">
-
-                <h3>تعلم</h3>
-
-                <p>
-                    افهم المفاهيم التقنية من الأساس
-                    بأسلوب واضح ومبسط.
-                </p>
+                <div class="about-card">
+                    <h3>طبّق</h3>
+                    <p>
+                        حوّل معرفتك إلى مهارات عملية
+                        من خلال التدريبات والمشروعات.
+                    </p>
+                </div>
 
             </div>
 
-            <div class="about-card">
-
-                <h3>استكشف</h3>
-
-                <p>
-                    اكتشف المجالات التقنية
-                    والمسارات المهنية المختلفة.
-                </p>
-
+            <div class="section-action">
+                <a href="pages/about.html"
+                   class="btn-secondary">
+                    تعرف علينا أكثر ←
+                </a>
             </div>
 
-            <div class="about-card">
-
-                <h3>طبّق</h3>
-
-                <p>
-                    حوّل المعرفة إلى تجربة عملية
-                    من خلال الأمثلة والتدريبات.
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="section-action">
-
-            <a href="pages/about.html"
-            class="btn-secondary">
-
-                تعرف علينا أكثر ←
-
-            </a>
-
-        </div>
-
-    </section>
-
+        </section>
 
     </main>
+
 
     <!-- Footer -->
 
@@ -400,15 +331,11 @@
 
         <div class="footer-content">
 
-            <!-- Brand Information -->
-
             <div class="footer-brand">
 
                 <a href="index.html">
-
                     <img src="assets/images/logo-dark1.png"
-                        alt="TechAtlas">
-
+                         alt="TechAtlas">
                 </a>
 
                 <p class="tagline" lang="en" dir="ltr">
@@ -416,85 +343,54 @@
                 </p>
 
                 <p>
-                    رحلتك لاستكشاف عالم التكنولوجيا
-                    تبدأ من هنا.
+                    رحلتك لاستكشاف عالم التكنولوجيا تبدأ من هنا.
                 </p>
 
             </div>
 
-            <!-- Quick Links -->
 
             <div class="footer-links">
 
                 <h3>روابط سريعة</h3>
 
                 <ul>
-
-                    <li>
-                        <a href="index.html">الرئيسية</a>
-                    </li>
-
-                    <li>
-                        <a href="pages/careers.html">
-                            المسارات المهنية
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="pages/encyclopedia.html">
-                            الموسوعة التقنية
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="pages/about.html">
-                            عن المشروع
-                        </a>
-                    </li>
-
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="pages/fields.html">المجالات</a></li>
+                    <li><a href="pages/courses.html">الكورسات</a></li>
+                    <li><a href="pages/encyclopedia.html">الموسوعة</a></li>
+                    <li><a href="pages/about.html">عن المشروع</a></li>
                 </ul>
 
             </div>
 
-            <!-- Learning Fields -->
 
             <div class="footer-links">
 
-                <h3>المجالات التعليمية</h3>
+                <h3>المجالات التقنية</h3>
 
                 <ul>
-
                     <li>
-                        <a href="courses/cybersecurity/index.html">
+                        <a href="fields/cybersecurity.html">
                             الأمن السيبراني
                         </a>
                     </li>
 
                     <li>
-                        <a href="courses/networking/index.html">
+                        <a href="fields/networking.html">
                             الشبكات
                         </a>
                     </li>
 
                     <li>
-                        <a href="courses/databases/index.html">
-                            قواعد البيانات
+                        <a href="fields/software-development.html">
+                            تطوير البرمجيات
                         </a>
                     </li>
-
-                    <li>
-                        <a href="courses/operating-systems/index.html">
-                            أنظمة التشغيل
-                        </a>
-                    </li>
-
                 </ul>
 
             </div>
 
         </div>
-
-        <!-- Copyright -->
 
         <div class="footer-bottom">
 
@@ -508,7 +404,12 @@
 
     </footer>
 
+
+    <!-- JavaScript Files -->
+
     <script src="js/main.js"></script>
+    <script src="js/homepage.js"></script>
+
 </body>
 
 </html>
